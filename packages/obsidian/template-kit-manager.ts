@@ -1,7 +1,7 @@
 // 为了兼容性，需要导入Modal
 import { App, Component, Modal, Notice } from "obsidian";
 import { logger } from "../shared/src/logger";
-import ZePublishPlugin from "./main";
+import ZePressPlugin from "./main";
 import TemplateManager from "./template-manager";
 import AssetsManager from "./assets";
 import { NMPSettings } from "./settings";
@@ -29,7 +29,7 @@ export default class TemplateKitManager
 {
 	private static instance: TemplateKitManager;
 	private app: App;
-	private plugin: ZePublishPlugin;
+	private plugin: ZePressPlugin;
 	private kitsCollection: TemplateKitCollection = {
 		version: "1.0.0",
 		kits: [],
@@ -38,7 +38,7 @@ export default class TemplateKitManager
 	private readonly KITS_FILE_NAME = "template-kits.json";
 	private resolvedKitsDir: string | null = null;
 
-	private constructor(app: App, plugin: ZePublishPlugin) {
+	private constructor(app: App, plugin: ZePressPlugin) {
 		super();
 		this.app = app;
 		this.plugin = plugin;
@@ -52,7 +52,7 @@ export default class TemplateKitManager
 
 	public static getInstance(
 		app?: App,
-		plugin?: ZePublishPlugin,
+		plugin?: ZePressPlugin,
 	): TemplateKitManager {
 		if (!TemplateKitManager.instance) {
 			if (!app || !plugin) {
@@ -168,7 +168,7 @@ export default class TemplateKitManager
 			setTimeout(() => {
 				// 清理所有可能的CSS变量和样式残留
 				const containers = document.querySelectorAll(
-					".zepublish, .zepublish-renderer, .wabi-sabi-container",
+					".zepress, .zepress-renderer, .wabi-sabi-container",
 				);
 				containers.forEach((container) => {
 					if (container instanceof HTMLElement) {
@@ -738,13 +738,13 @@ export default class TemplateKitManager
 
 		const adapter = this.app.vault.adapter;
 		const plugin =
-			(this.app as any).plugins?.plugins?.["ze-publisher"] ||
-			(this.app as any).plugins?.plugins?.["zepublish"];
+			(this.app as any).plugins?.plugins?.["zepress"] ||
+			(this.app as any).plugins?.plugins?.["zepress"];
 		const manifestDir = String(plugin?.manifest?.dir || "").replace(
 			/\/+$/,
 			"",
 		);
-		const manifestId = String(plugin?.manifest?.id || "zepublish");
+		const manifestId = String(plugin?.manifest?.id || "zepress");
 		const candidates: string[] = [];
 		const resolvedPluginDir = resolvePluginDir(this.app, manifestId);
 
@@ -758,9 +758,9 @@ export default class TemplateKitManager
 		candidates.push(
 			`${this.app.vault.configDir}/plugins/${manifestId}/${this.config.kitsStoragePath}`,
 		);
-		// 保留旧目录作为迁移兼容（旧插件 ID: zepublish）
+		// 保留旧目录作为迁移兼容（旧插件 ID: zepress）
 		candidates.push(
-			`${this.app.vault.configDir}/plugins/zepublish/${this.config.kitsStoragePath}`,
+			`${this.app.vault.configDir}/plugins/zepress/${this.config.kitsStoragePath}`,
 		);
 
 		for (const dir of candidates) {
@@ -811,14 +811,14 @@ class ApplyKitConfirmModal extends Modal {
 		contentEl.createEl("p", { text: this.kit.basicInfo.description });
 
 		const warningEl = contentEl.createEl("div", {
-			cls: "zepublish-warning",
+			cls: "zepress-warning",
 		});
 		warningEl.createEl("p", {
 			text: "This will override your current settings. Continue?",
 		});
 
 		const buttonContainer = contentEl.createEl("div", {
-			cls: "zepublish-modal-buttons",
+			cls: "zepress-modal-buttons",
 		});
 
 		const cancelButton = buttonContainer.createEl("button", {
@@ -831,7 +831,7 @@ class ApplyKitConfirmModal extends Modal {
 
 		const confirmButton = buttonContainer.createEl("button", {
 			text: "Apply Kit",
-			cls: "zepublish-primary-button",
+			cls: "zepress-primary-button",
 		});
 		confirmButton.onclick = () => {
 			this.onConfirm(true);

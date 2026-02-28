@@ -4,17 +4,17 @@ function trimSlashes(input: string): string {
 	return input.replace(/\/+$/, "").replace(/^\/+/, "");
 }
 
-export function resolvePluginDir(app: App, pluginId = "ze-publisher"): string {
+export function resolvePluginDir(app: App, pluginId = "zepress"): string {
 	const plugins = (app as any).plugins?.plugins || {};
 	const plugin =
 		plugins[pluginId] ||
-		plugins["ze-publisher"] ||
-		plugins["zepublish"];
+		plugins["zepress"] ||
+		plugins["zepress"];
 	const manifest = plugin?.manifest;
 
 	const configDir = trimSlashes(String(app.vault.configDir || ".obsidian"));
 	const rawDir = String(manifest?.dir || "").replace(/\\/g, "/").replace(/\/+$/, "");
-	const manifestId = String(manifest?.id || pluginId || "ze-publisher");
+	const manifestId = String(manifest?.id || pluginId || "zepress");
 
 	if (!rawDir) {
 		return `${configDir}/plugins/${manifestId}`;
@@ -25,7 +25,7 @@ export function resolvePluginDir(app: App, pluginId = "ze-publisher"): string {
 		return rawDir;
 	}
 
-	// Relative plugin short form: "ze-publisher" or "plugins/zepublish".
+	// Relative plugin short form: "zepress" or "plugins/zepress".
 	if (!rawDir.includes("/")) {
 		return `${configDir}/plugins/${rawDir}`;
 	}
@@ -45,6 +45,6 @@ export function resolvePluginDir(app: App, pluginId = "ze-publisher"): string {
 	return rawDir;
 }
 
-export function resolvePluginAssetsDir(app: App, pluginId = "ze-publisher"): string {
+export function resolvePluginAssetsDir(app: App, pluginId = "zepress"): string {
 	return `${resolvePluginDir(app, pluginId)}/assets`;
 }

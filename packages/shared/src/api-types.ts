@@ -200,17 +200,17 @@ export interface CodeBlockAPI {
 }
 
 // 完整的全局API接口
-export interface ZePublishReactAPI extends TemplateKitAPI, SettingsAPI, CodeBlockAPI {
+export interface ZePressReactAPI extends TemplateKitAPI, SettingsAPI, CodeBlockAPI {
 	persistentStorage: PersistentStorageAPI;
 	requestUrl: RequestUrlFunction;
 }
 
 // Window全局类型扩展
-export interface ZePublishGlobalAPI {
-	zepublishReactAPI: ZePublishReactAPI;
+export interface ZePressGlobalAPI {
+	zepressReactAPI: ZePressReactAPI;
 }
 
 declare global {
-	interface Window extends ZePublishGlobalAPI {
+	interface Window extends ZePressGlobalAPI {
 	}
 }

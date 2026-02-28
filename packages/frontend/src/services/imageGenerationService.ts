@@ -110,7 +110,7 @@ export class ImageGenerationService {
 			return {success: false, error: '请先在 AI 设置中选择模型'};
 		}
 
-		if (!window.zepublishReactAPI?.requestUrl) {
+		if (!window.zepressReactAPI?.requestUrl) {
 			return {success: false, error: '此功能仅在 Obsidian 环境中可用'};
 		}
 
@@ -165,7 +165,7 @@ Guidelines:
 				model: settings.zenmuxModel
 			});
 
-			const requestUrl = window.zepublishReactAPI.requestUrl;
+			const requestUrl = window.zepressReactAPI.requestUrl;
 			const response = await requestUrl({
 				url: 'https://zenmux.ai/api/v1/chat/completions',
 				method: 'POST',
@@ -231,12 +231,12 @@ Guidelines:
 			return {success: false, error: '请先配置 ZenMux API 密钥'};
 		}
 
-		if (!window.zepublishReactAPI?.requestUrl) {
+		if (!window.zepressReactAPI?.requestUrl) {
 			return {success: false, error: '此功能仅在 Obsidian 环境中可用'};
 		}
 
 		try {
-			const requestUrl = window.zepublishReactAPI.requestUrl;
+			const requestUrl = window.zepressReactAPI.requestUrl;
 
 			// Nano Banana Pro 使用 VertexAI 格式
 			if (useNanoBananaPro) {
@@ -314,7 +314,7 @@ Guidelines:
 		prompt: string,
 		negativePrompt: string | undefined,
 		settings: ViteReactSettings,
-		requestUrl: typeof window.zepublishReactAPI.requestUrl,
+		requestUrl: typeof window.zepressReactAPI.requestUrl,
 		config?: {temperature?: number; topP?: number; seed?: number; aspectRatio?: string}
 	): Promise<ImageGenerationResult> {
 		const negPrompt = negativePrompt || 'nsfw, lowres, bad anatomy, text, watermark, blurry';

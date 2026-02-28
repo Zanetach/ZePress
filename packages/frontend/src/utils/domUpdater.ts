@@ -86,5 +86,5 @@ export const domUpdater = DOMUpdater.getInstance();
 
 // 全局暴露给Obsidian插件使用
 if (typeof window !== 'undefined') {
-  (window as any).__zepublishDOMUpdater = domUpdater;
+  (window as any).__zepressDOMUpdater = domUpdater;
 }

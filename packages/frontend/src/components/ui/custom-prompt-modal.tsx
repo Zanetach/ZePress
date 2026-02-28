@@ -25,7 +25,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 	const [selectedTemplate, setSelectedTemplate] = useState<string>('');
 	const [activeTab, setActiveTab] = useState<'templates' | 'editor' | 'variables'>(() => {
 		try {
-			const saved = localStorage.getItem('zepublish-custom-prompt-active-tab') as 'templates' | 'editor' | 'variables';
+			const saved = localStorage.getItem('zepress-custom-prompt-active-tab') as 'templates' | 'editor' | 'variables';
 			return saved || 'templates';
 		} catch {
 			return 'templates';
@@ -51,7 +51,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 		setActiveTab('editor');
 		// 持久化保存选中的tab
 		try {
-			localStorage.setItem('zepublish-custom-prompt-active-tab', 'editor');
+			localStorage.setItem('zepress-custom-prompt-active-tab', 'editor');
 		} catch (error) {
 			console.warn('Failed to save custom prompt tab to localStorage:', error);
 		}
@@ -148,7 +148,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 										setActiveTab(tabKey);
 										// 持久化保存选中的tab
 										try {
-											localStorage.setItem('zepublish-custom-prompt-active-tab', tabKey);
+											localStorage.setItem('zepress-custom-prompt-active-tab', tabKey);
 										} catch (error) {
 											console.warn('Failed to save custom prompt tab to localStorage:', error);
 										}

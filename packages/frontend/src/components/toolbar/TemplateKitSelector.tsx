@@ -43,10 +43,10 @@ export const TemplateKitSelector: React.FC<TemplateKitSelectorProps> = ({
 		try {
 			setLoading(true);
 			setError("");
-			if (!window.zepublishReactAPI?.loadTemplateKits) {
+			if (!window.zepressReactAPI?.loadTemplateKits) {
 				throw new Error("Template kit API not available");
 			}
-			const loaded = await window.zepublishReactAPI.loadTemplateKits();
+			const loaded = await window.zepressReactAPI.loadTemplateKits();
 			setKits(loaded as TemplateKit[]);
 		} catch (e) {
 			const msg = (e as Error).message || "加载套装失败";
@@ -91,10 +91,10 @@ export const TemplateKitSelector: React.FC<TemplateKitSelectorProps> = ({
 				await Promise.resolve(onKitApply(kitId));
 				return;
 			}
-			if (!window.zepublishReactAPI?.onKitApply) {
+			if (!window.zepressReactAPI?.onKitApply) {
 				throw new Error("Kit apply API not available");
 			}
-			await window.zepublishReactAPI.onKitApply(kitId);
+			await window.zepressReactAPI.onKitApply(kitId);
 		} catch (e) {
 			logger.error("[TemplateKitSelector] apply kit failed:", e);
 		} finally {

@@ -13,7 +13,7 @@ import {CoverData} from "@/components/toolbar/CoverData";
 import {logger} from "../../../../shared/src/logger";
 import {FileText, Package, Plug, Zap, User, Bot, Globe, Image, Palette, Cloud, Eye, EyeOff, AlertCircle, ChevronDown, CheckCircle2, XCircle, Loader2, Upload, Trash2, Copy, ExternalLink, ImagePlus, Heading1, PanelLeftClose} from "lucide-react";
 
-const APP_NAME = "Ze-Publisher";
+const APP_NAME = "ZePress";
 const LOGO_TEXT = "ZP";
 
 // 七牛云区域配置
@@ -71,7 +71,7 @@ const CloudStorageSettingsSection: React.FC<{
 			domain = domain.replace(/\/$/, '');
 
 			// 使用 Obsidian 的 requestUrl API（如果可用）或 fetch
-			const requestUrl = (window as any).zepublishReactAPI?.requestUrl;
+			const requestUrl = (window as any).zepressReactAPI?.requestUrl;
 
 			if (requestUrl) {
 				// Obsidian 环境 - 使用 GET 请求测试
@@ -295,7 +295,7 @@ const QINIU_UPLOAD_HOSTS: Record<CloudStorageSettings['qiniu']['region'], string
 };
 
 // 本地存储键名
-const UPLOADED_IMAGES_STORAGE_KEY = 'zepublish-uploaded-images';
+const UPLOADED_IMAGES_STORAGE_KEY = 'zepress-uploaded-images';
 
 // 获取已上传图片列表
 const getUploadedImages = (): UploadedImage[] => {
@@ -317,7 +317,7 @@ const generateFileKey = (file: File): string => {
 	const ext = file.name.split('.').pop() || 'jpg';
 	const timestamp = Date.now();
 	const random = Math.random().toString(36).substring(2, 8);
-	return `zepublish/${timestamp}-${random}.${ext}`;
+	return `zepress/${timestamp}-${random}.${ext}`;
 };
 
 // Base64 URL 编码
@@ -378,10 +378,10 @@ const CloudStoragePanelContent: React.FC<{
 			setUploadedImages(getUploadedImages());
 		};
 		window.addEventListener('storage', handleStorageChange);
-		window.addEventListener('zepublish-images-updated', handleStorageChange);
+		window.addEventListener('zepress-images-updated', handleStorageChange);
 		return () => {
 			window.removeEventListener('storage', handleStorageChange);
-			window.removeEventListener('zepublish-images-updated', handleStorageChange);
+			window.removeEventListener('zepress-images-updated', handleStorageChange);
 		};
 	}, []);
 
@@ -718,7 +718,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 	type NavSection = 'article' | 'cover' | 'kits' | 'plugins' | 'playground' | 'logs' | 'cloud' | 'personal' | 'ai' | 'general';
 	const [activeSection, setActiveSection] = useState<NavSection>(() => {
 		try {
-			const saved = localStorage.getItem('zepublish-toolbar-section') as NavSection;
+			const saved = localStorage.getItem('zepress-toolbar-section') as NavSection;
 			return saved || 'article';
 		} catch {
 			return 'article';
@@ -731,7 +731,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 		}
 		setActiveSection(section);
 		try {
-			localStorage.setItem('zepublish-toolbar-section', section);
+			localStorage.setItem('zepress-toolbar-section', section);
 		} catch {}
 	};
 	const showStyleUI = atomSettings.showStyleUI !== false;
@@ -745,7 +745,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 	// 插件管理中的子tab状态
 	const [pluginTab, setPluginTab] = useState<string>(() => {
 		try {
-			const saved = localStorage.getItem('zepublish-toolbar-plugin-tab');
+			const saved = localStorage.getItem('zepress-toolbar-plugin-tab');
 			if (saved) return saved;
 		} catch {}
 		return plugins.some(p => p.type === 'rehype') ? 'rehype' : 'remark';
@@ -834,7 +834,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 	const getImageArrayBuffer = async (imageUrl: string): Promise<ArrayBuffer> => {
 		if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
 			// HTTP/HTTPS URL - 使用Obsidian的requestUrl API
-			const globalAPI = (window as any).zepublishReactAPI;
+			const globalAPI = (window as any).zepressReactAPI;
 			if (!globalAPI || typeof globalAPI.requestUrl === 'undefined') {
 				throw new Error('此功能仅在Obsidian环境中可用');
 			}
@@ -867,7 +867,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 				try {
 					const arrayBuffer = await getImageArrayBuffer(cover.imageUrl);
 					const aspectStr = cover.aspectRatio.replace(':', '-').replace('.', '_');
-					const fileName = `zepublish-cover-${index + 1}-${aspectStr}.jpg`;
+					const fileName = `zepress-cover-${index + 1}-${aspectStr}.jpg`;
 					zip.file(fileName, arrayBuffer);
 					fileCount++;
 				} catch (error) {
@@ -880,7 +880,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 				try {
 					const combinedBlob = await createCombinedCoverBlob(cover1, cover2);
 					const arrayBuffer = await combinedBlob.arrayBuffer();
-					const fileName = 'zepublish-cover-combined-3_25_1.jpg';
+					const fileName = 'zepress-cover-combined-3_25_1.jpg';
 					zip.file(fileName, arrayBuffer);
 					fileCount++;
 				} catch (error) {
@@ -900,7 +900,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 			const url = URL.createObjectURL(zipBlob);
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = `zepublish-covers-${Date.now()}.zip`;
+			a.download = `zepress-covers-${Date.now()}.zip`;
 			a.style.display = 'none';
 
 			document.body.appendChild(a);
@@ -1003,7 +1003,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 	try {
 		return (
 			<div
-				id="zepublish-toolbar-container"
+				id="zepress-toolbar-container"
 				data-ui-dark={isUIDark ? "true" : "false"}
 				className={`h-full flex relative ${isUIDark ? 'bg-[#1F2023]' : 'bg-[#FAFAFA]'}`}
 				style={{
@@ -1108,7 +1108,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 
 					{/* 右侧内容区 - 可单独折叠，左侧图标栏保持显示 */}
 					{!isContentCollapsed && (
-					<div id="zepublish-toolbar-content" className={`flex-1 min-w-0 overflow-y-auto relative ${isUIDark ? 'bg-[#1F2023]' : 'bg-[#FAFAFA]'}`}>
+					<div id="zepress-toolbar-content" className={`flex-1 min-w-0 overflow-y-auto relative ${isUIDark ? 'bg-[#1F2023]' : 'bg-[#FAFAFA]'}`}>
 					<div className="p-4 sm:p-5">
 						{/* 文章信息 */}
 						{activeSection === 'article' && (
@@ -1163,7 +1163,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 									<Tabs value={pluginTab} onValueChange={(value) => {
 										setPluginTab(value);
 										try {
-											localStorage.setItem('zepublish-toolbar-plugin-tab', value);
+											localStorage.setItem('zepress-toolbar-plugin-tab', value);
 										} catch {}
 									}}>
 										<TabsList className="bg-muted rounded-xl p-0.5 mb-4 w-full sm:w-auto">
@@ -1395,7 +1395,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 											</div>
 											<input
 												type="text"
-												value={atomSettings.imageSaveFolder ?? "zepublish-images"}
+												value={atomSettings.imageSaveFolder ?? "zepress-images"}
 												onChange={(e) => persistSettingChange({imageSaveFolder: e.target.value})}
 												disabled={!imageSaveFolderEnabled}
 												placeholder="例如：attachments/ai-images"

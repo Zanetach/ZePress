@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useSetAtom } from 'jotai';
 import { articleHTMLAtom, cssContentAtom, staticCallbacksAtom } from '../store/contentAtoms';
-import { ZePublishReact } from './ZePublishReact';
-import { ZePublishReactProps } from '../types';
+import { ZePressReact } from './ZePressReact';
+import { ZePressReactProps } from '../types';
 
 /**
  * 桥接组件：分离频繁变化的数据和静态回调
  * 将频繁变化的数据存储在atom中，避免整个组件重新渲染
  */
-export const ZePublishReactBridge: React.FC<ZePublishReactProps> = (props) => {
+export const ZePressReactBridge: React.FC<ZePressReactProps> = (props) => {
   const setArticleHTML = useSetAtom(articleHTMLAtom);
   const setCssContent = useSetAtom(cssContentAtom);
   const setStaticCallbacks = useSetAtom(staticCallbacksAtom);
@@ -53,5 +53,5 @@ export const ZePublishReactBridge: React.FC<ZePublishReactProps> = (props) => {
   }, [props.cssContent, setCssContent]);
   
   // 传递其他不频繁变化的props
-  return <ZePublishReact {...props} />;
+  return <ZePressReact {...props} />;
 };

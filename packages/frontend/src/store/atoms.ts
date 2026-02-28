@@ -78,24 +78,24 @@ export const defaultSettings: ViteReactSettings = {
 	// Other settings
 	toolbarPosition: "left",
 	imageSaveFolderEnabled: true,
-	imageSaveFolder: "zepublish-images",
+	imageSaveFolder: "zepress-images",
 	uiThemeMode: "auto",
 	cloudStorage: defaultCloudStorageSettings,
 };
 
 // 使用 atomWithStorage 实现自动持久化
 export const personalInfoAtom = atomWithStorage<PersonalInfo>(
-	"zepublish-personal-info",
+	"zepress-personal-info",
 	defaultPersonalInfo,
 );
 
 export const articleInfoAtom = atomWithStorage<ArticleInfoData>(
-	"zepublish-article-info",
+	"zepress-article-info",
 	defaultArticleInfo,
 );
 
 export const settingsAtom = atomWithStorage<ViteReactSettings>(
-	"zepublish-settings",
+	"zepress-settings",
 	defaultSettings,
 );
 
@@ -182,15 +182,15 @@ export const initializeSettingsAtom = atom(
 	) => {
 		// 直接从 localStorage 读取，避免 atomWithStorage 异步问题
 		const storedSettings = getStoredData<ViteReactSettings>(
-			"zepublish-settings",
+			"zepress-settings",
 			defaultSettings,
 		);
 		const storedPersonalInfo = getStoredData<PersonalInfo>(
-			"zepublish-personal-info",
+			"zepress-personal-info",
 			defaultPersonalInfo,
 		);
 		const storedArticleInfo = getStoredData<ArticleInfoData>(
-			"zepublish-article-info",
+			"zepress-article-info",
 			defaultArticleInfo,
 		);
 
@@ -230,6 +230,6 @@ export const defaultPlaygroundState: PlaygroundState = {
 
 // Playground 状态 atom（持久化）
 export const playgroundAtom = atomWithStorage<PlaygroundState>(
-	"zepublish-playground",
+	"zepress-playground",
 	defaultPlaygroundState,
 );

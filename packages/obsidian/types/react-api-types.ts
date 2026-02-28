@@ -5,7 +5,7 @@ import {
 	SettingsAPI,
 	TemplateKitAPI,
 	CodeBlockImageResult,
-} from "@ze-publisher/shared";
+} from "@zepress/shared";
 import { CloudStorageSettings } from "../settings";
 
 /**
@@ -203,7 +203,7 @@ export interface ReactComponentPropsWithCallbacks
 
 /**
  * 全局API接口
- * 专门用于window.zepublishReactAPI，只包含核心业务方法和存储/请求功能
+ * 专门用于window.zepressReactAPI，只包含核心业务方法和存储/请求功能
  * 与ReactAPICallbacks分离，避免UI回调污染全局API
  */
 export interface GlobalReactAPI {

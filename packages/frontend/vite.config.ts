@@ -32,11 +32,11 @@ export default defineConfig(({ mode }) => {
 		resolve: {
 			alias: {
 				"@": path.resolve(__dirname, "./src"),
-				"@ze-publisher/shared": path.resolve(
+				"@zepress/shared": path.resolve(
 					__dirname,
 					"../shared/index.ts",
 				),
-				"@ze-publisher/shared/": path.resolve(
+				"@zepress/shared/": path.resolve(
 					__dirname,
 					"../shared/",
 				),
@@ -70,7 +70,7 @@ export default defineConfig(({ mode }) => {
 		// Optimizations for better HMR
 		optimizeDeps: {
 			include: ['react', 'react-dom', 'react/jsx-runtime'],
-			exclude: ['@ze-publisher/obsidian']
+			exclude: ['@zepress/obsidian']
 		},
 
 		build: {
@@ -78,8 +78,8 @@ export default defineConfig(({ mode }) => {
 			emptyOutDir: true,
 			lib: {
 				entry: 'src/main.tsx',
-				name: 'ZePublishReact',
-				fileName: 'zepublish-react',
+				name: 'ZePressReact',
+				fileName: 'zepress-react',
 				formats: ['iife']
 			},
 			rollupOptions: {

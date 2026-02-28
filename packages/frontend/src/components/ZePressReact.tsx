@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { ZePublishReactProps } from "../types";
+import { ZePressReactProps } from "../types";
 import { Toolbar } from "./toolbar/Toolbar";
 import { useSetAtom, useAtomValue } from "jotai";
 import { initializeSettingsAtom, settingsAtom } from "../store/atoms";
@@ -8,7 +8,7 @@ import { HMRTest } from "./HMRTest";
 import { ArticleRenderer } from "./ArticleRenderer";
 import { ScrollContainer } from "./ScrollContainer";
 import { domUpdater } from "../utils/domUpdater";
-import { applyCodeBlockScale, findScreenshotElement } from "@ze-publisher/shared";
+import { applyCodeBlockScale, findScreenshotElement } from "@zepress/shared";
 
 import { logger } from "../../../shared/src/logger";
 
@@ -35,7 +35,7 @@ interface ExecutionRecord {
 	steps: Array<{ ts: number; text: string; status: ExecutionStatus }>;
 }
 
-export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
+export const ZePressReact: React.FC<ZePressReactProps> = (props) => {
 	const {
 		settings,
 		plugins,
@@ -76,7 +76,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 	// Toolbar 参数区折叠状态（左侧图标栏始终保留）
 	const [isToolbarCollapsed, setIsToolbarCollapsed] = useState<boolean>(() => {
 		try {
-			return localStorage.getItem("zepublish-toolbar-collapsed") === "true";
+			return localStorage.getItem("zepress-toolbar-collapsed") === "true";
 		} catch {
 			return false;
 		}
@@ -170,10 +170,10 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 				if (result) {
 					const { restore } = applyCodeBlockScale(result.element);
 					codeBlockScaleRestoreRef.current = restore;
-					logger.debug("[ZePublishReact] 已应用代码块缩放预览");
+					logger.debug("[ZePressReact] 已应用代码块缩放预览");
 				}
 			} else {
-				logger.debug("[ZePublishReact] 已关闭代码块缩放预览");
+				logger.debug("[ZePressReact] 已关闭代码块缩放预览");
 			}
 		});
 
@@ -223,7 +223,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 			const newVal = !prev;
 			try {
 				localStorage.setItem(
-					"zepublish-toolbar-collapsed",
+					"zepress-toolbar-collapsed",
 					String(newVal),
 				);
 			} catch {}
@@ -460,7 +460,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 			{/* 左侧渲染区域 - 始终可见，占用剩余空间 */}
 			<ScrollContainer
 				ref={rendererRef}
-				className="zepublish-renderer"
+				className="zepress-renderer"
 				tabIndex={0}
 				onMouseEnter={() => rendererRef.current?.focus()}
 				onMouseDown={() => rendererRef.current?.focus()}
@@ -494,7 +494,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 				{/* 内容容器 */}
 				<div
 					ref={contentContainerRef}
-					className="zepublish-content-container"
+					className="zepress-content-container"
 					style={{
 						position: "relative",
 						maxWidth: "none",
@@ -705,7 +705,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 					)}
 					{/* 动态样式：来自主题和高亮 */}
 					<style
-						title="zepublish-style"
+						title="zepress-style"
 						ref={(el) => {
 							if (el) {
 								domUpdater.setStyleElement(el);
@@ -715,7 +715,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 						{cssContent}
 					</style>
 					<style>{`
-	              #article-section.zepublish {
+	              #article-section.zepress {
 	                margin: 0 !important;
 	                padding: 0 !important;
 	                border: none !important;
@@ -723,24 +723,24 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 	                box-shadow: none !important;
 	                background: transparent !important;
 	              }
-	              #article-section.zepublish > *:first-child {
+	              #article-section.zepress > *:first-child {
 	                margin-top: 0 !important;
 	              }
-	              .zepublish-mermaid-wrapper {
+	              .zepress-mermaid-wrapper {
 	                margin: 16px 0;
 	                overflow-x: auto;
 	              }
-	              .zepublish-mermaid-wrapper svg {
+	              .zepress-mermaid-wrapper svg {
 	                max-width: 100%;
 	                width: auto;
 	                height: auto;
 	                margin: 0 auto;
 	                display: block;
 	              }
-	              .zepublish-author-tail {
+	              .zepress-author-tail {
 	                margin-top: 20px;
 	              }
-	              .zepublish-author-tail img {
+	              .zepress-author-tail img {
 	                display: block;
 	                width: 100%;
 	                max-width: 100%;
@@ -750,7 +750,7 @@ export const ZePublishReact: React.FC<ZePublishReactProps> = (props) => {
 	            `}</style>
 					<div
 						ref={articleScrollRef}
-						className="zepublish-article-scroll"
+						className="zepress-article-scroll"
 						style={{
 							flex: 1,
 							minHeight: 0,

@@ -65,7 +65,7 @@ export async function xUploadImage(
 	filename: string,
 ): Promise<{ media_id_string?: string; error?: string }> {
 	const url = "https://upload.twitter.com/1.1/media/upload.json";
-	const boundary = `----zepublish-${randomBytes(8).toString("hex")}`;
+	const boundary = `----zepress-${randomBytes(8).toString("hex")}`;
 	const pre = `--${boundary}\r\nContent-Disposition: form-data; name="media"; filename="${filename}"\r\nContent-Type: application/octet-stream\r\n\r\n`;
 	const post = `\r\n--${boundary}--`;
 	const body = await new Blob([

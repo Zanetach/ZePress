@@ -1,6 +1,6 @@
 
 
-> Ze-Publisher@0.2.6 build /Users/zane/Documents/Coderepo/Ze-Publisher/packages/obsidian
+> ZePress@0.2.6 build /Users/zane/Documents/Coderepo/Ze-Publisher/packages/obsidian
 > NODE_ENV=production node esbuild.config.mjs
 
 { obsidianVaultPath: [90mundefined[39m, obsidianPluginPath: [90mundefined[39m }

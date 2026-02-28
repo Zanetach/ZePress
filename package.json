@@ -1,5 +1,5 @@
 {
-	"name": "ze-publisher",
+	"name": "zepress",
 	"version": "0.2.6",
 	"description": "This is a plugin for Obsidian (https://obsidian.md)",
 	"main": "dist/main.js",

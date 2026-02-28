@@ -5,7 +5,7 @@ import {
 	requestUrl,
 	Setting,
 } from "obsidian";
-import ZePublishPlugin from "./main";
+import ZePressPlugin from "./main";
 import { cleanMathCache } from "./markdown-plugins/math";
 import { LinkDescriptionMode, NMPSettings } from "./settings";
 import TemplateManager from "./template-manager";
@@ -15,11 +15,11 @@ import { xVerifyCredentials } from "./x-api";
 
 import { logger } from "../shared/src/logger";
 
-export class ZePublishSettingTab extends PluginSettingTab {
-	plugin: ZePublishPlugin;
+export class ZePressSettingTab extends PluginSettingTab {
+	plugin: ZePressPlugin;
 	settings: NMPSettings;
 
-	constructor(app: App, plugin: ZePublishPlugin) {
+	constructor(app: App, plugin: ZePressPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 		this.settings = NMPSettings.getInstance();

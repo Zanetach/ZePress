@@ -14,15 +14,15 @@ export type {
 	PersistentStorageAPI,
 	TemplateKitAPI,
 	SettingsAPI,
-	ZePublishReactAPI,
-	ZePublishGlobalAPI
-} from '@ze-publisher/shared';
+	ZePressReactAPI,
+	ZePressGlobalAPI
+} from '@zepress/shared';
 
 // 重新导出以供本地使用
-import type {ZePublishGlobalAPI} from '@ze-publisher/shared';
+import type {ZePressGlobalAPI} from '@zepress/shared';
 
 declare global {
-	interface Window extends ZePublishGlobalAPI {
+	interface Window extends ZePressGlobalAPI {
 	}
 }
 

@@ -8,7 +8,7 @@ import {persistentStorageService} from "../../services/persistentStorage";
 import {logger} from "../../../../shared/src/logger";
 import {ChevronDown, Info, Plug, Settings} from "lucide-react";
 
-const STORAGE_KEY_PREFIX = 'zepublish-config';
+const STORAGE_KEY_PREFIX = 'zepress-config';
 
 const getStorageKey = (type: string, itemName: string) => {
 	return `${STORAGE_KEY_PREFIX}-${type}-${itemName}`;

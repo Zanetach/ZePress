@@ -125,8 +125,8 @@ export const PlaygroundPanel: React.FC<PlaygroundPanelProps> = ({settings, onOpe
 			let arrayBuffer: ArrayBuffer;
 			let contentType = 'image/png';
 			if (url.startsWith('http://') || url.startsWith('https://')) {
-				if (window.zepublishReactAPI?.requestUrl) {
-					const response = await window.zepublishReactAPI.requestUrl({url, method: 'GET'});
+				if (window.zepressReactAPI?.requestUrl) {
+					const response = await window.zepressReactAPI.requestUrl({url, method: 'GET'});
 					arrayBuffer = response.arrayBuffer;
 					contentType = response.headers?.['content-type'] || contentType;
 				} else {
@@ -146,8 +146,8 @@ export const PlaygroundPanel: React.FC<PlaygroundPanelProps> = ({settings, onOpe
 				? 'webp'
 				: 'png';
 			const folderRaw = settings?.imageSaveFolderEnabled === false
-				? 'zepublish-images'
-				: (settings?.imageSaveFolder?.trim() || 'zepublish-images');
+				? 'zepress-images'
+				: (settings?.imageSaveFolder?.trim() || 'zepress-images');
 			const folder = folderRaw.replace(/^\/+|\/+$/g, '');
 			await ensureDirectoryExists(adapter, folder);
 

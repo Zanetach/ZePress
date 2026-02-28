@@ -1,4 +1,4 @@
-# Ze Publisher v0.2.6 Release Notes
+# ZePress v0.2.6 Release Notes
 
 ### 🌟 What's New & Fixed (更新与修复)
 
@@ -6,7 +6,7 @@
 - **深色模式背景修复**: 修复了在 Obsidian 深色模式下，发布面板内（Shadow DOM）背景错误的显示为白色的问题。现在完全适配并继承深色主题，提供一致的沉浸式体验。
 
 #### 2. 🧹 Repository & Codebase Cleanup (仓库与代码清理)
-- **全面重命名为 Ze Publisher**: 移除了代码内部、UI界面及配置清单中所有残留的 `lovpen` 名称，统一重命名为最新的 **Ze Publisher**，保证品牌一致性。
+- **全面重命名为 ZePress**: 移除了代码内部、UI界面及配置清单中所有残留的 `lovpen` 名称，统一重命名为最新的 **ZePress**，保证品牌一致性。
 - **项目结构精简**: 移除了多达 50+ 个无用的早期过渡文档、设计原稿、临时的 assets 图片和废弃配置文件，显著缩小了仓库体积。
 - **`.gitignore` 文件增强**: 现在能正确拦截所有无需上传的编译产物目录（例如 `packages/*/dist` 和 `node_modules`），使得开发者 Clone 源码后更为清晰。
 
@@ -16,4 +16,4 @@
 
 ### 📦 Installation (安装说明)
 
-您可以直接下载本页面下方的 **`ze-publisher-0.2.6.zip`**，解压到您的 `.obsidian/plugins/ze-publisher/` 目录下并重启 Obsidian 即可。或者直接下载 `main.js`, `manifest.json` 及 `styles.css` 放入该文件夹中。
+您可以直接下载本页面下方的 **`zepress-0.2.6.zip`**，解压到您的 `.obsidian/plugins/zepress/` 目录下并重启 Obsidian 即可。或者直接下载 `main.js`, `manifest.json` 及 `styles.css` 放入该文件夹中。

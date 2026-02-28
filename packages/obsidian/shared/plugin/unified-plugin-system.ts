@@ -2,7 +2,7 @@ import {NMPSettings} from "../../settings";
 import {BasePluginManager} from "./base-plugin-manager";
 import {PluginConfigManager, UniversalPluginConfig, UniversalPluginMetaConfig} from "./plugin-config-manager";
 
-import {logger} from "@ze-publisher/shared/src/logger";
+import {logger} from "@zepress/shared/src/logger";
 import postcss from 'postcss'
 // @ts-ignore - postcss-custom-properties doesn't have TypeScript declarations
 import postcssCustomProperties from 'postcss-custom-properties'

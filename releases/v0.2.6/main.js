@@ -84147,7 +84147,7 @@ var require_handlebars2 = __commonJS({
 // main.ts
 var main_exports = {};
 __export(main_exports, {
-  default: () => ZePublishPlugin
+  default: () => ZePressPlugin
 });
 module.exports = __toCommonJS(main_exports);
 var import_obsidian12 = require("obsidian");
@@ -89037,7 +89037,7 @@ var css = `
 /* =========================================================== */
 /* Obsidian\u7684\u9ED8\u8BA4\u6837\u5F0F                                            */
 /* =========================================================== */
-.zepublish {
+.zepress {
     padding: 20px 20px;
     user-select: text;
     -webkit-user-select: text;
@@ -89046,15 +89046,15 @@ var css = `
     font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
 }
 
-.zepublish:last-child {
+.zepress:last-child {
     margin-bottom: 0;
 }
 
-.zepublish .fancybox-img {
+.zepress .fancybox-img {
     border: none;
 }
 
-.zepublish .fancybox-img:hover {
+.zepress .fancybox-img:hover {
     opacity: none;
     border: none;
 }
@@ -89064,7 +89064,7 @@ var css = `
 Heading 
 ==================================
 */
-.zepublish h1 {
+.zepress h1 {
     color: #222;
     font-weight: 700;
     font-size: 1.802em;
@@ -89073,7 +89073,7 @@ Heading
     margin-block-end: 0;
 }
 
-.zepublish h2 {
+.zepress h2 {
     color: inherit;
     font-weight: 600;
     font-size: 1.602em;
@@ -89082,7 +89082,7 @@ Heading
     margin-block-end: 0;
 }
 
-.zepublish h3 {
+.zepress h3 {
     color: inherit;
     font-weight: 600;
     font-size: 1.424em;
@@ -89091,7 +89091,7 @@ Heading
     margin-block-end: 0;
 }
 
-.zepublish h4 {
+.zepress h4 {
     color: inherit;
     font-weight: 600;
     font-size: 1.266em;
@@ -89100,13 +89100,13 @@ Heading
     margin-block-end: 0;
 }
 
-.zepublish h5 {
+.zepress h5 {
     color: inherit;
     margin-block-start: 1em;
     margin-block-end: 0;
 }
 
-.zepublish h6 {
+.zepress h6 {
     color: inherit;
     margin-block-start: 1em;
     margin-block-end: 0;
@@ -89117,7 +89117,7 @@ Heading
 Horizontal Rules
 ==================================
     */
-.zepublish hr {
+.zepress hr {
     border-color: #e0e0e0;
     margin-top: 3em;
     margin-bottom: 3em;
@@ -89128,7 +89128,7 @@ Horizontal Rules
 Paragraphs
 ==================================
     */
-.zepublish p {
+.zepress p {
     line-height: 1.6em;
     margin: 1em 0;
 }
@@ -89138,17 +89138,17 @@ Paragraphs
 Emphasis
 ==================================
     */
-.zepublish strong {
+.zepress strong {
     color: var(--strong-color);
     font-weight: 600;
 }
 
-.zepublish em {
+.zepress em {
     color: inherit;
     font-style: italic;
 }
 
-.zepublish s {
+.zepress s {
     color: inherit;
 }
 
@@ -89157,7 +89157,7 @@ Emphasis
     Blockquotes
 ==================================
     */
-.zepublish blockquote {
+.zepress blockquote {
     font-size: 1rem;
     display: block;
     margin: 2em 0;
@@ -89167,15 +89167,15 @@ Emphasis
     border-left: 0.15rem solid #7852ee;
 }
 
-.zepublish blockquote blockquote {
+.zepress blockquote blockquote {
     margin: 0 0;
 }
 
-.zepublish blockquote p {
+.zepress blockquote p {
     margin: 0;
 }
 
-.zepublish blockquote footer strong {
+.zepress blockquote footer strong {
     margin-right: 0.5em;
 }
 
@@ -89184,29 +89184,29 @@ Emphasis
 List
 ==================================
 */
-.zepublish ul {
+.zepress ul {
     margin: 0;
     margin-top: 1.25em;
     margin-bottom: 1.25em;
 }
 
-.zepublish ul>li {
+.zepress ul>li {
     /* position: relative; */
     /* padding-left: 1.75rem; */
     margin-top: 0.1em;
     margin-bottom: 0.1em;
 }
 
-.zepublish ul>li::marker {
+.zepress ul>li::marker {
     color: #ababab;
     /* font-size: 1.5em; */
 }
 
-.zepublish li>p {
+.zepress li>p {
     margin: 0;
 }
 
-.zepublish ol {
+.zepress ol {
     margin: 0;
     padding: 0;
     margin-top: 1.25em;
@@ -89214,7 +89214,7 @@ List
     list-style-type: decimal;
 }
 
-.zepublish ol>li {
+.zepress ol>li {
     position: relative;
     padding-left: 0.1em;
     margin-left: 2em;
@@ -89227,7 +89227,7 @@ List
 Link
 ==================================
 */
-.zepublish a {
+.zepress a {
     color: #7852ee;
     text-decoration: none;
     font-weight: 500;
@@ -89236,7 +89236,7 @@ Link
     transition: border 0.3s ease-in-out;
 }
 
-.zepublish a:hover {
+.zepress a:hover {
     color: #7952eebb;
     border-bottom: 1px solid #7952eebb;
 }
@@ -89246,7 +89246,7 @@ Link
 Table
 ==================================
 */
-.zepublish table {
+.zepress table {
     width: 100%;
     table-layout: auto;
     text-align: left;
@@ -89259,13 +89259,13 @@ Table
     text-indent: 0;
 }
 
-.zepublish table thead {
+.zepress table thead {
     color: #000;
     font-weight: 600;
     border: #e0e0e0 1px solid;
 }
 
-.zepublish table thead th {
+.zepress table thead th {
     vertical-align: bottom;
     padding-right: 0.5714286em;
     padding-bottom: 0.5714286em;
@@ -89273,24 +89273,24 @@ Table
     border: #e0e0e0 1px solid;
 }
 
-.zepublish table thead th:first-child {
+.zepress table thead th:first-child {
     padding-left: 0.5em;
 }
 
-.zepublish table thead th:last-child {
+.zepress table thead th:last-child {
     padding-right: 0.5em;
 }
 
-.zepublish table tbody tr {
+.zepress table tbody tr {
     border-style: solid;
     border: #e0e0e0 1px solid;
 }
 
-.zepublish table tbody tr:last-child {
+.zepress table tbody tr:last-child {
     border-bottom-width: 0;
 }
 
-.zepublish table tbody td {
+.zepress table tbody td {
     vertical-align: top;
     padding-top: 0.5714286em;
     padding-right: 0.5714286em;
@@ -89299,11 +89299,11 @@ Table
     border: #e0e0e0 1px solid;
 }
 
-.zepublish table tbody td:first-child {
+.zepress table tbody td:first-child {
     padding-left: 0;
 }
 
-.zepublish table tbody td:last-child {
+.zepress table tbody td:last-child {
     padding-right: 0;
 }
 
@@ -89312,12 +89312,12 @@ Table
 Images
 ==================================
 */
-.zepublish img {
+.zepress img {
     margin-top: 2em;
     margin-bottom: 2em;
 }
 
-.zepublish .footnotes hr {
+.zepress .footnotes hr {
     margin-top: 4em;
     margin-bottom: 0.5em;
 }
@@ -89327,13 +89327,13 @@ Images
 Code
 ==================================
 */
-.zepublish .code-section {
+.zepress .code-section {
     display: flex;
     background-color: rgb(250, 250, 250);
     border: rgb(240, 240, 240) 1px solid;
 }
 
-.zepublish .code-section ul {
+.zepress .code-section ul {
     flex-shrink: 0;
     counter-reset: line;
     margin: 0;
@@ -89342,7 +89342,7 @@ Code
     width: fit-content;
 }
 
-.zepublish .code-section ul>li {
+.zepress .code-section ul>li {
     font-family: Consolas, ui-monospace, SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace;
     position: relative;
     margin: 0;
@@ -89357,13 +89357,13 @@ Code
     text-wrap: nowrap;
 }
 
-.zepublish .code-section pre {
+.zepress .code-section pre {
     margin: 0;
     padding: 0;
     overflow: auto;
 }
 
-.zepublish .code-section code {
+.zepress .code-section code {
     font-family: Consolas, ui-monospace, SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace;
     color: #5c5c5c;
     background-color: #fafafa;
@@ -89372,7 +89372,7 @@ Code
     padding: 0 0.5em;
 }    
 
-.zepublish .code-section pre code {
+.zepress .code-section pre code {
     display: block;
     text-wrap: nowrap;
     line-height: 1.75em;
@@ -89406,7 +89406,7 @@ var Logger = class {
     var _a6;
     const config2 = getLoggerConfig();
     this.level = options2.level || config2.level;
-    this.prefix = options2.prefix || "Ze-Publisher";
+    this.prefix = options2.prefix || "ZePress";
     this.timestamp = (_a6 = options2.timestamp) != null ? _a6 : config2.timestamp;
   }
   shouldLog(level) {
@@ -89453,14 +89453,14 @@ var logger = new Logger();
 function trimSlashes(input) {
   return input.replace(/\/+$/, "").replace(/^\/+/, "");
 }
-function resolvePluginDir(app, pluginId = "ze-publisher") {
+function resolvePluginDir(app, pluginId = "zepress") {
   var _a6;
   const plugins = ((_a6 = app.plugins) == null ? void 0 : _a6.plugins) || {};
-  const plugin2 = plugins[pluginId] || plugins["ze-publisher"] || plugins["zepublish"];
+  const plugin2 = plugins[pluginId] || plugins["zepress"] || plugins["zepress"];
   const manifest = plugin2 == null ? void 0 : plugin2.manifest;
   const configDir = trimSlashes(String(app.vault.configDir || ".obsidian"));
   const rawDir = String((manifest == null ? void 0 : manifest.dir) || "").replace(/\\/g, "/").replace(/\/+$/, "");
-  const manifestId = String((manifest == null ? void 0 : manifest.id) || pluginId || "ze-publisher");
+  const manifestId = String((manifest == null ? void 0 : manifest.id) || pluginId || "zepress");
   if (!rawDir) {
     return `${configDir}/plugins/${manifestId}`;
   }
@@ -89481,7 +89481,7 @@ function resolvePluginDir(app, pluginId = "ze-publisher") {
   }
   return rawDir;
 }
-function resolvePluginAssetsDir(app, pluginId = "ze-publisher") {
+function resolvePluginAssetsDir(app, pluginId = "zepress") {
   return `${resolvePluginDir(app, pluginId)}/assets`;
 }
 
@@ -89534,7 +89534,7 @@ var AssetsManager = class {
         const cssFile = this.themesPath + theme.className + ".css";
         const cssContent = await this.app.vault.adapter.read(cssFile);
         if (cssContent) {
-          theme.css = cssContent.replace(/\.(note-to-mp)\b/g, ".zepublish").replace(/#write\b/g, ".zepublish");
+          theme.css = cssContent.replace(/\.(note-to-mp)\b/g, ".zepress").replace(/#write\b/g, ".zepress");
         }
       }
     } catch (error) {
@@ -89619,7 +89619,7 @@ var AssetsManager = class {
     }
   }
   getThemeURL() {
-    return `https://github.com/Zanetach/Ze-Publisher-2026/releases/latest/download/assets.zip`;
+    return `https://github.com/Zanetach/ZePress-2026/releases/latest/download/assets.zip`;
   }
   async ensureAssetsDirs() {
     const adapter2 = this.app.vault.adapter;
@@ -89813,7 +89813,7 @@ var AssetsManager = class {
     var _a6;
     this.app = app;
     this.manifest = manifest;
-    this.assetsPath = `${resolvePluginAssetsDir(this.app, ((_a6 = this.manifest) == null ? void 0 : _a6.id) || "zepublish")}/`;
+    this.assetsPath = `${resolvePluginAssetsDir(this.app, ((_a6 = this.manifest) == null ? void 0 : _a6.id) || "zepress")}/`;
     this.themesPath = this.assetsPath + "themes/";
     this.hilightPath = this.assetsPath + "highlights/";
     this.themeCfg = this.assetsPath + "themes.json";
@@ -89845,7 +89845,7 @@ var AssetsManager = class {
     const candidates = [
       (_a6 = this.manifest) == null ? void 0 : _a6.dir,
       (_b = this.manifest) == null ? void 0 : _b.id,
-      "ze-publisher"
+      "zepress"
     ].filter(Boolean);
     for (const dir of candidates) {
       const normalizedDir = String(dir).replace(/\/+$/, "");
@@ -89951,7 +89951,7 @@ var inline_css_default = `
 var SCREENSHOT_ELEMENT_SELECTORS = [
   {
     selector: ".claude-main-content",
-    description: "\u5305\u542B\u6A21\u677F\u7684\u5B8C\u6574\u5185\u5BB9\uFF1Ameta + zepublish",
+    description: "\u5305\u542B\u6A21\u677F\u7684\u5B8C\u6574\u5185\u5BB9\uFF1Ameta + zepress",
     includesTemplate: true
   },
   {
@@ -89960,12 +89960,12 @@ var SCREENSHOT_ELEMENT_SELECTORS = [
     includesTemplate: true
   },
   {
-    selector: ".zepublish",
+    selector: ".zepress",
     description: "\u4EC5\u6587\u7AE0\u5185\u5BB9\uFF0C\u4E0D\u5305\u542B\u6A21\u677F\u5143\u4FE1\u606F",
     includesTemplate: false
   },
   {
-    selector: ".zepublish-content-container",
+    selector: ".zepress-content-container",
     description: "\u5185\u5BB9\u5BB9\u5668\u5305\u88C5\u5668",
     includesTemplate: false
   }
@@ -90215,7 +90215,7 @@ var NMPSettings = class {
     this.toolbarPosition = "left";
     this.uiThemeMode = "auto";
     this.imageSaveFolderEnabled = true;
-    this.imageSaveFolder = "zepublish-images";
+    this.imageSaveFolder = "zepress-images";
     this.cloudStorage = {
       enabled: false,
       provider: "local",
@@ -90368,7 +90368,7 @@ var PluginConfigManager = class {
     try {
       const app = window.app;
       if (app && app.plugins && app.plugins.plugins) {
-        const plugin2 = app.plugins.plugins["ze-publisher"] || app.plugins.plugins["zepublish"];
+        const plugin2 = app.plugins.plugins["zepress"] || app.plugins.plugins["zepress"];
         if (plugin2 && plugin2.settings) {
           logger.debug(`\u4F7F\u7528\u4E3B\u63D2\u4EF6\u7684\u8BBE\u7F6E\u5B9E\u4F8B`);
           return plugin2.settings;
@@ -90388,7 +90388,7 @@ var PluginConfigManager = class {
       if (app) {
         const pluginManager = app;
         if (pluginManager.plugins) {
-          const plugin2 = pluginManager.plugins.plugins["ze-publisher"] || pluginManager.plugins.plugins["zepublish"];
+          const plugin2 = pluginManager.plugins.plugins["zepress"] || pluginManager.plugins.plugins["zepress"];
           if (plugin2 && typeof plugin2.saveSettings === "function") {
             plugin2.saveSettings();
             logger.debug(`\u5DF2\u89E6\u53D1\u63D2\u4EF6\u7684 saveSettings \u65B9\u6CD5`);
@@ -91991,7 +91991,7 @@ var HtmlPlugin = class extends UnifiedPlugin {
       try {
         const testElement2 = document.createElement("div");
         testElement2.style.display = "none";
-        testElement2.className = "zepublish";
+        testElement2.className = "zepress";
         document.body.appendChild(testElement2);
         const computedStyle = window.getComputedStyle(testElement2);
         const primaryColor = computedStyle.getPropertyValue("--primary-color").trim();
@@ -92409,7 +92409,7 @@ var CodeBlocks = class extends HtmlPlugin {
     try {
       const app = window.app;
       if (app && app.plugins && app.plugins.plugins) {
-        const plugin2 = app.plugins.plugins["ze-publisher"] || app.plugins.plugins["zepublish"];
+        const plugin2 = app.plugins.plugins["zepress"] || app.plugins.plugins["zepress"];
         if (plugin2 && typeof plugin2.saveSettings === "function") {
           plugin2.saveSettings();
           logger.debug("\u5DF2\u89E6\u53D1\u63D2\u4EF6\u8BBE\u7F6E\u4FDD\u5B58\uFF0C\u5C06\u91CD\u65B0\u6E32\u67D3React\u7EC4\u4EF6");
@@ -108410,7 +108410,7 @@ var TemplateKitManager = class extends import_obsidian5.Component {
       const styleConfig = kit.styleConfig;
       setTimeout(() => {
         const containers = document.querySelectorAll(
-          ".zepublish, .zepublish-renderer, .wabi-sabi-container"
+          ".zepress, .zepress-renderer, .wabi-sabi-container"
         );
         containers.forEach((container) => {
           if (container instanceof HTMLElement) {
@@ -108833,12 +108833,12 @@ var TemplateKitManager = class extends import_obsidian5.Component {
       return this.resolvedKitsDir;
     }
     const adapter2 = this.app.vault.adapter;
-    const plugin2 = ((_b = (_a6 = this.app.plugins) == null ? void 0 : _a6.plugins) == null ? void 0 : _b["ze-publisher"]) || ((_d = (_c = this.app.plugins) == null ? void 0 : _c.plugins) == null ? void 0 : _d["zepublish"]);
+    const plugin2 = ((_b = (_a6 = this.app.plugins) == null ? void 0 : _a6.plugins) == null ? void 0 : _b["zepress"]) || ((_d = (_c = this.app.plugins) == null ? void 0 : _c.plugins) == null ? void 0 : _d["zepress"]);
     const manifestDir = String(((_e = plugin2 == null ? void 0 : plugin2.manifest) == null ? void 0 : _e.dir) || "").replace(
       /\/+$/,
       ""
     );
-    const manifestId = String(((_f = plugin2 == null ? void 0 : plugin2.manifest) == null ? void 0 : _f.id) || "zepublish");
+    const manifestId = String(((_f = plugin2 == null ? void 0 : plugin2.manifest) == null ? void 0 : _f.id) || "zepress");
     const candidates = [];
     const resolvedPluginDir = resolvePluginDir(this.app, manifestId);
     candidates.push(`${resolvedPluginDir}/${this.config.kitsStoragePath}`);
@@ -108850,7 +108850,7 @@ var TemplateKitManager = class extends import_obsidian5.Component {
       `${this.app.vault.configDir}/plugins/${manifestId}/${this.config.kitsStoragePath}`
     );
     candidates.push(
-      `${this.app.vault.configDir}/plugins/zepublish/${this.config.kitsStoragePath}`
+      `${this.app.vault.configDir}/plugins/zepress/${this.config.kitsStoragePath}`
     );
     for (const dir of candidates) {
       const kitsFile = `${dir}/${this.KITS_FILE_NAME}`;
@@ -108885,13 +108885,13 @@ var ApplyKitConfirmModal = class extends import_obsidian5.Modal {
     });
     contentEl.createEl("p", { text: this.kit.basicInfo.description });
     const warningEl = contentEl.createEl("div", {
-      cls: "zepublish-warning"
+      cls: "zepress-warning"
     });
     warningEl.createEl("p", {
       text: "This will override your current settings. Continue?"
     });
     const buttonContainer = contentEl.createEl("div", {
-      cls: "zepublish-modal-buttons"
+      cls: "zepress-modal-buttons"
     });
     const cancelButton = buttonContainer.createEl("button", {
       text: "Cancel"
@@ -108902,7 +108902,7 @@ var ApplyKitConfirmModal = class extends import_obsidian5.Modal {
     };
     const confirmButton = buttonContainer.createEl("button", {
       text: "Apply Kit",
-      cls: "zepublish-primary-button"
+      cls: "zepress-primary-button"
     });
     confirmButton.onclick = () => {
       this.onConfirm(true);
@@ -109160,7 +109160,7 @@ var ReactAPIService = class {
   }
   /**
    * 加载所有模板套装
-   * @implements {TemplateKitAPI.loadTemplateKits} 从 @ze-publisher/shared
+   * @implements {TemplateKitAPI.loadTemplateKits} 从 @zepress/shared
    */
   async loadTemplateKits() {
     try {
@@ -109175,7 +109175,7 @@ var ReactAPIService = class {
   }
   /**
    * 加载所有模板
-   * @implements {TemplateKitAPI.loadTemplates} 从 @ze-publisher/shared
+   * @implements {TemplateKitAPI.loadTemplates} 从 @zepress/shared
    */
   async loadTemplates() {
     try {
@@ -109301,13 +109301,13 @@ function uevent(name) {
 
 // ../frontend/src/services/persistentStorage.ts
 var STORAGE_KEYS = {
-  FILES: "zepublish-persistent-files",
-  COVERS: "zepublish-persistent-covers",
-  TEMPLATE_KITS: "zepublish-persistent-template-kits",
-  PLUGIN_CONFIGS: "zepublish-persistent-plugin-configs",
-  PERSONAL_INFO: "zepublish-persistent-personal-info",
-  ARTICLE_INFO: "zepublish-persistent-article-info",
-  STYLE_SETTINGS: "zepublish-persistent-style-settings"
+  FILES: "zepress-persistent-files",
+  COVERS: "zepress-persistent-covers",
+  TEMPLATE_KITS: "zepress-persistent-template-kits",
+  PLUGIN_CONFIGS: "zepress-persistent-plugin-configs",
+  PERSONAL_INFO: "zepress-persistent-personal-info",
+  ARTICLE_INFO: "zepress-persistent-article-info",
+  STYLE_SETTINGS: "zepress-persistent-style-settings"
 };
 var _PersistentStorageService = class {
   // 文件路径 -> blob URL 的缓存
@@ -109327,9 +109327,9 @@ var _PersistentStorageService = class {
     var _a6, _b;
     const id = this.generateId();
     const name = customName || file.name;
-    const fileName = `zepublish-files/${id}-${name}`;
+    const fileName = `zepress-files/${id}-${name}`;
     try {
-      await this.ensureDirectoryExists("zepublish-files");
+      await this.ensureDirectoryExists("zepress-files");
       const arrayBuffer = await file.arrayBuffer();
       const uint8Array = new Uint8Array(arrayBuffer);
       if ((_b = (_a6 = this.obsidianVault) == null ? void 0 : _a6.adapter) == null ? void 0 : _b.write) {
@@ -109355,13 +109355,13 @@ var _PersistentStorageService = class {
   async saveFileFromUrl(url, name, type) {
     var _a6, _b;
     const id = this.generateId();
-    const fileName = `zepublish-files/${id}-${name}`;
+    const fileName = `zepress-files/${id}-${name}`;
     try {
-      await this.ensureDirectoryExists("zepublish-files");
+      await this.ensureDirectoryExists("zepress-files");
       let arrayBuffer;
       if (url.startsWith("http://") || url.startsWith("https://")) {
-        if (window.zepublishReactAPI && typeof window.zepublishReactAPI.requestUrl !== "undefined") {
-          const response = await window.zepublishReactAPI.requestUrl({ url, method: "GET" });
+        if (window.zepressReactAPI && typeof window.zepressReactAPI.requestUrl !== "undefined") {
+          const response = await window.zepressReactAPI.requestUrl({ url, method: "GET" });
           arrayBuffer = response.arrayBuffer;
         } else {
           const response = await fetch(url);
@@ -109867,7 +109867,7 @@ function buildOAuthHeader(method, url, auth, extraParams = {}) {
 async function xUploadImage(auth, data2, filename) {
   var _a6, _b;
   const url = "https://upload.twitter.com/1.1/media/upload.json";
-  const boundary = `----zepublish-${(0, import_crypto.randomBytes)(8).toString("hex")}`;
+  const boundary = `----zepress-${(0, import_crypto.randomBytes)(8).toString("hex")}`;
   const pre = `--${boundary}\r
 Content-Disposition: form-data; name="media"; filename="${filename}"\r
 Content-Type: application/octet-stream\r
@@ -111653,7 +111653,7 @@ var NotePreviewExternal = class extends import_obsidian10.ItemView {
       if (cached) {
         this.articleHTML = cached;
         this.lastProcessedMd = md;
-        const domUpdater2 = window.__zepublishDOMUpdater;
+        const domUpdater2 = window.__zepressDOMUpdater;
         if (domUpdater2 && domUpdater2.isReady()) {
           domUpdater2.updateArticleHTML(this.articleHTML);
         }
@@ -111684,7 +111684,7 @@ var NotePreviewExternal = class extends import_obsidian10.ItemView {
       logger.debug(
         `[\u6E32\u67D3] \u5904\u7406\u8017\u65F6: ${(endTime - startTime).toFixed(2)}ms`
       );
-      const domUpdater = window.__zepublishDOMUpdater;
+      const domUpdater = window.__zepressDOMUpdater;
       if (domUpdater && domUpdater.isReady()) {
         domUpdater.updateArticleHTML(this.articleHTML);
       }
@@ -111766,7 +111766,7 @@ var NotePreviewExternal = class extends import_obsidian10.ItemView {
           this.preserveCodeSpacing(tempContainer);
           const processedContent = tempContainer.innerHTML;
           console.log(
-            "[Ze-Publisher] Copied HTML for WeChat:",
+            "[ZePress] Copied HTML for WeChat:",
             processedContent.substring(0, 500) + "..."
           );
           await navigator.clipboard.write([
@@ -112030,7 +112030,7 @@ ${summary}`;
         const mediaRes = await xUploadImage(
           auth,
           firstImageBlob,
-          `zepublish-${Date.now()}.png`
+          `zepress-${Date.now()}.png`
         );
         if (mediaRes.media_id_string) {
           mediaIds = [mediaRes.media_id_string];
@@ -112287,10 +112287,10 @@ ${summary}`;
   updateCSSVariables() {
     var _a6;
     let noteContainer = (_a6 = this.reactContainer) == null ? void 0 : _a6.querySelector(
-      ".zepublish"
+      ".zepress"
     );
     if (!noteContainer) {
-      noteContainer = document.querySelector(".zepublish");
+      noteContainer = document.querySelector(".zepress");
     }
     if (!noteContainer) {
       logger.warn("\u627E\u4E0D\u5230\u5BB9\u5668\uFF0C\u65E0\u6CD5\u66F4\u65B0CSS\u53D8\u91CF");
@@ -112314,7 +112314,7 @@ ${summary}`;
   }
   wrapArticleContent(article) {
     var _a6, _b, _c, _d, _e, _f, _g, _h, _i;
-    let className = "zepublish";
+    let className = "zepress";
     let processedArticle = article;
     if (this.settings.hideFirstHeading) {
       processedArticle = processedArticle.replace(
@@ -112472,26 +112472,26 @@ ${customCSS}`;
       this.container.style.display = "flex";
       this.container.style.overflow = "hidden";
     }
-    console.log("[Ze-Publisher] buildUI() \u5F00\u59CB");
+    console.log("[ZePress] buildUI() \u5F00\u59CB");
     this.reactContainer = document.createElement("div");
     this.reactContainer.style.width = "100%";
     this.reactContainer.style.height = "100%";
     this.reactContainer.style.minHeight = "0";
     this.reactContainer.style.display = "flex";
     this.reactContainer.style.overflow = "hidden";
-    this.reactContainer.id = "zepublish-react-container";
+    this.reactContainer.id = "zepress-react-container";
     this.container.appendChild(this.reactContainer);
     if (this.USE_SHADOW_DOM) {
-      console.log("[Ze-Publisher] \u542F\u7528 Shadow DOM \u6A21\u5F0F");
+      console.log("[ZePress] \u542F\u7528 Shadow DOM \u6A21\u5F0F");
       logger.info("[Shadow DOM] \u542F\u7528 Shadow DOM \u6A21\u5F0F");
       this.shadowRoot = this.reactContainer.attachShadow({
         mode: "open"
       });
       await this.injectCSSToShadowRoot();
     } else {
-      console.log("[Ze-Publisher] \u7981\u7528 Shadow DOM \u6A21\u5F0F\uFF0C\u4F7F\u7528\u4F20\u7EDF\u6E32\u67D3");
+      console.log("[ZePress] \u7981\u7528 Shadow DOM \u6A21\u5F0F\uFF0C\u4F7F\u7528\u4F20\u7EDF\u6E32\u67D3");
       logger.info("[Shadow DOM] \u7981\u7528 Shadow DOM \u6A21\u5F0F\uFF0C\u4F7F\u7528\u4F20\u7EDF\u6E32\u67D3");
-      this.reactContainer.classList.add("ze-publisher-env");
+      this.reactContainer.classList.add("zepress-env");
       this.shadowRoot = null;
       if (!window.__ZEPUBLISH_HMR_MODE__) {
         await this.loadExternalCSSToHead();
@@ -112499,10 +112499,10 @@ ${customCSS}`;
     }
     this.isMounted = false;
     console.log(
-      "[Ze-Publisher] buildUI() \u5373\u5C06\u8C03\u7528 updateExternalReactComponent"
+      "[ZePress] buildUI() \u5373\u5C06\u8C03\u7528 updateExternalReactComponent"
     );
     await this.updateExternalReactComponent();
-    console.log("[Ze-Publisher] buildUI() \u5B8C\u6210");
+    console.log("[ZePress] buildUI() \u5B8C\u6210");
   }
   /**
    * 将 CSS 注入到 Shadow Root
@@ -112524,7 +112524,7 @@ ${customCSS}`;
     }
   }
   getPluginSettings() {
-    const plugin2 = this.app.plugins.plugins["ze-publisher"] || this.app.plugins.plugins["zepublish"];
+    const plugin2 = this.app.plugins.plugins["zepress"] || this.app.plugins.plugins["zepress"];
     if (plugin2 && plugin2.settings) {
       return plugin2.settings;
     }
@@ -112545,13 +112545,13 @@ ${customCSS}`;
         );
         if (response.ok || response.status === 200) {
           const existingScripts = document.querySelectorAll(
-            "script[data-zepublish-hmr]"
+            "script[data-zepress-hmr]"
           );
           existingScripts.forEach((s3) => s3.remove());
           const viteClientScript = document.createElement("script");
           viteClientScript.type = "module";
           viteClientScript.src = `${viteDevServerUrl}/@vite/client`;
-          viteClientScript.setAttribute("data-zepublish-hmr", "true");
+          viteClientScript.setAttribute("data-zepress-hmr", "true");
           document.head.appendChild(viteClientScript);
           const reactRefreshScript = document.createElement("script");
           reactRefreshScript.type = "module";
@@ -112563,28 +112563,28 @@ ${customCSS}`;
 						window.__vite_plugin_react_preamble_installed__ = true;
 					`;
           reactRefreshScript.setAttribute(
-            "data-zepublish-hmr",
+            "data-zepress-hmr",
             "true"
           );
           document.head.appendChild(reactRefreshScript);
           const moduleScript = document.createElement("script");
           moduleScript.type = "module";
           moduleScript.src = `${viteDevServerUrl}/src/dev.tsx?t=${Date.now()}`;
-          moduleScript.setAttribute("data-zepublish-hmr", "true");
+          moduleScript.setAttribute("data-zepress-hmr", "true");
           document.head.appendChild(moduleScript);
           window.__ZEPUBLISH_HMR_MODE__ = true;
           window.__ZEPUBLISH_HMR_URL__ = viteDevServerUrl;
           await new Promise((resolve) => {
             let attempts = 0;
             const checkInterval = setInterval(() => {
-              if (window.ZePublishReactLib || attempts > 50) {
+              if (window.ZePressReactLib || attempts > 50) {
                 clearInterval(checkInterval);
                 resolve();
               }
               attempts++;
             }, 100);
           });
-          this.externalReactLib = window.ZePublishReactLib;
+          this.externalReactLib = window.ZePressReactLib;
           if (this.externalReactLib) {
             logger.info(
               "[HMR] \u2705 Successfully loaded React app with HMR support"
@@ -112598,12 +112598,12 @@ ${customCSS}`;
       }
       const adapter2 = this.app.vault.adapter;
       const pluginDir = resolvePluginDir(this.app);
-      const scriptPath = `${pluginDir}/frontend/zepublish-react.iife.js`;
+      const scriptPath = `${pluginDir}/frontend/zepress-react.iife.js`;
       const scriptContent = await adapter2.read(scriptPath);
       const script = document.createElement("script");
       script.textContent = scriptContent;
       document.head.appendChild(script);
-      this.externalReactLib = window.ZePublishReactLib || window.ZePublishReact || ((_a6 = window.ZePublishReact) == null ? void 0 : _a6.default) || window.zepublishReact;
+      this.externalReactLib = window.ZePressReactLib || window.ZePressReact || ((_a6 = window.ZePressReact) == null ? void 0 : _a6.default) || window.zepressReact;
       if (this.externalReactLib) {
         logger.debug("\u5916\u90E8React\u5E94\u7528\u52A0\u8F7D\u6210\u529F\uFF08\u6253\u5305\u7248\u672C\uFF09", {
           availableMethods: Object.keys(this.externalReactLib),
@@ -112611,8 +112611,8 @@ ${customCSS}`;
           hasUpdate: typeof this.externalReactLib.update === "function",
           hasUnmount: typeof this.externalReactLib.unmount === "function",
           actualObject: this.externalReactLib,
-          windowZePublishReact: window.ZePublishReact,
-          windowZePublishReactDefault: (_b = window.ZePublishReact) == null ? void 0 : _b.default
+          windowZePressReact: window.ZePressReact,
+          windowZePressReactDefault: (_b = window.ZePressReact) == null ? void 0 : _b.default
         });
         this.setupGlobalAPI();
       } else {
@@ -112620,9 +112620,9 @@ ${customCSS}`;
           windowKeys: Object.keys(window).filter(
             (key2) => key2.includes("Omni") || key2.includes("React") || key2.includes("react")
           ),
-          zepublishReact: !!window.ZePublishReact,
-          zepublishReactLib: !!window.ZePublishReactLib,
-          zepublishReactLowerCase: !!window.zepublishReact
+          zepressReact: !!window.ZePressReact,
+          zepressReactLib: !!window.ZePressReactLib,
+          zepressReactLowerCase: !!window.zepressReact
         });
       }
     } catch (error) {
@@ -112637,14 +112637,14 @@ ${customCSS}`;
    */
   async loadHMRCSSToShadowRoot(_viteDevServerUrl) {
     if (!this.shadowRoot) {
-      console.warn("[Ze-Publisher][HMR] Shadow Root \u4E0D\u5B58\u5728\uFF0C\u65E0\u6CD5\u6CE8\u5165 CSS");
+      console.warn("[ZePress][HMR] Shadow Root \u4E0D\u5B58\u5728\uFF0C\u65E0\u6CD5\u6CE8\u5165 CSS");
       logger.warn("[HMR] Shadow Root \u4E0D\u5B58\u5728\uFF0C\u65E0\u6CD5\u6CE8\u5165 CSS");
       return;
     }
     try {
       const compiledCSS = window.__ZEPUBLISH_COMPILED_CSS__;
       if (!compiledCSS) {
-        console.warn("[Ze-Publisher][HMR] \u7F16\u8BD1\u540E\u7684 CSS \u5C1A\u672A\u52A0\u8F7D\uFF0C\u7B49\u5F85...");
+        console.warn("[ZePress][HMR] \u7F16\u8BD1\u540E\u7684 CSS \u5C1A\u672A\u52A0\u8F7D\uFF0C\u7B49\u5F85...");
         let attempts = 0;
         while (!window.__ZEPUBLISH_COMPILED_CSS__ && attempts < 50) {
           await new Promise((resolve) => setTimeout(resolve, 100));
@@ -112652,33 +112652,33 @@ ${customCSS}`;
         }
         const css3 = window.__ZEPUBLISH_COMPILED_CSS__;
         if (!css3) {
-          console.error("[Ze-Publisher][HMR] CSS \u52A0\u8F7D\u8D85\u65F6");
+          console.error("[ZePress][HMR] CSS \u52A0\u8F7D\u8D85\u65F6");
           logger.error("[HMR] CSS \u52A0\u8F7D\u8D85\u65F6");
           return;
         }
       }
       const cssText = window.__ZEPUBLISH_COMPILED_CSS__;
       console.log(
-        "[Ze-Publisher][HMR] \u83B7\u53D6\u5230\u7F16\u8BD1\u540E\u7684 CSS\uFF0C\u957F\u5EA6:",
+        "[ZePress][HMR] \u83B7\u53D6\u5230\u7F16\u8BD1\u540E\u7684 CSS\uFF0C\u957F\u5EA6:",
         cssText.length
       );
       const existingStyle = this.shadowRoot.querySelector(
-        "style[data-zepublish-hmr-css]"
+        "style[data-zepress-hmr-css]"
       );
       if (existingStyle) {
         existingStyle.textContent = cssText;
-        console.log("[Ze-Publisher][HMR] \u5DF2\u66F4\u65B0\u73B0\u6709 CSS");
+        console.log("[ZePress][HMR] \u5DF2\u66F4\u65B0\u73B0\u6709 CSS");
       } else {
         const style = document.createElement("style");
-        style.setAttribute("data-zepublish-hmr-css", "true");
+        style.setAttribute("data-zepress-hmr-css", "true");
         style.textContent = cssText;
         this.shadowRoot.appendChild(style);
-        console.log("[Ze-Publisher][HMR] \u5DF2\u6CE8\u5165\u65B0 CSS \u5230 Shadow Root");
+        console.log("[ZePress][HMR] \u5DF2\u6CE8\u5165\u65B0 CSS \u5230 Shadow Root");
       }
-      console.log("[Ze-Publisher][HMR] \u2705 CSS \u6CE8\u5165\u5B8C\u6210");
+      console.log("[ZePress][HMR] \u2705 CSS \u6CE8\u5165\u5B8C\u6210");
       logger.info("[HMR] \u2705 CSS \u5DF2\u6CE8\u5165\u5230 Shadow Root");
     } catch (error) {
-      console.error("[Ze-Publisher][HMR] \u52A0\u8F7D CSS \u5931\u8D25:", error);
+      console.error("[ZePress][HMR] \u52A0\u8F7D CSS \u5931\u8D25:", error);
       logger.warn("[HMR] \u52A0\u8F7D CSS \u5931\u8D25:", error);
     }
   }
@@ -112696,13 +112696,13 @@ ${customCSS}`;
       const adapter2 = this.app.vault.adapter;
       const cssContent = await adapter2.read(cssPath);
       const existingStyle = this.shadowRoot.querySelector(
-        "style[data-zepublish-react]"
+        "style[data-zepress-react]"
       );
       if (existingStyle) {
         existingStyle.remove();
       }
       const style = document.createElement("style");
-      style.setAttribute("data-zepublish-react", "true");
+      style.setAttribute("data-zepress-react", "true");
       style.textContent = cssContent;
       this.shadowRoot.appendChild(style);
       logger.debug("\u6210\u529F\u52A0\u8F7D\u5916\u90E8CSS\u5230Shadow Root:", cssPath);
@@ -112717,26 +112717,26 @@ ${customCSS}`;
     try {
       const pluginDir = resolvePluginDir(this.app);
       if (!pluginDir) {
-        console.warn("[Ze-Publisher] \u65E0\u6CD5\u83B7\u53D6\u63D2\u4EF6\u76EE\u5F55");
+        console.warn("[ZePress] \u65E0\u6CD5\u83B7\u53D6\u63D2\u4EF6\u76EE\u5F55");
         return;
       }
       const cssPath = `${pluginDir}/frontend/style.css`;
       const adapter2 = this.app.vault.adapter;
       const cssContent = await adapter2.read(cssPath);
       const existingStyle = document.head.querySelector(
-        "style[data-zepublish-react]"
+        "style[data-zepress-react]"
       );
       if (existingStyle) {
         existingStyle.remove();
       }
       const style = document.createElement("style");
-      style.setAttribute("data-zepublish-react", "true");
+      style.setAttribute("data-zepress-react", "true");
       style.textContent = cssContent;
       document.head.appendChild(style);
-      console.log("[Ze-Publisher] \u6210\u529F\u52A0\u8F7D\u5916\u90E8CSS\u5230document.head:", cssPath);
+      console.log("[ZePress] \u6210\u529F\u52A0\u8F7D\u5916\u90E8CSS\u5230document.head:", cssPath);
       logger.debug("\u6210\u529F\u52A0\u8F7D\u5916\u90E8CSS\u5230document.head:", cssPath);
     } catch (error) {
-      console.warn("[Ze-Publisher] \u52A0\u8F7D\u5916\u90E8CSS\u5931\u8D25:", error);
+      console.warn("[ZePress] \u52A0\u8F7D\u5916\u90E8CSS\u5931\u8D25:", error);
       logger.warn("\u52A0\u8F7D\u5916\u90E8CSS\u5931\u8D25:", error);
     }
   }
@@ -112752,7 +112752,7 @@ ${customCSS}`;
     if (window.import && window.import.meta) {
       logger.debug("[HMR] Vite HMR is active");
     }
-    window.__zepublishRefresh = async () => {
+    window.__zepressRefresh = async () => {
       logger.debug("[HMR] Manual refresh triggered");
       if (this.externalReactLib && this.reactContainer) {
         await this.updateExternalReactComponent();
@@ -112792,11 +112792,11 @@ ${customCSS}`;
   async updateExternalReactComponent() {
     const now = Date.now();
     if (this.isUpdating) {
-      console.warn("[Ze-Publisher] \u8DF3\u8FC7\u66F4\u65B0\uFF1A\u6B63\u5728\u66F4\u65B0\u4E2D");
+      console.warn("[ZePress] \u8DF3\u8FC7\u66F4\u65B0\uFF1A\u6B63\u5728\u66F4\u65B0\u4E2D");
       return;
     }
     if (now - this.lastUpdateTime < this.MIN_UPDATE_INTERVAL) {
-      console.warn("[Ze-Publisher] \u8DF3\u8FC7\u66F4\u65B0\uFF1A\u66F4\u65B0\u8FC7\u4E8E\u9891\u7E41");
+      console.warn("[ZePress] \u8DF3\u8FC7\u66F4\u65B0\uFF1A\u66F4\u65B0\u8FC7\u4E8E\u9891\u7E41");
       return;
     }
     this.isUpdating = true;
@@ -112809,14 +112809,14 @@ ${customCSS}`;
   }
   async _doUpdateExternalReactComponent() {
     var _a6;
-    console.log("[Ze-Publisher] updateExternalReactComponent() \u5F00\u59CB", {
+    console.log("[ZePress] updateExternalReactComponent() \u5F00\u59CB", {
       hasExternalReactLib: !!this.externalReactLib,
       hasReactContainer: !!this.reactContainer,
       isMounted: this.isMounted,
       useShadowDom: this.USE_SHADOW_DOM
     });
     if (!this.externalReactLib || !this.reactContainer) {
-      console.error("[Ze-Publisher] \u5916\u90E8React\u5E94\u7528\u672A\u52A0\u8F7D\u6216\u5BB9\u5668\u4E0D\u5B58\u5728");
+      console.error("[ZePress] \u5916\u90E8React\u5E94\u7528\u672A\u52A0\u8F7D\u6216\u5BB9\u5668\u4E0D\u5B58\u5728");
       logger.warn("\u5916\u90E8React\u5E94\u7528\u672A\u52A0\u8F7D\u6216\u5BB9\u5668\u4E0D\u5B58\u5728", {
         externalReactLib: !!this.externalReactLib,
         reactContainer: !!this.reactContainer
@@ -112856,7 +112856,7 @@ ${customCSS}`;
       if (!this.isMounted) {
         if (this.USE_SHADOW_DOM && this.shadowRoot) {
           console.log(
-            "[Ze-Publisher] \u9996\u6B21\u6302\u8F7D React \u7EC4\u4EF6\u5230 Shadow Root"
+            "[ZePress] \u9996\u6B21\u6302\u8F7D React \u7EC4\u4EF6\u5230 Shadow Root"
           );
           logger.info(
             "[Shadow DOM] \u9996\u6B21\u6302\u8F7D React \u7EC4\u4EF6\u5230 Shadow Root"
@@ -112865,18 +112865,18 @@ ${customCSS}`;
             shadowRoot: this.shadowRoot
           });
         } else {
-          console.log("[Ze-Publisher] \u9996\u6B21\u6302\u8F7D React \u7EC4\u4EF6 (\u4F20\u7EDF\u6A21\u5F0F)");
+          console.log("[ZePress] \u9996\u6B21\u6302\u8F7D React \u7EC4\u4EF6 (\u4F20\u7EDF\u6A21\u5F0F)");
           logger.info("[\u4F20\u7EDF\u6A21\u5F0F] \u9996\u6B21\u6302\u8F7D React \u7EC4\u4EF6");
           this.externalReactLib.mount(this.reactContainer, props);
         }
         this.isMounted = true;
-        console.log("[Ze-Publisher] React \u7EC4\u4EF6\u6302\u8F7D\u5B8C\u6210");
+        console.log("[ZePress] React \u7EC4\u4EF6\u6302\u8F7D\u5B8C\u6210");
       } else {
-        console.log("[Ze-Publisher] \u66F4\u65B0 React \u7EC4\u4EF6");
+        console.log("[ZePress] \u66F4\u65B0 React \u7EC4\u4EF6");
         await this.externalReactLib.update(this.reactContainer, props);
-        console.log("[Ze-Publisher] React \u7EC4\u4EF6\u66F4\u65B0\u5B8C\u6210");
+        console.log("[ZePress] React \u7EC4\u4EF6\u66F4\u65B0\u5B8C\u6210");
       }
-      console.log("[Ze-Publisher] updateExternalReactComponent() \u5B8C\u6210");
+      console.log("[ZePress] updateExternalReactComponent() \u5B8C\u6210");
       logger.debug("\u5916\u90E8React\u7EC4\u4EF6\u66F4\u65B0\u6210\u529F");
     } catch (error) {
       logger.error("\u66F4\u65B0\u5916\u90E8React\u7EC4\u4EF6\u65F6\u51FA\u9519:", error);
@@ -112913,7 +112913,7 @@ ${customCSS}`;
       const blob = await response.blob();
       const timestamp = Date.now();
       const randomStr = Math.random().toString(36).substring(2, 8);
-      const fileKey = `zepublish/codeblock-${timestamp}-${randomStr}.png`;
+      const fileKey = `zepress/codeblock-${timestamp}-${randomStr}.png`;
       const putPolicy = JSON.stringify({
         scope: `${qiniu.bucket}:${fileKey}`,
         deadline: Math.floor(Date.now() / 1e3) + 3600
@@ -112961,7 +112961,7 @@ ${customCSS}`;
       }
       const uploadResult = await uploadResponse.json();
       const imageUrl = `${qiniu.domain.replace(/\/$/, "")}/${uploadResult.key}`;
-      const UPLOADED_IMAGES_KEY = "zepublish-uploaded-images";
+      const UPLOADED_IMAGES_KEY = "zepress-uploaded-images";
       const existingImages = JSON.parse(
         localStorage.getItem(UPLOADED_IMAGES_KEY) || "[]"
       );
@@ -112978,7 +112978,7 @@ ${customCSS}`;
         UPLOADED_IMAGES_KEY,
         JSON.stringify(existingImages)
       );
-      window.dispatchEvent(new CustomEvent("zepublish-images-updated"));
+      window.dispatchEvent(new CustomEvent("zepress-images-updated"));
       const activeFile = this.app.workspace.getActiveFile();
       if (!activeFile) {
         return {
@@ -113038,7 +113038,7 @@ ${customCSS}`;
       const blob = await response.blob();
       const timestamp = Date.now();
       const randomStr = Math.random().toString(36).substring(2, 8);
-      const fileKey = `zepublish/table-${timestamp}-${randomStr}.png`;
+      const fileKey = `zepress/table-${timestamp}-${randomStr}.png`;
       const putPolicy = JSON.stringify({
         scope: `${qiniu.bucket}:${fileKey}`,
         deadline: Math.floor(Date.now() / 1e3) + 3600
@@ -113086,7 +113086,7 @@ ${customCSS}`;
       }
       const uploadResult = await uploadResponse.json();
       const imageUrl = `${qiniu.domain.replace(/\/$/, "")}/${uploadResult.key}`;
-      const UPLOADED_IMAGES_KEY = "zepublish-uploaded-images";
+      const UPLOADED_IMAGES_KEY = "zepress-uploaded-images";
       const existingImages = JSON.parse(
         localStorage.getItem(UPLOADED_IMAGES_KEY) || "[]"
       );
@@ -113103,7 +113103,7 @@ ${customCSS}`;
         UPLOADED_IMAGES_KEY,
         JSON.stringify(existingImages)
       );
-      window.dispatchEvent(new CustomEvent("zepublish-images-updated"));
+      window.dispatchEvent(new CustomEvent("zepress-images-updated"));
       const activeFile = this.app.workspace.getActiveFile();
       if (!activeFile) {
         return {
@@ -113253,7 +113253,7 @@ ${customCSS}`;
         uploadCodeBlockAsImage: this.uploadCodeBlockAsImage.bind(this),
         uploadTableAsImage: this.uploadTableAsImage.bind(this)
       };
-      window.zepublishReactAPI = globalAPI;
+      window.zepressReactAPI = globalAPI;
       logger.info(
         "[setupGlobalAPI] \u5168\u5C40API\u5DF2\u8BBE\u7F6E\u5B8C\u6210\uFF0C\u5305\u542B\u6301\u4E45\u5316\u5B58\u50A8APIs"
       );
@@ -113752,7 +113752,7 @@ ${customCSS}`;
       `[NotePreviewExternal] handleWidthChange called: ${width}px`
     );
     logger.info(`[NotePreviewExternal] \u5BB9\u5668\u5BBD\u5EA6\u53D8\u66F4: ${width}px`);
-    const plugin2 = this.app.plugins.plugins["ze-publisher"] || this.app.plugins.plugins["zepublish"];
+    const plugin2 = this.app.plugins.plugins["zepress"] || this.app.plugins.plugins["zepress"];
     if (plugin2 && typeof plugin2.onViewWidthChange === "function") {
       console.log(`[NotePreviewExternal] \u8C03\u7528 plugin.onViewWidthChange`);
       plugin2.onViewWidthChange(width);
@@ -113868,7 +113868,7 @@ ${customCSS}`;
   }
   saveSettingsToPlugin() {
     uevent("save-settings");
-    const plugin2 = this.app.plugins.plugins["ze-publisher"] || this.app.plugins.plugins["zepublish"];
+    const plugin2 = this.app.plugins.plugins["zepress"] || this.app.plugins.plugins["zepress"];
     if (plugin2) {
       plugin2.settings = this.settings;
       logger.debug(
@@ -113887,7 +113887,7 @@ ${customCSS}`;
       try {
         const settingsData = this.settings.getAllSettings();
         localStorage.setItem(
-          "zepublish-settings-backup",
+          "zepress-settings-backup",
           JSON.stringify(settingsData)
         );
         logger.debug("\u8BBE\u7F6E\u5DF2\u4FDD\u5B58\u5230\u672C\u5730\u5B58\u50A8\u5907\u4EFD");
@@ -113900,7 +113900,7 @@ ${customCSS}`;
 
 // setting-tab.ts
 var import_obsidian11 = require("obsidian");
-var ZePublishSettingTab = class extends import_obsidian11.PluginSettingTab {
+var ZePressSettingTab = class extends import_obsidian11.PluginSettingTab {
   constructor(app, plugin2) {
     super(app, plugin2);
     this.plugin = plugin2;
@@ -114722,7 +114722,7 @@ var ZePublishSettingTab = class extends import_obsidian11.PluginSettingTab {
 };
 
 // main.ts
-var ZePublishPlugin = class extends import_obsidian12.Plugin {
+var ZePressPlugin = class extends import_obsidian12.Plugin {
   // 当前视图宽度
   constructor(app, manifest) {
     super(app, manifest);
@@ -114731,7 +114731,7 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
     this.assetsManager = AssetsManager.getInstance();
   }
   async onload() {
-    logger.info("Loading Ze-Publisher");
+    logger.info("Loading ZePress");
     setVersion(this.manifest.version);
     uevent("load");
     await this.cleanupNestedPluginDir();
@@ -114756,7 +114756,7 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
         this.activateView();
       }
     );
-    ribbonIconEl.addClass("zepublish-plugin-ribbon-class");
+    ribbonIconEl.addClass("zepress-plugin-ribbon-class");
     this.addCommand({
       id: "open-note-preview",
       name: "\u590D\u5236\u5230\u516C\u4F17\u53F7",
@@ -114764,7 +114764,7 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
         this.activateView();
       }
     });
-    this.addSettingTab(new ZePublishSettingTab(this.app, this));
+    this.addSettingTab(new ZePressSettingTab(this.app, this));
   }
   async onunload() {
     if (this.templateKitManager) {
@@ -114818,8 +114818,8 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
    */
   onViewWidthChange(width) {
     this.currentViewWidth = width;
-    console.log(`[Ze-PublisherPlugin] onViewWidthChange called: ${width}px`);
-    logger.info(`[Ze-PublisherPlugin] \u89C6\u56FE\u5BBD\u5EA6\u5DF2\u66F4\u65B0: ${width}px`);
+    console.log(`[ZePressPlugin] onViewWidthChange called: ${width}px`);
+    logger.info(`[ZePressPlugin] \u89C6\u56FE\u5BBD\u5EA6\u5DF2\u66F4\u65B0: ${width}px`);
   }
   /**
    * 清理错误的嵌套插件目录：
@@ -114832,7 +114832,7 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
       const configDir = String(
         this.app.vault.configDir || ".obsidian"
       ).replace(/\/+$/, "");
-      const pluginId = String(((_a6 = this.manifest) == null ? void 0 : _a6.id) || "ze-publisher");
+      const pluginId = String(((_a6 = this.manifest) == null ? void 0 : _a6.id) || "zepress");
       const nestedDir = `${configDir}/plugins/${configDir}/plugins/${pluginId}`;
       const activeDir = resolvePluginDir(this.app, pluginId).replace(
         /\/+$/,
@@ -114840,7 +114840,7 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
       );
       if (nestedDir === activeDir) {
         logger.warn(
-          `[Ze-Publisher] \u5F53\u524D\u63D2\u4EF6\u76EE\u5F55\u5373\u5D4C\u5957\u76EE\u5F55\uFF0C\u8DF3\u8FC7\u6E05\u7406: ${nestedDir}`
+          `[ZePress] \u5F53\u524D\u63D2\u4EF6\u76EE\u5F55\u5373\u5D4C\u5957\u76EE\u5F55\uFF0C\u8DF3\u8FC7\u6E05\u7406: ${nestedDir}`
         );
         return;
       }
@@ -114848,12 +114848,12 @@ var ZePublishPlugin = class extends import_obsidian12.Plugin {
         return;
       }
       logger.warn(
-        `[Ze-Publisher] \u68C0\u6D4B\u5230\u9519\u8BEF\u5D4C\u5957\u76EE\u5F55\uFF0C\u51C6\u5907\u6E05\u7406: ${nestedDir}`
+        `[ZePress] \u68C0\u6D4B\u5230\u9519\u8BEF\u5D4C\u5957\u76EE\u5F55\uFF0C\u51C6\u5907\u6E05\u7406: ${nestedDir}`
       );
       await adapter2.rmdir(nestedDir, true);
-      logger.info(`[Ze-Publisher] \u5DF2\u6E05\u7406\u9519\u8BEF\u5D4C\u5957\u76EE\u5F55: ${nestedDir}`);
+      logger.info(`[ZePress] \u5DF2\u6E05\u7406\u9519\u8BEF\u5D4C\u5957\u76EE\u5F55: ${nestedDir}`);
     } catch (error) {
-      logger.warn("[Ze-Publisher] \u6E05\u7406\u9519\u8BEF\u5D4C\u5957\u76EE\u5F55\u5931\u8D25:", error);
+      logger.warn("[ZePress] \u6E05\u7406\u9519\u8BEF\u5D4C\u5957\u76EE\u5F55\u5931\u8D25:", error);
     }
   }
 };

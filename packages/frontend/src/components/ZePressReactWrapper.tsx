@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ZePublishReactBridge } from './ZePublishReactBridge';
+import { ZePressReactBridge } from './ZePressReactBridge';
 
 /**
  * Wrapper component to manage props updates without remounting JotaiProvider
  */
-export const ZePublishReactWrapper: React.FC<{ initialProps: any; container?: HTMLElement }> = ({ initialProps, container }) => {
+export const ZePressReactWrapper: React.FC<{ initialProps: any; container?: HTMLElement }> = ({ initialProps, container }) => {
   const [props, setProps] = useState(initialProps);
 
   // Expose update function to parent
@@ -14,5 +14,5 @@ export const ZePublishReactWrapper: React.FC<{ initialProps: any; container?: HT
     }
   }, [container]);
 
-  return <ZePublishReactBridge {...props} />;
+  return <ZePressReactBridge {...props} />;
 };

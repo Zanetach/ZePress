@@ -13,7 +13,7 @@ interface ArticleRendererProps {
  */
 function createCopyButton(codeElement: HTMLElement): HTMLButtonElement {
 	const btn = document.createElement("button");
-	btn.className = "zepublish-code-copy-btn";
+	btn.className = "zepress-code-copy-btn";
 	btn.title = "复制代码";
 	btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
 
@@ -67,7 +67,7 @@ function createCopyButton(codeElement: HTMLElement): HTMLButtonElement {
  */
 function createCopyAsImageButton(preElement: HTMLElement): HTMLButtonElement {
 	const btn = document.createElement("button");
-	btn.className = "zepublish-code-copy-img-btn";
+	btn.className = "zepress-code-copy-img-btn";
 	btn.title = "复制为图片";
 	// 图片图标
 	btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
@@ -112,7 +112,7 @@ function createCopyAsImageButton(preElement: HTMLElement): HTMLButtonElement {
 			// 移除克隆元素中的按钮
 			clone
 				.querySelectorAll(
-					".zepublish-code-copy-btn, .zepublish-code-copy-img-btn",
+					".zepress-code-copy-btn, .zepress-code-copy-img-btn",
 				)
 				.forEach((el) => el.remove());
 
@@ -239,7 +239,7 @@ function createTableUploadAsImageButton(
 	tableElement: HTMLElement,
 ): HTMLButtonElement {
 	const btn = document.createElement("button");
-	btn.className = "zepublish-table-upload-btn";
+	btn.className = "zepress-table-upload-btn";
 	btn.title = "上传为图片";
 	// 上传图标
 	btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`;
@@ -274,7 +274,7 @@ function createTableUploadAsImageButton(
 	btn.addEventListener("click", async () => {
 		try {
 			// 检查API是否可用
-			const api = (window as any).zepublishReactAPI;
+			const api = (window as any).zepressReactAPI;
 			if (!api?.uploadTableAsImage) {
 				console.error("uploadTableAsImage API not available");
 				return;
@@ -286,7 +286,7 @@ function createTableUploadAsImageButton(
 
 			// 临时隐藏按钮
 			const btns = tableElement.parentElement?.querySelectorAll(
-				".zepublish-table-copy-img-btn, .zepublish-table-upload-btn",
+				".zepress-table-copy-img-btn, .zepress-table-upload-btn",
 			);
 			btns?.forEach((b) => ((b as HTMLElement).style.display = "none"));
 
@@ -334,7 +334,7 @@ function createTableCopyAsImageButton(
 	tableElement: HTMLElement,
 ): HTMLButtonElement {
 	const btn = document.createElement("button");
-	btn.className = "zepublish-table-copy-img-btn";
+	btn.className = "zepress-table-copy-img-btn";
 	btn.title = "复制为图片";
 	// 图片图标
 	btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
@@ -370,7 +370,7 @@ function createTableCopyAsImageButton(
 		try {
 			// 临时隐藏按钮
 			const btns = tableElement.parentElement?.querySelectorAll(
-				".zepublish-table-copy-img-btn, .zepublish-table-upload-btn",
+				".zepress-table-copy-img-btn, .zepress-table-upload-btn",
 			);
 			btns?.forEach((b) => ((b as HTMLElement).style.display = "none"));
 
@@ -412,7 +412,7 @@ function createTableCopyAsImageButton(
  */
 function createInfoButton(codeElement: HTMLElement): HTMLButtonElement {
 	const btn = document.createElement("button");
-	btn.className = "zepublish-code-info-btn";
+	btn.className = "zepress-code-info-btn";
 	btn.title = "查看信息";
 	// info 图标
 	btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
@@ -466,7 +466,7 @@ function createInfoButton(codeElement: HTMLElement): HTMLButtonElement {
 			: "plain text";
 
 		tooltip = document.createElement("div");
-		tooltip.className = "zepublish-code-info-tooltip";
+		tooltip.className = "zepress-code-info-tooltip";
 		tooltip.innerHTML = `
       <div style="font-weight:600;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:4px;">代码信息</div>
       <div style="display:flex;justify-content:space-between;gap:16px;"><span>语言</span><span>${language}</span></div>
@@ -515,7 +515,7 @@ function createUploadAsImageButton(
 	codeElement: HTMLElement,
 ): HTMLButtonElement {
 	const btn = document.createElement("button");
-	btn.className = "zepublish-code-upload-btn";
+	btn.className = "zepress-code-upload-btn";
 	btn.title = "上传为图片";
 	// 上传图标
 	btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`;
@@ -550,7 +550,7 @@ function createUploadAsImageButton(
 	btn.addEventListener("click", async () => {
 		try {
 			// 检查API是否可用
-			const api = (window as any).zepublishReactAPI;
+			const api = (window as any).zepressReactAPI;
 			if (!api?.uploadCodeBlockAsImage) {
 				console.error("uploadCodeBlockAsImage API not available");
 				return;
@@ -564,7 +564,7 @@ function createUploadAsImageButton(
 			const clone = preElement.cloneNode(true) as HTMLElement;
 			clone
 				.querySelectorAll(
-					".zepublish-code-copy-btn, .zepublish-code-copy-img-btn, .zepublish-code-upload-btn, .zepublish-code-info-btn, .zepublish-code-info-tooltip",
+					".zepress-code-copy-btn, .zepress-code-copy-img-btn, .zepress-code-upload-btn, .zepress-code-info-btn, .zepress-code-info-tooltip",
 				)
 				.forEach((el) => el.remove());
 
@@ -704,7 +704,7 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 				settings.defaultAuthorImageData
 			) {
 				const authorTail =
-					`<p class="zepublish-author-tail"><img src="${settings.defaultAuthorImageData}" alt="作者信息" /></p>`;
+					`<p class="zepress-author-tail"><img src="${settings.defaultAuthorImageData}" alt="作者信息" /></p>`;
 				processedHtml += authorTail;
 			}
 			return processedHtml;
@@ -831,7 +831,7 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 								"pre > code",
 							),
 						).filter((block) => {
-							const status = block.dataset.zepublishMermaidStatus;
+							const status = block.dataset.zepressMermaidStatus;
 							if (status === "rendering" || status === "done") {
 								return false;
 							}
@@ -863,10 +863,10 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 									) {
 										continue;
 									}
-									code.dataset.zepublishMermaidStatus = "rendering";
-									const renderId = `zepublish-mermaid-${Date.now()}-${index}-${mermaidRenderSeqRef.current++}`;
+									code.dataset.zepressMermaidStatus = "rendering";
+									const renderId = `zepress-mermaid-${Date.now()}-${index}-${mermaidRenderSeqRef.current++}`;
 									const wrapper = document.createElement("div");
-									wrapper.className = "zepublish-mermaid-wrapper";
+									wrapper.className = "zepress-mermaid-wrapper";
 									wrapper.style.background = "transparent";
 									wrapper.style.overflowX = "auto";
 									try {
@@ -905,7 +905,7 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 											error,
 										);
 									}
-									code.dataset.zepublishMermaidStatus = "done";
+									code.dataset.zepressMermaidStatus = "done";
 									if (pre.isConnected) {
 										pre.replaceWith(wrapper);
 									}
@@ -918,7 +918,7 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 						// 清理旧按钮和 tooltip
 						latestContainer
 							.querySelectorAll(
-								".zepublish-code-copy-btn, .zepublish-code-copy-img-btn, .zepublish-code-upload-btn, .zepublish-code-info-btn, .zepublish-code-info-tooltip, .zepublish-table-copy-img-btn, .zepublish-table-upload-btn",
+								".zepress-code-copy-btn, .zepress-code-copy-img-btn, .zepress-code-upload-btn, .zepress-code-info-btn, .zepress-code-info-tooltip, .zepress-table-copy-img-btn, .zepress-table-upload-btn",
 							)
 							.forEach((el) => el.remove());
 
@@ -965,10 +965,10 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 							// 检查是否已经有包裹容器
 							if (
 								!wrapper ||
-								!wrapper.classList.contains("zepublish-table-wrapper")
+								!wrapper.classList.contains("zepress-table-wrapper")
 							) {
 								wrapper = document.createElement("div");
-								wrapper.className = "zepublish-table-wrapper";
+								wrapper.className = "zepress-table-wrapper";
 								Object.assign(wrapper.style, {
 									position: "relative",
 									display: "inline-block",

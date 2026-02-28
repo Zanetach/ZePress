@@ -35,8 +35,8 @@ export class StyleLoader {
 			// 获取插件目录路径
 			const app = this.app as any;
 			const manifest =
-				app.plugins?.plugins?.["ze-publisher"]?.manifest ||
-				app.plugins?.plugins?.["zepublish"]?.manifest;
+				app.plugins?.plugins?.["zepress"]?.manifest ||
+				app.plugins?.plugins?.["zepress"]?.manifest;
 			if (!manifest) {
 				logger.debug("Plugin manifest not found, using inline styles");
 				return this.getInlineAdmonitionStyles();
@@ -77,8 +77,8 @@ export class StyleLoader {
 			// 获取插件目录路径
 			const app = this.app as any;
 			const manifest =
-				app.plugins?.plugins?.["ze-publisher"]?.manifest ||
-				app.plugins?.plugins?.["zepublish"]?.manifest;
+				app.plugins?.plugins?.["zepress"]?.manifest ||
+				app.plugins?.plugins?.["zepress"]?.manifest;
 			if (!manifest) {
 				logger.debug("Plugin manifest not found");
 				return "";

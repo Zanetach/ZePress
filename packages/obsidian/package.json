@@ -1,5 +1,5 @@
 {
-	"name": "Ze-Publisher",
+	"name": "ZePress",
 	"version": "0.2.6",
 	"description": "",
 	"main": "index.js",
@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@css-inline/css-inline-darwin-arm64": "^0.15.0",
-		"@ze-publisher/frontend": "workspace:*",
+		"@zepress/frontend": "workspace:*",
 		"juice": "^11.0.1",
 		"modern-screenshot": "^4.6.6",
 		"postcss": "^8.5.6",

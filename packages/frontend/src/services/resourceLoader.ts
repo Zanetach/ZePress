@@ -30,9 +30,9 @@ class LocalResourceLoader implements ResourceLoader {
 		try {
 			logger.debug("Loading fallback themes");
 			return [
-				{ name: "默认主题", className: "default", desc: "Obsidian 默认阅读风格", author: "ZePublish" },
-				{ name: "微信排版", className: "wechat-classic", desc: "经典微信公众号排版", author: "ZePublish" },
-				{ name: "大字号", className: "large-text", desc: "适合无障碍阅读的大字版", author: "ZePublish" },
+				{ name: "默认主题", className: "default", desc: "Obsidian 默认阅读风格", author: "ZePress" },
+				{ name: "微信排版", className: "wechat-classic", desc: "经典微信公众号排版", author: "ZePress" },
+				{ name: "大字号", className: "large-text", desc: "适合无障碍阅读的大字版", author: "ZePress" },
 			];
 		} catch (error) {
 			console.error("Failed to load themes:", error);
@@ -65,12 +65,12 @@ class LocalResourceLoader implements ResourceLoader {
 
 			// 尝试从后端API加载模板
 			if (
-				window.zepublishReactAPI &&
-				window.zepublishReactAPI.loadTemplates
+				window.zepressReactAPI &&
+				window.zepressReactAPI.loadTemplates
 			) {
 				try {
 					const templateNames =
-						await window.zepublishReactAPI.loadTemplates();
+						await window.zepressReactAPI.loadTemplates();
 					logger.info(
 						"Loaded templates from backend:",
 						templateNames,

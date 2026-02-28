@@ -1,7 +1,7 @@
 // 导入全局API类型定义
 import "./types/global";
 
-export type { ZePublishReactAPI } from "./types/global";
+export type { ZePressReactAPI } from "./types/global";
 
 // Avatar configuration interface
 export interface AvatarConfig {
@@ -271,7 +271,7 @@ export interface PersistentStyleSettings {
 }
 
 // Props interface for the main component
-export interface ZePublishReactProps {
+export interface ZePressReactProps {
 	settings: ViteReactSettings;
 	articleHTML: string;
 	cssContent: string;
@@ -311,15 +311,15 @@ export interface ShadowMountOptions {
 }
 
 // Global interface for the exported library
-export interface ZePublishReactLib {
+export interface ZePressReactLib {
 	mount: (
 		container: HTMLElement,
-		props: ZePublishReactProps,
+		props: ZePressReactProps,
 		options?: ShadowMountOptions,
 	) => void;
 	unmount: (container: HTMLElement) => void;
 	update: (
 		container: HTMLElement,
-		props: ZePublishReactProps,
+		props: ZePressReactProps,
 	) => Promise<void>;
 }

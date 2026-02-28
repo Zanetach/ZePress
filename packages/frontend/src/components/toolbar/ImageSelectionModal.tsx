@@ -200,12 +200,12 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 	const getToolbarPortalContainer = (): HTMLElement | null => {
 		if (isShadowDom && portalContainer) {
 			const rootNode = portalContainer.getRootNode() as Document | ShadowRoot;
-			return rootNode.getElementById('zepublish-toolbar-container')
-				|| rootNode.getElementById('zepublish-toolbar-content')
+			return rootNode.getElementById('zepress-toolbar-container')
+				|| rootNode.getElementById('zepress-toolbar-content')
 				|| null;
 		}
-		return document.getElementById('zepublish-toolbar-container')
-			|| document.getElementById('zepublish-toolbar-content');
+		return document.getElementById('zepress-toolbar-container')
+			|| document.getElementById('zepress-toolbar-content');
 	};
 
 	const toolbarPortalContainer = getToolbarPortalContainer();

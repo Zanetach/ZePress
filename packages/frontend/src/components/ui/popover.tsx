@@ -37,8 +37,8 @@ function PopoverContent({
       return;
     }
     const contentEl =
-      (root as ShadowRoot).getElementById?.("zepublish-toolbar-content") ??
-      (root as Document).getElementById?.("zepublish-toolbar-content") ??
+      (root as ShadowRoot).getElementById?.("zepress-toolbar-content") ??
+      (root as Document).getElementById?.("zepress-toolbar-content") ??
       null;
     setBoundedContainer(contentEl as HTMLElement | null);
   }, [portalContainer, boundToToolbarContent]);

@@ -99,8 +99,8 @@ export default class AssetsManager {
 				if (cssContent) {
 					// 兼容 note-to-mp 主题：将其容器选择器映射到本项目容器
 					theme.css = cssContent
-						.replace(/\.(note-to-mp)\b/g, ".zepublish")
-						.replace(/#write\b/g, ".zepublish");
+						.replace(/\.(note-to-mp)\b/g, ".zepress")
+						.replace(/#write\b/g, ".zepress");
 				}
 			}
 		} catch (error) {
@@ -198,7 +198,7 @@ export default class AssetsManager {
 	}
 
 	getThemeURL() {
-		return `https://github.com/Zanetach/Ze-Publisher-2026/releases/latest/download/assets.zip`;
+		return `https://github.com/Zanetach/ZePress-2026/releases/latest/download/assets.zip`;
 	}
 
 	private async ensureAssetsDirs() {
@@ -419,7 +419,7 @@ export default class AssetsManager {
 		this.app = app;
 		this.manifest = manifest;
 		// 先用统一解析后的插件目录初始化；运行时会在 ensureAssetsPathResolved 自动校准
-		this.assetsPath = `${resolvePluginAssetsDir(this.app, this.manifest?.id || "zepublish")}/`;
+		this.assetsPath = `${resolvePluginAssetsDir(this.app, this.manifest?.id || "zepress")}/`;
 		this.themesPath = this.assetsPath + "themes/";
 		this.hilightPath = this.assetsPath + "highlights/";
 		this.themeCfg = this.assetsPath + "themes.json";
@@ -453,7 +453,7 @@ export default class AssetsManager {
 		const candidates = [
 			this.manifest?.dir,
 			this.manifest?.id,
-			"ze-publisher",
+			"zepress",
 		].filter(Boolean) as string[];
 
 		for (const dir of candidates) {

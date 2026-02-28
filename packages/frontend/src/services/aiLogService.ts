@@ -18,7 +18,7 @@ export interface AILogEntry {
 }
 
 const MAX_LOGS = 100;
-const STORAGE_KEY = 'zepublish-ai-logs';
+const STORAGE_KEY = 'zepress-ai-logs';
 
 class AILogService {
 	private static instance: AILogService;

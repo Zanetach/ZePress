@@ -51,7 +51,7 @@ export const CoverEditor: React.FC<CoverEditorProps> = ({
 														}) => {
 	const [activeTab, setActiveTab] = useState<CoverImageSource>(() => {
 		try {
-			const storageKey = `zepublish-cover-editor-active-tab-${coverNumber}`;
+			const storageKey = `zepress-cover-editor-active-tab-${coverNumber}`;
 			const saved = localStorage.getItem(storageKey) as CoverImageSource;
 			return saved || 'article';
 		} catch {
@@ -257,7 +257,7 @@ export const CoverEditor: React.FC<CoverEditorProps> = ({
 				setActiveTab(tabValue);
 				// 持久化保存选中的tab
 				try {
-					const storageKey = `zepublish-cover-editor-active-tab-${coverNumber}`;
+					const storageKey = `zepress-cover-editor-active-tab-${coverNumber}`;
 					localStorage.setItem(storageKey, tabValue);
 				} catch (error) {
 					console.warn('Failed to save cover editor tab to localStorage:', error);

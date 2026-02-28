@@ -44,7 +44,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 			if (initialTab) return initialTab;
 			try {
 				const saved = localStorage.getItem(
-					"zepublish-settings-active-tab",
+					"zepress-settings-active-tab",
 				) as "personal" | "ai" | "general";
 				return saved || "personal";
 			} catch {
@@ -138,7 +138,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 										setActiveTab(tabKey);
 										try {
 											localStorage.setItem(
-												"zepublish-settings-active-tab",
+												"zepress-settings-active-tab",
 												tabKey,
 											);
 										} catch (error) {

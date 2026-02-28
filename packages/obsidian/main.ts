@@ -2,7 +2,7 @@ import { App, Plugin, PluginManifest, WorkspaceLeaf } from "obsidian";
 import { VIEW_TYPE_NOTE_PREVIEW } from "./constants";
 import AssetsManager from "./assets";
 import { NotePreviewExternal } from "./note-preview-external";
-import { ZePublishSettingTab } from "./setting-tab";
+import { ZePressSettingTab } from "./setting-tab";
 import { NMPSettings } from "./settings";
 import TemplateManager from "./template-manager";
 import TemplateKitManager from "./template-kit-manager";
@@ -11,7 +11,7 @@ import { resolvePluginDir } from "./plugin-paths";
 
 import { logger } from "../shared/src/logger";
 
-export default class ZePublishPlugin extends Plugin {
+export default class ZePressPlugin extends Plugin {
 	settings: NMPSettings;
 	assetsManager: AssetsManager;
 	templateKitManager: TemplateKitManager;
@@ -24,7 +24,7 @@ export default class ZePublishPlugin extends Plugin {
 	}
 
 	async onload() {
-		logger.info("Loading Ze-Publisher");
+		logger.info("Loading ZePress");
 		setVersion(this.manifest.version);
 		uevent("load");
 		await this.cleanupNestedPluginDir();
@@ -55,7 +55,7 @@ export default class ZePublishPlugin extends Plugin {
 				this.activateView();
 			},
 		);
-		ribbonIconEl.addClass("zepublish-plugin-ribbon-class");
+		ribbonIconEl.addClass("zepress-plugin-ribbon-class");
 
 		this.addCommand({
 			id: "open-note-preview",
@@ -65,7 +65,7 @@ export default class ZePublishPlugin extends Plugin {
 			},
 		});
 
-		this.addSettingTab(new ZePublishSettingTab(this.app, this));
+		this.addSettingTab(new ZePressSettingTab(this.app, this));
 	}
 
 	async onunload() {
@@ -133,8 +133,8 @@ export default class ZePublishPlugin extends Plugin {
 	 */
 	onViewWidthChange(width: number): void {
 		this.currentViewWidth = width;
-		console.log(`[Ze-PublisherPlugin] onViewWidthChange called: ${width}px`);
-		logger.info(`[Ze-PublisherPlugin] 视图宽度已更新: ${width}px`);
+		console.log(`[ZePressPlugin] onViewWidthChange called: ${width}px`);
+		logger.info(`[ZePressPlugin] 视图宽度已更新: ${width}px`);
 
 		// 在这里可以添加自定义的宽度变化处理逻辑
 		// 例如：调整UI布局、更新设置、触发重新渲染等
@@ -150,7 +150,7 @@ export default class ZePublishPlugin extends Plugin {
 			const configDir = String(
 				this.app.vault.configDir || ".obsidian",
 			).replace(/\/+$/, "");
-			const pluginId = String(this.manifest?.id || "ze-publisher");
+			const pluginId = String(this.manifest?.id || "zepress");
 			const nestedDir = `${configDir}/plugins/${configDir}/plugins/${pluginId}`;
 			const activeDir = resolvePluginDir(this.app, pluginId).replace(
 				/\/+$/,
@@ -159,7 +159,7 @@ export default class ZePublishPlugin extends Plugin {
 
 			if (nestedDir === activeDir) {
 				logger.warn(
-					`[Ze-Publisher] 当前插件目录即嵌套目录，跳过清理: ${nestedDir}`,
+					`[ZePress] 当前插件目录即嵌套目录，跳过清理: ${nestedDir}`,
 				);
 				return;
 			}
@@ -169,12 +169,12 @@ export default class ZePublishPlugin extends Plugin {
 			}
 
 			logger.warn(
-				`[Ze-Publisher] 检测到错误嵌套目录，准备清理: ${nestedDir}`,
+				`[ZePress] 检测到错误嵌套目录，准备清理: ${nestedDir}`,
 			);
 			await adapter.rmdir(nestedDir, true);
-			logger.info(`[Ze-Publisher] 已清理错误嵌套目录: ${nestedDir}`);
+			logger.info(`[ZePress] 已清理错误嵌套目录: ${nestedDir}`);
 		} catch (error) {
-			logger.warn("[Ze-Publisher] 清理错误嵌套目录失败:", error);
+			logger.warn("[ZePress] 清理错误嵌套目录失败:", error);
 		}
 	}
 }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { createRoot, Root } from "react-dom/client";
-import { ZePublishReactBridge } from "./components/ZePublishReactBridge";
+import { ZePressReactBridge } from "./components/ZePressReactBridge";
 import {
-	type ZePublishReactLib,
-	ZePublishReactProps,
+	type ZePressReactLib,
+	ZePressReactProps,
 	ShadowMountOptions,
 } from "./types";
 import { JotaiProvider } from "./providers/JotaiProvider";
@@ -14,8 +14,8 @@ import "./index.css";
 const rootStore = new Map<HTMLElement, Root>();
 
 // Wrapper component to manage props updates without remounting JotaiProvider
-const ZePublishReactWrapper: React.FC<{
-	initialProps: ZePublishReactProps;
+const ZePressReactWrapper: React.FC<{
+	initialProps: ZePressReactProps;
 	container?: HTMLElement;
 	portalContainer?: HTMLElement | null;
 }> = ({ initialProps, container, portalContainer }) => {
@@ -28,17 +28,17 @@ const ZePublishReactWrapper: React.FC<{
 		}
 	}, [container]);
 
-	return <ZePublishReactBridge {...props} />;
+	return <ZePressReactBridge {...props} />;
 };
 
 // Library implementation
-const ZePublishReactLib: ZePublishReactLib = {
+const ZePressReactLib: ZePressReactLib = {
 	mount: (
 		container: HTMLElement,
-		props: ZePublishReactProps,
+		props: ZePressReactProps,
 		options?: ShadowMountOptions,
 	) => {
-		console.log("[ZePublishReactLib] mount() called", {
+		console.log("[ZePressReactLib] mount() called", {
 			container: container?.id,
 			hasShadowRoot: !!options?.shadowRoot,
 			hasProps: !!props,
@@ -46,7 +46,7 @@ const ZePublishReactLib: ZePublishReactLib = {
 
 		// Clean up existing root if any
 		if (rootStore.has(container)) {
-			ZePublishReactLib.unmount(container);
+			ZePressReactLib.unmount(container);
 		}
 
 		// Determine the actual mount target
@@ -55,11 +55,11 @@ const ZePublishReactLib: ZePublishReactLib = {
 
 		if (options?.shadowRoot) {
 			console.log(
-				"[ZePublishReactLib] Shadow DOM mode - creating containers",
+				"[ZePressReactLib] Shadow DOM mode - creating containers",
 			);
 			// Shadow DOM mode: create mount container inside shadow root
 			const shadowContainer = document.createElement("div");
-			shadowContainer.id = "zepublish-shadow-mount";
+			shadowContainer.id = "zepress-shadow-mount";
 
 			// 🔑 使用内联样式直接设置，确保最高优先级
 			// CSS 变量会穿透 Shadow DOM，所以必须在这里显式覆盖
@@ -101,7 +101,7 @@ const ZePublishReactLib: ZePublishReactLib = {
 
 			// Create portal container for Radix UI
 			const portalDiv = document.createElement("div");
-			portalDiv.id = "zepublish-portal-root";
+			portalDiv.id = "zepress-portal-root";
 			portalDiv.style.position = "relative";
 			portalDiv.style.zIndex = "9999";
 			options.shadowRoot.appendChild(portalDiv);
@@ -122,12 +122,12 @@ const ZePublishReactLib: ZePublishReactLib = {
 		rootStore.set(container, root);
 
 		// Store props, shadow info, and options for updates/remounts
-		(container as any).__zepublishProps = props;
+		(container as any).__zepressProps = props;
 		(container as any).__shadowRoot = options?.shadowRoot;
 		(container as any).__portalContainer = portalContainer;
 		(container as any).__shadowOptions = options;
 
-		console.log("[ZePublishReactLib] Rendering to mountTarget", {
+		console.log("[ZePressReactLib] Rendering to mountTarget", {
 			mountTargetId: mountTarget.id,
 			portalContainerId: portalContainer?.id,
 		});
@@ -135,16 +135,16 @@ const ZePublishReactLib: ZePublishReactLib = {
 		try {
 			root.render(
 				<JotaiProvider portalContainer={portalContainer}>
-					<ZePublishReactWrapper
+					<ZePressReactWrapper
 						initialProps={props}
 						container={container}
 						portalContainer={portalContainer}
 					/>
 				</JotaiProvider>,
 			);
-			console.log("[ZePublishReactLib] render() completed successfully");
+			console.log("[ZePressReactLib] render() completed successfully");
 		} catch (error) {
-			console.error("[ZePublishReactLib] render() failed:", error);
+			console.error("[ZePressReactLib] render() failed:", error);
 		}
 	},
 
@@ -156,12 +156,12 @@ const ZePublishReactLib: ZePublishReactLib = {
 		}
 	},
 
-	update: (container: HTMLElement, props: ZePublishReactProps) => {
+	update: (container: HTMLElement, props: ZePressReactProps) => {
 		return new Promise<void>((resolve) => {
 			const root = rootStore.get(container);
 
 			// Store new props
-			(container as any).__zepublishProps = props;
+			(container as any).__zepressProps = props;
 
 			if (root && (container as any).__updateProps) {
 				// Update props without remounting JotaiProvider
@@ -177,7 +177,7 @@ const ZePublishReactLib: ZePublishReactLib = {
 			} else {
 				// If no root exists or update function not available, remount with stored options
 				const storedOptions = (container as any).__shadowOptions;
-				ZePublishReactLib.mount(container, props, storedOptions);
+				ZePressReactLib.mount(container, props, storedOptions);
 				resolve();
 			}
 		});
@@ -187,10 +187,10 @@ const ZePublishReactLib: ZePublishReactLib = {
 // Export for UMD build
 if (typeof window !== "undefined") {
 	migrateLegacyStorageKeys();
-	(window as any).ZePublishReactLib = ZePublishReactLib;
-	(window as any).zepublishReact = ZePublishReactLib;
+	(window as any).ZePressReactLib = ZePressReactLib;
+	(window as any).zepressReact = ZePressReactLib;
 }
 
 // Export for ES modules
-export { ZePublishReactLib as default, ZePublishReactBridge };
-export type { ZePublishReactProps, ZePublishReactLib };
+export { ZePressReactLib as default, ZePressReactBridge };
+export type { ZePressReactProps, ZePressReactLib };

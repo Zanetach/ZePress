@@ -1,6 +1,6 @@
-const LEGACY_PREFIX = "zepublish-";
-const CURRENT_PREFIX = "zepublish-";
-const MIGRATION_MARKER = "zepublish-storage-migrated-v1";
+const LEGACY_PREFIX = "zepress-";
+const CURRENT_PREFIX = "zepress-";
+const MIGRATION_MARKER = "zepress-storage-migrated-v1";
 
 export function migrateLegacyStorageKeys(): void {
 	if (typeof window === "undefined" || !window.localStorage) {
@@ -38,6 +38,6 @@ export function migrateLegacyStorageKeys(): void {
 
 		localStorage.setItem(MIGRATION_MARKER, "1");
 	} catch (error) {
-		console.warn("[Ze-Publisher] Failed to migrate legacy localStorage keys:", error);
+		console.warn("[ZePress] Failed to migrate legacy localStorage keys:", error);
 	}
 }

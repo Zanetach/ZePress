@@ -12,13 +12,13 @@ import {
 } from '../types';
 
 const STORAGE_KEYS = {
-	FILES: 'zepublish-persistent-files',
-	COVERS: 'zepublish-persistent-covers',
-	TEMPLATE_KITS: 'zepublish-persistent-template-kits',
-	PLUGIN_CONFIGS: 'zepublish-persistent-plugin-configs',
-	PERSONAL_INFO: 'zepublish-persistent-personal-info',
-	ARTICLE_INFO: 'zepublish-persistent-article-info',
-	STYLE_SETTINGS: 'zepublish-persistent-style-settings'
+	FILES: 'zepress-persistent-files',
+	COVERS: 'zepress-persistent-covers',
+	TEMPLATE_KITS: 'zepress-persistent-template-kits',
+	PLUGIN_CONFIGS: 'zepress-persistent-plugin-configs',
+	PERSONAL_INFO: 'zepress-persistent-personal-info',
+	ARTICLE_INFO: 'zepress-persistent-article-info',
+	STYLE_SETTINGS: 'zepress-persistent-style-settings'
 } as const;
 
 export class PersistentStorageService {
@@ -40,11 +40,11 @@ export class PersistentStorageService {
 	async saveFile(file: File, customName?: string): Promise<PersistentFile> {
 		const id = this.generateId();
 		const name = customName || file.name;
-		const fileName = `zepublish-files/${id}-${name}`;
+		const fileName = `zepress-files/${id}-${name}`;
 
 		try {
 			// 确保目录存在
-			await this.ensureDirectoryExists('zepublish-files');
+			await this.ensureDirectoryExists('zepress-files');
 
 			const arrayBuffer = await file.arrayBuffer();
 			const uint8Array = new Uint8Array(arrayBuffer);
@@ -74,18 +74,18 @@ export class PersistentStorageService {
 
 	async saveFileFromUrl(url: string, name: string, type: string): Promise<PersistentFile> {
 		const id = this.generateId();
-		const fileName = `zepublish-files/${id}-${name}`;
+		const fileName = `zepress-files/${id}-${name}`;
 
 		try {
 			// 确保目录存在
-			await this.ensureDirectoryExists('zepublish-files');
+			await this.ensureDirectoryExists('zepress-files');
 
 			let arrayBuffer: ArrayBuffer;
 
 			if (url.startsWith('http://') || url.startsWith('https://')) {
 				// 在Obsidian环境中使用requestUrl，否则使用fetch
-				if (window.zepublishReactAPI && typeof window.zepublishReactAPI.requestUrl !== 'undefined') {
-					const response = await window.zepublishReactAPI.requestUrl({url, method: 'GET'});
+				if (window.zepressReactAPI && typeof window.zepressReactAPI.requestUrl !== 'undefined') {
+					const response = await window.zepressReactAPI.requestUrl({url, method: 'GET'});
 					arrayBuffer = response.arrayBuffer;
 				} else {
 					const response = await fetch(url);

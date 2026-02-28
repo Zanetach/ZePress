@@ -24,7 +24,7 @@ import {NMPSettings} from "../../settings";
 import {App} from "obsidian";
 import AssetsManager from "../../assets";
 
-import {logger} from "@ze-publisher/shared/src/logger";
+import {logger} from "@zepress/shared/src/logger";
 
 /**
  * 插件注册器 - 统一管理所有插件的注册

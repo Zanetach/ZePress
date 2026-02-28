@@ -23,7 +23,7 @@ export function setVersion(version: string) {
 function getStyleSheet() {
 	for (var i = 0; i < document.styleSheets.length; i++) {
 		var sheet = document.styleSheets[i];
-		if (sheet.title == "zepublish-style") {
+		if (sheet.title == "zepress-style") {
 			return sheet;
 		}
 	}

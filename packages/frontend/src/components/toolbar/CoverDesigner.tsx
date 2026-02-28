@@ -11,8 +11,8 @@ import {ViteReactSettings, UploadedImage} from '../../types';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '../ui/select';
 
 // 本地存储键名（与 Toolbar 共用）
-const UPLOADED_IMAGES_STORAGE_KEY = 'zepublish-uploaded-images';
-const AI_GENERATION_STATE_KEY = 'zepublish-ai-generation-state';
+const UPLOADED_IMAGES_STORAGE_KEY = 'zepress-uploaded-images';
+const AI_GENERATION_STATE_KEY = 'zepress-ai-generation-state';
 const IMAGE_EXTENSIONS = new Set([
 	'png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg', 'avif', 'heic', 'heif',
 ]);
@@ -148,10 +148,10 @@ export const CoverDesigner: React.FC<CoverDesignerProps> = ({
 			setUploadedImages(getUploadedImages());
 		};
 		window.addEventListener('storage', handleStorageChange);
-		window.addEventListener('zepublish-images-updated', handleStorageChange);
+		window.addEventListener('zepress-images-updated', handleStorageChange);
 		return () => {
 			window.removeEventListener('storage', handleStorageChange);
-			window.removeEventListener('zepublish-images-updated', handleStorageChange);
+			window.removeEventListener('zepress-images-updated', handleStorageChange);
 		};
 	}, []);
 

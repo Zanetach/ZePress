@@ -164,7 +164,7 @@ export abstract class RemarkPlugin implements IRemarkPlugin {
 				// 尝试从文档中获取计算后的CSS变量值
 				const testElement = document.createElement("div");
 				testElement.style.display = "none";
-				testElement.className = "zepublish";
+				testElement.className = "zepress";
 				document.body.appendChild(testElement);
 
 				// 获取计算后的样式

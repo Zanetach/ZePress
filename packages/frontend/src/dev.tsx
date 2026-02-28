@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom/client";
-import { ZePublishReactBridge } from "./components/ZePublishReactBridge";
-import { ZePublishReactWrapper } from "./components/ZePublishReactWrapper";
+import { ZePressReactBridge } from "./components/ZePressReactBridge";
+import { ZePressReactWrapper } from "./components/ZePressReactWrapper";
 import { JotaiProvider } from "./providers/JotaiProvider";
 import { logger } from "../../shared/src/logger";
 import { webAdapter } from "./adapters/web-adapter";
 import { migrateLegacyStorageKeys } from "./services/storageMigration";
 import { domToPng } from "modern-screenshot";
-import { findScreenshotElement, applyCodeBlockScale } from "@ze-publisher/shared";
+import { findScreenshotElement, applyCodeBlockScale } from "@zepress/shared";
 // 🔑 使用 ?inline 导入编译后的 CSS 字符串（供 Shadow DOM 使用）
 import compiledCSS from "./index.css?inline";
 import "./index.css";
@@ -32,13 +32,13 @@ interface ExternalReactLib {
 const mountedRoots = new Map<HTMLElement, ReactDOM.Root>();
 
 // Create the external library interface for Obsidian plugin
-const ZePublishReactLib: ExternalReactLib = {
+const ZePressReactLib: ExternalReactLib = {
 	mount: async (
 		container: HTMLElement,
 		props: any,
 		options?: ShadowMountOptions,
 	) => {
-		console.log("[ZePublishReactLib][Dev] mount() called", {
+		console.log("[ZePressReactLib][Dev] mount() called", {
 			containerId: container?.id,
 			hasShadowRoot: !!options?.shadowRoot,
 			hasProps: !!props,
@@ -57,12 +57,12 @@ const ZePublishReactLib: ExternalReactLib = {
 
 		if (options?.shadowRoot) {
 			console.log(
-				"[ZePublishReactLib][Dev] Shadow DOM mode - creating containers",
+				"[ZePressReactLib][Dev] Shadow DOM mode - creating containers",
 			);
 
 			// Shadow DOM mode: create mount container inside shadow root
 			const shadowContainer = document.createElement("div");
-			shadowContainer.id = "zepublish-shadow-mount";
+			shadowContainer.id = "zepress-shadow-mount";
 
 			// 🔑 使用内联样式直接设置，确保最高优先级
 			// CSS 变量会穿透 Shadow DOM，所以必须在这里显式覆盖
@@ -104,13 +104,13 @@ const ZePublishReactLib: ExternalReactLib = {
 
 			// Create portal container for Radix UI
 			const portalDiv = document.createElement("div");
-			portalDiv.id = "zepublish-portal-root";
+			portalDiv.id = "zepress-portal-root";
 			portalDiv.style.position = "relative";
 			portalDiv.style.zIndex = "9999";
 			options.shadowRoot.appendChild(portalDiv);
 			portalContainer = options.portalContainer || portalDiv;
 
-			console.log("[ZePublishReactLib][Dev] Shadow containers created");
+			console.log("[ZePressReactLib][Dev] Shadow containers created");
 		}
 
 		// Create new root and render component
@@ -118,12 +118,12 @@ const ZePublishReactLib: ExternalReactLib = {
 		mountedRoots.set(container, root);
 
 		// Store props, shadow info, and options for updates/remounts
-		(container as any).__zepublishProps = props;
+		(container as any).__zepressProps = props;
 		(container as any).__shadowRoot = options?.shadowRoot;
 		(container as any).__portalContainer = portalContainer;
 		(container as any).__shadowOptions = options;
 
-		console.log("[ZePublishReactLib][Dev] Rendering to mountTarget", {
+		console.log("[ZePressReactLib][Dev] Rendering to mountTarget", {
 			mountTargetId: mountTarget.id,
 			portalContainerId: portalContainer?.id,
 		});
@@ -131,17 +131,17 @@ const ZePublishReactLib: ExternalReactLib = {
 		try {
 			root.render(
 				<JotaiProvider portalContainer={portalContainer}>
-					<ZePublishReactWrapper
+					<ZePressReactWrapper
 						initialProps={props}
 						container={container}
 					/>
 				</JotaiProvider>,
 			);
 			console.log(
-				"[ZePublishReactLib][Dev] render() completed successfully",
+				"[ZePressReactLib][Dev] render() completed successfully",
 			);
 		} catch (error) {
-			console.error("[ZePublishReactLib][Dev] render() failed:", error);
+			console.error("[ZePressReactLib][Dev] render() failed:", error);
 		}
 	},
 
@@ -149,7 +149,7 @@ const ZePublishReactLib: ExternalReactLib = {
 		logger.debug("Updating React component");
 
 		// Store new props
-		(container as any).__zepublishProps = props;
+		(container as any).__zepressProps = props;
 
 		const root = mountedRoots.get(container);
 		if (root && (container as any).__updateProps) {
@@ -158,7 +158,7 @@ const ZePublishReactLib: ExternalReactLib = {
 		} else if (!root) {
 			// If no root exists, mount it with stored options
 			const storedOptions = (container as any).__shadowOptions;
-			await ZePublishReactLib.mount(container, props, storedOptions);
+			await ZePressReactLib.mount(container, props, storedOptions);
 		}
 	},
 
@@ -175,8 +175,8 @@ const ZePublishReactLib: ExternalReactLib = {
 // Expose to window for Obsidian plugin to access
 if (typeof window !== "undefined") {
 	migrateLegacyStorageKeys();
-	(window as any).ZePublishReactLib = ZePublishReactLib;
-	(window as any).zepublishReact = ZePublishReactLib;
+	(window as any).ZePressReactLib = ZePressReactLib;
+	(window as any).zepressReact = ZePressReactLib;
 	// 🔑 暴露编译后的 CSS，供 Obsidian Shadow DOM 使用
 	(window as any).__ZEPUBLISH_COMPILED_CSS__ = compiledCSS;
 	(window as any).__ZEPUBLISH_COMPILED_CSS__ = compiledCSS;
@@ -209,7 +209,7 @@ if (rootElement) {
 			expandedAccordionSections: [],
 			showStyleUI: true,
 			personalInfo: {
-				name: "Ze-Publisher Web",
+				name: "ZePress Web",
 				avatar: { type: "default" as const },
 				bio: "基于 Web 的 Markdown 格式化工具",
 				email: "",
@@ -217,8 +217,8 @@ if (rootElement) {
 			},
 		},
 		articleHTML: `
-      <div class="zepublish">
-        <h1>欢迎使用 Ze-Publisher Web 版</h1>
+      <div class="zepress">
+        <h1>欢迎使用 ZePress Web 版</h1>
         <p>这是一个独立的 Web 应用，可以将 Markdown 格式化并分发到多个平台。</p>
         <h2>主要功能</h2>
         <ul>
@@ -227,7 +227,7 @@ if (rootElement) {
           <li>多平台分发</li>
         </ul>
         <h2>代码示例</h2>
-        <pre><code class="language-javascript">console.log('Hello, Ze-Publisher!');</code></pre>
+        <pre><code class="language-javascript">console.log('Hello, ZePress!');</code></pre>
       </div>
     `,
 		cssContent: "body { font-family: system-ui; padding: 20px; }",
@@ -334,7 +334,7 @@ if (rootElement) {
 					try {
 						const savedSettings =
 							await webAdapter.persistentStorage.getItem(
-								"zepublish-settings",
+								"zepress-settings",
 							);
 						if (savedSettings) {
 							const parsed = JSON.parse(savedSettings);
@@ -443,7 +443,7 @@ if (rootElement) {
 					new webAdapter.Notice("已复制图片到剪贴板！");
 				} else {
 					// HTML 复制模式
-					const articleElement = document.querySelector(".zepublish");
+					const articleElement = document.querySelector(".zepress");
 					if (!articleElement) {
 						new webAdapter.Notice("未找到文章内容");
 						return;
@@ -529,7 +529,7 @@ if (rootElement) {
 			try {
 				const existing =
 					await webAdapter.persistentStorage.getItem(
-						"zepublish-settings",
+						"zepress-settings",
 					);
 				const currentSettings = existing ? JSON.parse(existing) : {};
 				const mergedSettings = {
@@ -537,7 +537,7 @@ if (rootElement) {
 					...settingsUpdate,
 				};
 				await webAdapter.persistentStorage.setItem(
-					"zepublish-settings",
+					"zepress-settings",
 					JSON.stringify(mergedSettings),
 				);
 				logger.debug("Settings saved:", mergedSettings);
@@ -566,7 +566,7 @@ if (rootElement) {
 	root &&
 		root.render(
 			<JotaiProvider>
-				<ZePublishReactBridge {...mockProps} />
+				<ZePressReactBridge {...mockProps} />
 			</JotaiProvider>,
 		);
 }
@@ -578,7 +578,7 @@ if ((import.meta as any).hot) {
 
 		// Force re-render all mounted components
 		mountedRoots.forEach((root, container) => {
-			const props = (container as any).__zepublishProps;
+			const props = (container as any).__zepressProps;
 			if (props && (container as any).__updateProps) {
 				logger.debug("Re-rendering component in container");
 				// Just update props, don't remount
@@ -587,8 +587,8 @@ if ((import.meta as any).hot) {
 		});
 
 		// Notify Obsidian plugin if available
-		if ((window as any).__zepublishRefresh) {
-			(window as any).__zepublishRefresh();
+		if ((window as any).__zepressRefresh) {
+			(window as any).__zepressRefresh();
 		}
 	});
 }

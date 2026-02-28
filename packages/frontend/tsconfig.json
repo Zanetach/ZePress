@@ -26,10 +26,10 @@
 			"@/*": [
 				"./src/*"
 			],
-			"@ze-publisher/shared": [
+			"@zepress/shared": [
 				"../shared/index.ts"
 			],
-			"@ze-publisher/shared/*": [
+			"@zepress/shared/*": [
 				"../shared/*"
 			]
 		}

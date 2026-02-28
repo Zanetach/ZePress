@@ -27,7 +27,7 @@ import {
 	logger,
 	findScreenshotElement,
 	applyCodeBlockScale,
-} from "@ze-publisher/shared";
+} from "@zepress/shared";
 import { domToPng } from "modern-screenshot";
 import {
 	ArticleInfo,
@@ -230,7 +230,7 @@ export class NotePreviewExternal
 				this.lastProcessedMd = md;
 
 				// 使用缓存结果更新DOM
-				const domUpdater = (window as any).__zepublishDOMUpdater;
+				const domUpdater = (window as any).__zepressDOMUpdater;
 				if (domUpdater && domUpdater.isReady()) {
 					domUpdater.updateArticleHTML(this.articleHTML);
 				}
@@ -274,7 +274,7 @@ export class NotePreviewExternal
 			);
 
 			// 直接更新DOM
-			const domUpdater = (window as any).__zepublishDOMUpdater;
+			const domUpdater = (window as any).__zepressDOMUpdater;
 			if (domUpdater && domUpdater.isReady()) {
 				domUpdater.updateArticleHTML(this.articleHTML);
 			}
@@ -387,7 +387,7 @@ export class NotePreviewExternal
 					this.preserveCodeSpacing(tempContainer);
 					const processedContent = tempContainer.innerHTML;
 					console.log(
-						"[Ze-Publisher] Copied HTML for WeChat:",
+						"[ZePress] Copied HTML for WeChat:",
 						processedContent.substring(0, 500) + "...",
 					);
 					await navigator.clipboard.write([
@@ -715,7 +715,7 @@ export class NotePreviewExternal
 				const mediaRes = await xUploadImage(
 					auth,
 					firstImageBlob,
-					`zepublish-${Date.now()}.png`,
+					`zepress-${Date.now()}.png`,
 				);
 				if (mediaRes.media_id_string) {
 					mediaIds = [mediaRes.media_id_string];
@@ -1013,12 +1013,12 @@ export class NotePreviewExternal
 		// 在React组件中处理CSS变量更新
 		// 首先尝试在React容器中查找
 		let noteContainer = this.reactContainer?.querySelector(
-			".zepublish",
+			".zepress",
 		) as HTMLElement;
 
 		// 如果React容器中没有找到，则在整个document中查找
 		if (!noteContainer) {
-			noteContainer = document.querySelector(".zepublish") as HTMLElement;
+			noteContainer = document.querySelector(".zepress") as HTMLElement;
 		}
 
 		if (!noteContainer) {
@@ -1047,7 +1047,7 @@ export class NotePreviewExternal
 	}
 
 	wrapArticleContent(article: string): string {
-		let className = "zepublish";
+		let className = "zepress";
 
 		// 如果设置了隐藏一级标题，移除第一个 h1 标签
 		let processedArticle = article;
@@ -1311,7 +1311,7 @@ ${customCSS}`;
 			this.container.style.overflow = "hidden";
 		}
 
-		console.log("[Ze-Publisher] buildUI() 开始");
+		console.log("[ZePress] buildUI() 开始");
 
 		// 创建 React 容器
 		this.reactContainer = document.createElement("div");
@@ -1320,11 +1320,11 @@ ${customCSS}`;
 		this.reactContainer.style.minHeight = "0";
 		this.reactContainer.style.display = "flex";
 		this.reactContainer.style.overflow = "hidden";
-		this.reactContainer.id = "zepublish-react-container";
+		this.reactContainer.id = "zepress-react-container";
 		this.container.appendChild(this.reactContainer);
 
 		if (this.USE_SHADOW_DOM) {
-			console.log("[Ze-Publisher] 启用 Shadow DOM 模式");
+			console.log("[ZePress] 启用 Shadow DOM 模式");
 			logger.info("[Shadow DOM] 启用 Shadow DOM 模式");
 
 			// 🔑 创建 Shadow Root 实现样式隔离
@@ -1335,11 +1335,11 @@ ${customCSS}`;
 			// 🔑 Shadow Root 创建后立即注入 CSS
 			await this.injectCSSToShadowRoot();
 		} else {
-			console.log("[Ze-Publisher] 禁用 Shadow DOM 模式，使用传统渲染");
+			console.log("[ZePress] 禁用 Shadow DOM 模式，使用传统渲染");
 			logger.info("[Shadow DOM] 禁用 Shadow DOM 模式，使用传统渲染");
 
 			// 传统模式：添加 Obsidian 环境类
-			this.reactContainer.classList.add("ze-publisher-env");
+			this.reactContainer.classList.add("zepress-env");
 			this.shadowRoot = null;
 
 			// 传统模式下，如果是生产环境，需要加载 CSS 到 document.head
@@ -1353,13 +1353,13 @@ ${customCSS}`;
 		this.isMounted = false;
 
 		console.log(
-			"[Ze-Publisher] buildUI() 即将调用 updateExternalReactComponent",
+			"[ZePress] buildUI() 即将调用 updateExternalReactComponent",
 		);
 
 		// 渲染外部React组件
 		await this.updateExternalReactComponent();
 
-		console.log("[Ze-Publisher] buildUI() 完成");
+		console.log("[ZePress] buildUI() 完成");
 	}
 
 	/**
@@ -1387,8 +1387,8 @@ ${customCSS}`;
 
 	private getPluginSettings(): NMPSettings {
 		const plugin =
-			(this.app as any).plugins.plugins["ze-publisher"] ||
-			(this.app as any).plugins.plugins["zepublish"];
+			(this.app as any).plugins.plugins["zepress"] ||
+			(this.app as any).plugins.plugins["zepress"];
 		if (plugin && plugin.settings) {
 			return plugin.settings;
 		}
@@ -1417,7 +1417,7 @@ ${customCSS}`;
 				if (response.ok || response.status === 200) {
 					// Clear any previous scripts to ensure fresh load
 					const existingScripts = document.querySelectorAll(
-						"script[data-zepublish-hmr]",
+						"script[data-zepress-hmr]",
 					);
 					existingScripts.forEach((s) => s.remove());
 
@@ -1425,7 +1425,7 @@ ${customCSS}`;
 					const viteClientScript = document.createElement("script");
 					viteClientScript.type = "module";
 					viteClientScript.src = `${viteDevServerUrl}/@vite/client`;
-					viteClientScript.setAttribute("data-zepublish-hmr", "true");
+					viteClientScript.setAttribute("data-zepress-hmr", "true");
 					document.head.appendChild(viteClientScript);
 
 					// Load React refresh runtime
@@ -1439,7 +1439,7 @@ ${customCSS}`;
 						window.__vite_plugin_react_preamble_installed__ = true;
 					`;
 					reactRefreshScript.setAttribute(
-						"data-zepublish-hmr",
+						"data-zepress-hmr",
 						"true",
 					);
 					document.head.appendChild(reactRefreshScript);
@@ -1448,7 +1448,7 @@ ${customCSS}`;
 					const moduleScript = document.createElement("script");
 					moduleScript.type = "module";
 					moduleScript.src = `${viteDevServerUrl}/src/dev.tsx?t=${Date.now()}`;
-					moduleScript.setAttribute("data-zepublish-hmr", "true");
+					moduleScript.setAttribute("data-zepress-hmr", "true");
 					document.head.appendChild(moduleScript);
 
 					// Mark HMR mode
@@ -1459,7 +1459,7 @@ ${customCSS}`;
 						let attempts = 0;
 						const checkInterval = setInterval(() => {
 							if (
-								(window as any).ZePublishReactLib ||
+								(window as any).ZePressReactLib ||
 								attempts > 50
 							) {
 								clearInterval(checkInterval);
@@ -1469,7 +1469,7 @@ ${customCSS}`;
 						}, 100);
 					});
 
-					this.externalReactLib = (window as any).ZePublishReactLib;
+					this.externalReactLib = (window as any).ZePressReactLib;
 
 					if (this.externalReactLib) {
 						logger.info(
@@ -1489,7 +1489,7 @@ ${customCSS}`;
 			// Fall back to bundled version (production mode or dev server not available)
 			const adapter = this.app.vault.adapter;
 			const pluginDir = resolvePluginDir(this.app);
-			const scriptPath = `${pluginDir}/frontend/zepublish-react.iife.js`;
+			const scriptPath = `${pluginDir}/frontend/zepress-react.iife.js`;
 
 			const scriptContent = await adapter.read(scriptPath);
 
@@ -1502,10 +1502,10 @@ ${customCSS}`;
 
 			// 获取全局对象
 			this.externalReactLib =
-				(window as any).ZePublishReactLib ||
-				(window as any).ZePublishReact ||
-				(window as any).ZePublishReact?.default ||
-				(window as any).zepublishReact;
+				(window as any).ZePressReactLib ||
+				(window as any).ZePressReact ||
+				(window as any).ZePressReact?.default ||
+				(window as any).zepressReact;
 
 			if (this.externalReactLib) {
 				logger.debug("外部React应用加载成功（打包版本）", {
@@ -1516,8 +1516,8 @@ ${customCSS}`;
 					hasUnmount:
 						typeof this.externalReactLib.unmount === "function",
 					actualObject: this.externalReactLib,
-					windowZePublishReact: (window as any).ZePublishReact,
-					windowZePublishReactDefault: (window as any).ZePublishReact
+					windowZePressReact: (window as any).ZePressReact,
+					windowZePressReactDefault: (window as any).ZePressReact
 						?.default,
 				});
 
@@ -1531,10 +1531,10 @@ ${customCSS}`;
 							key.includes("React") ||
 							key.includes("react"),
 					),
-					zepublishReact: !!(window as any).ZePublishReact,
-					zepublishReactLib: !!(window as any).ZePublishReactLib,
-					zepublishReactLowerCase:
-						!!(window as any).zepublishReact,
+					zepressReact: !!(window as any).ZePressReact,
+					zepressReactLib: !!(window as any).ZePressReactLib,
+					zepressReactLowerCase:
+						!!(window as any).zepressReact,
 				});
 			}
 		} catch (error) {
@@ -1552,7 +1552,7 @@ ${customCSS}`;
 		_viteDevServerUrl: string,
 	): Promise<void> {
 		if (!this.shadowRoot) {
-			console.warn("[Ze-Publisher][HMR] Shadow Root 不存在，无法注入 CSS");
+			console.warn("[ZePress][HMR] Shadow Root 不存在，无法注入 CSS");
 			logger.warn("[HMR] Shadow Root 不存在，无法注入 CSS");
 			return;
 		}
@@ -1562,7 +1562,7 @@ ${customCSS}`;
 			const compiledCSS = (window as any).__ZEPUBLISH_COMPILED_CSS__;
 
 			if (!compiledCSS) {
-				console.warn("[Ze-Publisher][HMR] 编译后的 CSS 尚未加载，等待...");
+				console.warn("[ZePress][HMR] 编译后的 CSS 尚未加载，等待...");
 				// 等待 CSS 加载完成（最多等待 5 秒）
 				let attempts = 0;
 				while (
@@ -1575,7 +1575,7 @@ ${customCSS}`;
 
 				const css = (window as any).__ZEPUBLISH_COMPILED_CSS__;
 				if (!css) {
-					console.error("[Ze-Publisher][HMR] CSS 加载超时");
+					console.error("[ZePress][HMR] CSS 加载超时");
 					logger.error("[HMR] CSS 加载超时");
 					return;
 				}
@@ -1583,29 +1583,29 @@ ${customCSS}`;
 
 			const cssText = (window as any).__ZEPUBLISH_COMPILED_CSS__;
 			console.log(
-				"[Ze-Publisher][HMR] 获取到编译后的 CSS，长度:",
+				"[ZePress][HMR] 获取到编译后的 CSS，长度:",
 				cssText.length,
 			);
 
 			// 检查是否已存在 HMR CSS
 			const existingStyle = this.shadowRoot.querySelector(
-				"style[data-zepublish-hmr-css]",
+				"style[data-zepress-hmr-css]",
 			);
 			if (existingStyle) {
 				existingStyle.textContent = cssText;
-				console.log("[Ze-Publisher][HMR] 已更新现有 CSS");
+				console.log("[ZePress][HMR] 已更新现有 CSS");
 			} else {
 				const style = document.createElement("style");
-				style.setAttribute("data-zepublish-hmr-css", "true");
+				style.setAttribute("data-zepress-hmr-css", "true");
 				style.textContent = cssText;
 				this.shadowRoot.appendChild(style);
-				console.log("[Ze-Publisher][HMR] 已注入新 CSS 到 Shadow Root");
+				console.log("[ZePress][HMR] 已注入新 CSS 到 Shadow Root");
 			}
 
-			console.log("[Ze-Publisher][HMR] ✅ CSS 注入完成");
+			console.log("[ZePress][HMR] ✅ CSS 注入完成");
 			logger.info("[HMR] ✅ CSS 已注入到 Shadow Root");
 		} catch (error) {
-			console.error("[Ze-Publisher][HMR] 加载 CSS 失败:", error);
+			console.error("[ZePress][HMR] 加载 CSS 失败:", error);
 			logger.warn("[HMR] 加载 CSS 失败:", error);
 		}
 	}
@@ -1630,7 +1630,7 @@ ${customCSS}`;
 			// 🔑 将 CSS 注入到 Shadow Root 内，而不是 document.head
 			// 检查是否已经有这个CSS
 			const existingStyle = this.shadowRoot.querySelector(
-				"style[data-zepublish-react]",
+				"style[data-zepress-react]",
 			);
 			if (existingStyle) {
 				existingStyle.remove();
@@ -1638,7 +1638,7 @@ ${customCSS}`;
 
 			// 创建style标签并插入CSS到Shadow Root
 			const style = document.createElement("style");
-			style.setAttribute("data-zepublish-react", "true");
+			style.setAttribute("data-zepress-react", "true");
 			style.textContent = cssContent;
 			this.shadowRoot.appendChild(style);
 
@@ -1655,7 +1655,7 @@ ${customCSS}`;
 		try {
 			const pluginDir = resolvePluginDir(this.app);
 			if (!pluginDir) {
-				console.warn("[Ze-Publisher] 无法获取插件目录");
+				console.warn("[ZePress] 无法获取插件目录");
 				return;
 			}
 
@@ -1665,7 +1665,7 @@ ${customCSS}`;
 
 			// 检查是否已经有这个CSS
 			const existingStyle = document.head.querySelector(
-				"style[data-zepublish-react]",
+				"style[data-zepress-react]",
 			);
 			if (existingStyle) {
 				existingStyle.remove();
@@ -1673,14 +1673,14 @@ ${customCSS}`;
 
 			// 创建style标签并插入CSS到document.head
 			const style = document.createElement("style");
-			style.setAttribute("data-zepublish-react", "true");
+			style.setAttribute("data-zepress-react", "true");
 			style.textContent = cssContent;
 			document.head.appendChild(style);
 
-			console.log("[Ze-Publisher] 成功加载外部CSS到document.head:", cssPath);
+			console.log("[ZePress] 成功加载外部CSS到document.head:", cssPath);
 			logger.debug("成功加载外部CSS到document.head:", cssPath);
 		} catch (error) {
-			console.warn("[Ze-Publisher] 加载外部CSS失败:", error);
+			console.warn("[ZePress] 加载外部CSS失败:", error);
 			logger.warn("加载外部CSS失败:", error);
 		}
 	}
@@ -1706,7 +1706,7 @@ ${customCSS}`;
 		}
 
 		// Listen for manual refresh events
-		(window as any).__zepublishRefresh = async () => {
+		(window as any).__zepressRefresh = async () => {
 			logger.debug("[HMR] Manual refresh triggered");
 			if (this.externalReactLib && this.reactContainer) {
 				await this.updateExternalReactComponent();
@@ -1761,11 +1761,11 @@ ${customCSS}`;
 		// 🔒 防止无限循环
 		const now = Date.now();
 		if (this.isUpdating) {
-			console.warn("[Ze-Publisher] 跳过更新：正在更新中");
+			console.warn("[ZePress] 跳过更新：正在更新中");
 			return;
 		}
 		if (now - this.lastUpdateTime < this.MIN_UPDATE_INTERVAL) {
-			console.warn("[Ze-Publisher] 跳过更新：更新过于频繁");
+			console.warn("[ZePress] 跳过更新：更新过于频繁");
 			return;
 		}
 
@@ -1780,7 +1780,7 @@ ${customCSS}`;
 	}
 
 	private async _doUpdateExternalReactComponent(): Promise<void> {
-		console.log("[Ze-Publisher] updateExternalReactComponent() 开始", {
+		console.log("[ZePress] updateExternalReactComponent() 开始", {
 			hasExternalReactLib: !!this.externalReactLib,
 			hasReactContainer: !!this.reactContainer,
 			isMounted: this.isMounted,
@@ -1788,7 +1788,7 @@ ${customCSS}`;
 		});
 
 		if (!this.externalReactLib || !this.reactContainer) {
-			console.error("[Ze-Publisher] 外部React应用未加载或容器不存在");
+			console.error("[ZePress] 外部React应用未加载或容器不存在");
 			logger.warn("外部React应用未加载或容器不存在", {
 				externalReactLib: !!this.externalReactLib,
 				reactContainer: !!this.reactContainer,
@@ -1848,7 +1848,7 @@ ${customCSS}`;
 				// 首次挂载
 				if (this.USE_SHADOW_DOM && this.shadowRoot) {
 					console.log(
-						"[Ze-Publisher] 首次挂载 React 组件到 Shadow Root",
+						"[ZePress] 首次挂载 React 组件到 Shadow Root",
 					);
 					logger.info(
 						"[Shadow DOM] 首次挂载 React 组件到 Shadow Root",
@@ -1857,20 +1857,20 @@ ${customCSS}`;
 						shadowRoot: this.shadowRoot,
 					});
 				} else {
-					console.log("[Ze-Publisher] 首次挂载 React 组件 (传统模式)");
+					console.log("[ZePress] 首次挂载 React 组件 (传统模式)");
 					logger.info("[传统模式] 首次挂载 React 组件");
 					this.externalReactLib.mount(this.reactContainer, props);
 				}
 				this.isMounted = true;
-				console.log("[Ze-Publisher] React 组件挂载完成");
+				console.log("[ZePress] React 组件挂载完成");
 			} else {
 				// 后续更新：使用 update 方法
-				console.log("[Ze-Publisher] 更新 React 组件");
+				console.log("[ZePress] 更新 React 组件");
 				await this.externalReactLib.update(this.reactContainer, props);
-				console.log("[Ze-Publisher] React 组件更新完成");
+				console.log("[ZePress] React 组件更新完成");
 			}
 
-			console.log("[Ze-Publisher] updateExternalReactComponent() 完成");
+			console.log("[ZePress] updateExternalReactComponent() 完成");
 			logger.debug("外部React组件更新成功");
 		} catch (error) {
 			logger.error("更新外部React组件时出错:", error);
@@ -1924,7 +1924,7 @@ ${customCSS}`;
 			// 生成唯一文件名
 			const timestamp = Date.now();
 			const randomStr = Math.random().toString(36).substring(2, 8);
-			const fileKey = `zepublish/codeblock-${timestamp}-${randomStr}.png`;
+			const fileKey = `zepress/codeblock-${timestamp}-${randomStr}.png`;
 
 			// 生成七牛云上传凭证
 			const putPolicy = JSON.stringify({
@@ -1988,7 +1988,7 @@ ${customCSS}`;
 			const imageUrl = `${qiniu.domain.replace(/\/$/, "")}/${uploadResult.key}`;
 
 			// 保存到云存储列表（localStorage）
-			const UPLOADED_IMAGES_KEY = "zepublish-uploaded-images";
+			const UPLOADED_IMAGES_KEY = "zepress-uploaded-images";
 			const existingImages = JSON.parse(
 				localStorage.getItem(UPLOADED_IMAGES_KEY) || "[]",
 			);
@@ -2006,7 +2006,7 @@ ${customCSS}`;
 				JSON.stringify(existingImages),
 			);
 			// 触发自定义事件通知 React 刷新
-			window.dispatchEvent(new CustomEvent("zepublish-images-updated"));
+			window.dispatchEvent(new CustomEvent("zepress-images-updated"));
 
 			// 替换源Markdown中的代码块 - 使用 vault.modify
 			const activeFile = this.app.workspace.getActiveFile();
@@ -2104,7 +2104,7 @@ ${customCSS}`;
 			// 生成唯一文件名
 			const timestamp = Date.now();
 			const randomStr = Math.random().toString(36).substring(2, 8);
-			const fileKey = `zepublish/table-${timestamp}-${randomStr}.png`;
+			const fileKey = `zepress/table-${timestamp}-${randomStr}.png`;
 
 			// 生成七牛云上传凭证
 			const putPolicy = JSON.stringify({
@@ -2168,7 +2168,7 @@ ${customCSS}`;
 			const imageUrl = `${qiniu.domain.replace(/\/$/, "")}/${uploadResult.key}`;
 
 			// 保存到云存储列表（localStorage）
-			const UPLOADED_IMAGES_KEY = "zepublish-uploaded-images";
+			const UPLOADED_IMAGES_KEY = "zepress-uploaded-images";
 			const existingImages = JSON.parse(
 				localStorage.getItem(UPLOADED_IMAGES_KEY) || "[]",
 			);
@@ -2186,7 +2186,7 @@ ${customCSS}`;
 				JSON.stringify(existingImages),
 			);
 			// 触发自定义事件通知 React 刷新
-			window.dispatchEvent(new CustomEvent("zepublish-images-updated"));
+			window.dispatchEvent(new CustomEvent("zepress-images-updated"));
 
 			// 替换源Markdown中的表格 - 使用 vault.modify
 			const activeFile = this.app.workspace.getActiveFile();
@@ -2386,7 +2386,7 @@ ${customCSS}`;
 				uploadTableAsImage: this.uploadTableAsImage.bind(this),
 			};
 
-			(window as any).zepublishReactAPI = globalAPI;
+			(window as any).zepressReactAPI = globalAPI;
 			logger.info(
 				"[setupGlobalAPI] 全局API已设置完成，包含持久化存储APIs",
 			);
@@ -2960,8 +2960,8 @@ ${customCSS}`;
 
 		// 通知主插件（如果主插件实现了回调）
 		const plugin =
-			(this.app as any).plugins.plugins["ze-publisher"] ||
-			(this.app as any).plugins.plugins["zepublish"];
+			(this.app as any).plugins.plugins["zepress"] ||
+			(this.app as any).plugins.plugins["zepress"];
 		if (plugin && typeof plugin.onViewWidthChange === "function") {
 			console.log(`[NotePreviewExternal] 调用 plugin.onViewWidthChange`);
 			plugin.onViewWidthChange(width);
@@ -3102,8 +3102,8 @@ ${customCSS}`;
 	private saveSettingsToPlugin(): void {
 		uevent("save-settings");
 		const plugin =
-			(this.app as any).plugins.plugins["ze-publisher"] ||
-			(this.app as any).plugins.plugins["zepublish"];
+			(this.app as any).plugins.plugins["zepress"] ||
+			(this.app as any).plugins.plugins["zepress"];
 		if (plugin) {
 			// 确保主插件使用的是当前的设置实例
 			plugin.settings = this.settings;
@@ -3128,7 +3128,7 @@ ${customCSS}`;
 			try {
 				const settingsData = this.settings.getAllSettings();
 				localStorage.setItem(
-					"zepublish-settings-backup",
+					"zepress-settings-backup",
 					JSON.stringify(settingsData),
 				);
 				logger.debug("设置已保存到本地存储备份");

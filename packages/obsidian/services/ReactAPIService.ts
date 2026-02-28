@@ -1,7 +1,7 @@
 import {Notice} from "obsidian";
 import TemplateManager from "../template-manager";
 import TemplateKitManager from "../template-kit-manager";
-import {logger} from "@ze-publisher/shared";
+import {logger} from "@zepress/shared";
 import {TemplateKit, TemplateKitBasicInfo, TemplateKitOperationResult} from "../template-kit-types";
 
 /**
@@ -24,7 +24,7 @@ export class ReactAPIService {
 
 	/**
 	 * 加载所有模板套装
-	 * @implements {TemplateKitAPI.loadTemplateKits} 从 @ze-publisher/shared
+	 * @implements {TemplateKitAPI.loadTemplateKits} 从 @zepress/shared
 	 */
 	async loadTemplateKits(): Promise<TemplateKit[]> {
 		try {
@@ -40,7 +40,7 @@ export class ReactAPIService {
 
 	/**
 	 * 加载所有模板
-	 * @implements {TemplateKitAPI.loadTemplates} 从 @ze-publisher/shared
+	 * @implements {TemplateKitAPI.loadTemplates} 从 @zepress/shared
 	 */
 	async loadTemplates(): Promise<string[]> {
 		try {

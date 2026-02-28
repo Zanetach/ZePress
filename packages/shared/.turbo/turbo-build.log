@@ -1,6 +1,6 @@
 
 
-> @ze-publisher/shared@1.0.0 build /Users/zane/Documents/Coderepo/Ze-Publisher/packages/shared
+> @zepress/shared@1.0.0 build /Users/zane/Documents/Coderepo/Ze-Publisher/packages/shared
 > echo "No build needed for shared package"
 
 No build needed for shared package

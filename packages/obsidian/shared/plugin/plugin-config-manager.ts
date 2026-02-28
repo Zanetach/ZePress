@@ -1,7 +1,7 @@
 import {NMPSettings} from "../../settings";
 
 
-import {logger} from "@ze-publisher/shared/src/logger";
+import {logger} from "@zepress/shared/src/logger";
 
 /**
  * 通用插件配置接口
@@ -135,8 +135,8 @@ export class PluginConfigManager {
 			const app = (window as any).app;
 			if (app && app.plugins && app.plugins.plugins) {
 				const plugin =
-					app.plugins.plugins["ze-publisher"] ||
-					app.plugins.plugins["zepublish"];
+					app.plugins.plugins["zepress"] ||
+					app.plugins.plugins["zepress"];
 				if (plugin && plugin.settings) {
 					logger.debug(`使用主插件的设置实例`);
 					return plugin.settings;
@@ -160,8 +160,8 @@ export class PluginConfigManager {
 				const pluginManager = app as any;
 				if (pluginManager.plugins) {
 					const plugin =
-						pluginManager.plugins.plugins["ze-publisher"] ||
-						pluginManager.plugins.plugins["zepublish"];
+						pluginManager.plugins.plugins["zepress"] ||
+						pluginManager.plugins.plugins["zepress"];
 					if (plugin && typeof plugin.saveSettings === "function") {
 						plugin.saveSettings();
 						logger.debug(`已触发插件的 saveSettings 方法`);

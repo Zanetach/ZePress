@@ -201,7 +201,7 @@ export class NMPSettings implements SettingsData {
 	toolbarPosition: "left" | "right" = "left";
 	uiThemeMode: "auto" | "light" | "dark" = "auto";
 	imageSaveFolderEnabled: boolean = true;
-	imageSaveFolder: string = "zepublish-images";
+	imageSaveFolder: string = "zepress-images";
 	cloudStorage: CloudStorageSettings = {
 		enabled: false,
 		provider: "local",

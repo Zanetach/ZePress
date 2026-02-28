@@ -15,7 +15,7 @@ if you want to view the source, please visit the github repository of this plugi
 const prod = process.env.NODE_ENV === "production";
 const obsidianVaultPath = process.env.OBSIDIAN_VAULT_PATH;
 const obsidianPluginPath = obsidianVaultPath
-	? path.join(obsidianVaultPath, ".obsidian", "plugins", "ze-publisher")
+	? path.join(obsidianVaultPath, ".obsidian", "plugins", "zepress")
 	: process.env.OBSIDIAN_PLUGIN_PATH;
 console.log({ obsidianVaultPath, obsidianPluginPath });
 

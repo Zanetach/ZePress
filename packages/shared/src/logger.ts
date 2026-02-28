@@ -23,7 +23,7 @@ class Logger {
 		
 		// 使用全局配置，但允许实例覆盖
 		this.level = options.level || config.level;
-		this.prefix = options.prefix || 'Ze-Publisher';
+		this.prefix = options.prefix || 'ZePress';
 		this.timestamp = options.timestamp ?? config.timestamp;
 	}
 

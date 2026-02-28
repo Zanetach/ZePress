@@ -80,9 +80,9 @@ function SelectContent({
 		}
 		const contentEl =
 			(root as ShadowRoot).getElementById?.(
-				"zepublish-toolbar-content",
+				"zepress-toolbar-content",
 			) ??
-			(root as Document).getElementById?.("zepublish-toolbar-content") ??
+			(root as Document).getElementById?.("zepress-toolbar-content") ??
 			null;
 		setBoundedContainer(contentEl as HTMLElement | null);
 	}, [portalContainer, boundToToolbarContent]);

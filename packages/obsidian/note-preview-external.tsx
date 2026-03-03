@@ -3112,11 +3112,21 @@ ${customCSS}`;
 	 */
 	private async handleKitApply(kitId: string): Promise<void> {
 		logger.debug(`[handleKitApply] 应用模板套装: ${kitId}`);
-		await this.reactAPIService.applyTemplateKit(
+		const result = await this.reactAPIService.applyTemplateKit(
 			kitId,
 			() => this.renderMarkdown(),
 			() => this.updateExternalReactComponent(),
 		);
+		if (!result.success) {
+			return;
+		}
+
+		// 套装切换后强制清理缓存，确保内容区和样式区都立即刷新。
+		this.pluginCache.clear();
+		this.cachedProps = null;
+		this.lastArticleHTML = "";
+		this.lastCSSContent = "";
+		await this.renderMarkdown();
 	}
 
 	/**

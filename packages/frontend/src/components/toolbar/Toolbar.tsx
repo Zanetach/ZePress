@@ -15,14 +15,34 @@ import {FileText, Package, Plug, Zap, User, Bot, Globe, Image, Palette, Cloud, E
 
 const APP_NAME = "ZePress";
 
-const ZePressLogo = () => (
+const ZePressLogo: React.FC<{ isUIDark: boolean }> = ({ isUIDark }) => (
 	<div
 		title={APP_NAME}
-		className="w-8 h-8 rounded-xl relative overflow-hidden bg-gradient-to-br from-[#6E5BFF] via-[#7A73FF] to-[#44D8FF]"
+		className={`w-8 h-8 rounded-xl relative overflow-hidden flex items-center justify-center ${
+			isUIDark
+				? "bg-[#2A2B30] border border-[#3A3B40]"
+				: "bg-[#EEF0F3] border border-[#D7DCE2]"
+		}`}
 	>
-		<div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_rgba(255,255,255,0))]" />
-		<div className="absolute inset-y-0 right-0 w-4 bg-white/20 transform rotate-6 -translate-x-1" />
-		<span className="relative z-10 text-[11px] font-semibold tracking-[0.4em] text-white">ZP</span>
+		<div
+			className={`absolute inset-0 ${
+				isUIDark
+					? "bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.01))]"
+					: "bg-[linear-gradient(145deg,rgba(255,255,255,0.9),rgba(255,255,255,0.25))]"
+			}`}
+		/>
+		<div
+			className={`absolute inset-y-1 left-1 w-[2px] rounded-full ${
+				isUIDark ? "bg-[#94A3B8]/60" : "bg-[#64748B]/50"
+			}`}
+		/>
+		<span
+			className={`relative z-10 text-[10px] font-semibold tracking-[0.18em] ${
+				isUIDark ? "text-[#E2E8F0]" : "text-[#334155]"
+			}`}
+		>
+			ZP
+		</span>
 	</div>
 );
 
@@ -1048,7 +1068,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 				>
 					{/* 顶部品牌区域 */}
 					<div className="h-12 flex items-center justify-center">
-						<ZePressLogo />
+						<ZePressLogo isUIDark={isUIDark} />
 					</div>
 					<div className="h-10 flex items-center justify-center">
 						<button

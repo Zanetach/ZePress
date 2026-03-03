@@ -10,9 +10,23 @@ import {imageGenerationService} from '../../services/imageGenerationService';
 import {ViteReactSettings, UploadedImage} from '../../types';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '../ui/select';
 
-// 本地存储键名（与 Toolbar 共用）
-const UPLOADED_IMAGES_STORAGE_KEY = 'zepress-uploaded-images';
-const AI_GENERATION_STATE_KEY = 'zepress-ai-generation-state';
+const getStorageScope = (): string => {
+	try {
+		const app = (window as any)?.app || (window as any)?.parent?.app || (window as any)?.top?.app;
+		const vaultName = app?.vault?.getName?.() || app?.vault?.name || 'default-vault';
+		const vaultPath = app?.vault?.adapter?.basePath || app?.vault?.adapter?.path || '';
+		const raw = `${vaultName}|${vaultPath}`.toLowerCase();
+		return raw.replace(/[^a-z0-9|_-]/g, '_');
+	} catch {
+		return 'default-vault';
+	}
+};
+
+const getScopedStorageKey = (key: string): string => `${key}::${getStorageScope()}`;
+
+// 本地存储键名（与 Toolbar 共用，按 vault 隔离）
+const UPLOADED_IMAGES_STORAGE_KEY = getScopedStorageKey('zepress-uploaded-images');
+const AI_GENERATION_STATE_KEY = getScopedStorageKey('zepress-ai-generation-state');
 const IMAGE_EXTENSIONS = new Set([
 	'png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg', 'avif', 'heic', 'heif',
 ]);
@@ -665,7 +679,7 @@ export const CoverDesigner: React.FC<CoverDesignerProps> = ({
 	// 通用的加载封面数据函数
 	const loadCoverData = useCallback(async (coverNumber: 1 | 2) => {
 		try {
-			const storageKey = `cover-designer-preview-${coverNumber}`;
+			const storageKey = getScopedStorageKey(`cover-designer-preview-${coverNumber}`);
 			const saved = localStorage.getItem(storageKey);
 
 			if (!saved) return;
@@ -709,8 +723,8 @@ export const CoverDesigner: React.FC<CoverDesignerProps> = ({
 		const loadPersistedData = async () => {
 			// 临时：清空可能损坏的缓存数据用于调试
 			if (window.location.search.includes('clear-cover-cache')) {
-				localStorage.removeItem('cover-designer-preview-1');
-				localStorage.removeItem('cover-designer-preview-2');
+				localStorage.removeItem(getScopedStorageKey('cover-designer-preview-1'));
+				localStorage.removeItem(getScopedStorageKey('cover-designer-preview-2'));
 				return;
 			}
 
@@ -762,7 +776,7 @@ export const CoverDesigner: React.FC<CoverDesignerProps> = ({
 	// 通用的保存封面持久化数据函数
 	const saveCoverData = useCallback(async (coverNum: 1 | 2, coverData: CoverData, source: CoverImageSource) => {
 		try {
-			const storageKey = `cover-designer-preview-${coverNum}`;
+			const storageKey = getScopedStorageKey(`cover-designer-preview-${coverNum}`);
 
 			const persistData = {
 				covers: [coverData],
@@ -893,7 +907,7 @@ export const CoverDesigner: React.FC<CoverDesignerProps> = ({
 
 		// 清空持久化数据
 		try {
-			const storageKey = `cover-designer-preview-${coverNumber}`;
+			const storageKey = getScopedStorageKey(`cover-designer-preview-${coverNumber}`);
 			localStorage.removeItem(storageKey);
 			logger.debug(`[CoverDesigner] 清空封面${coverNumber}持久化数据`);
 		} catch (error) {

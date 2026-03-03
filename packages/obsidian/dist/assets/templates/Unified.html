@@ -1,15 +1,15 @@
-<!-- LovPen 统一模板 - 兼容不同套装的标准化结构 -->
-<div class="lovpen-unified-container" data-theme="{{theme_name}}">
+<!-- ZePress 统一模板 - 兼容不同套装的标准化结构 -->
+<div class="zepress-unified-container" data-theme="{{theme_name}}">
   
   <!-- 顶部装饰区域（支持不同主题的装饰） -->
-  <div class="lovpen-top-accent"></div>
+  <div class="zepress-top-accent"></div>
   
   <!-- 文章头部 -->
-  <header class="lovpen-article-header">
+  <header class="zepress-article-header">
     
     <!-- 引言部分（Anthropic特有功能） -->
     {{#if epigraph}}
-    <div class="lovpen-epigraph">
+    <div class="zepress-epigraph">
       {{#each epigraph}}
       <p><strong>{{this}}</strong></p>
       {{/each}}
@@ -17,60 +17,60 @@
     {{/if}}
     
     <!-- 标题区域（兼容新旧变量名） -->
-    <div class="lovpen-title-section">
+    <div class="zepress-title-section">
       {{#if (or title articleTitle)}}
-      <h1 class="lovpen-article-title">{{#if title}}{{title}}{{else}}{{articleTitle}}{{/if}}</h1>
+      <h1 class="zepress-article-title">{{#if title}}{{title}}{{else}}{{articleTitle}}{{/if}}</h1>
       {{/if}}
       
       {{#if (or subtitle articleSubtitle)}}
-      <p class="lovpen-article-subtitle">{{#if subtitle}}{{subtitle}}{{else}}{{articleSubtitle}}{{/if}}</p>
+      <p class="zepress-article-subtitle">{{#if subtitle}}{{subtitle}}{{else}}{{articleSubtitle}}{{/if}}</p>
       {{/if}}
     </div>
     
     <!-- 元信息区域（标准化） -->
     {{#if (or author publishDate tags seriesName episodeNum coverImage recommendation)}}
-    <div class="lovpen-meta-section">
-      <div class="lovpen-meta-card">
-        <div class="lovpen-meta-content">
+    <div class="zepress-meta-section">
+      <div class="zepress-meta-card">
+        <div class="zepress-meta-content">
           
           <!-- 基本信息 -->
-          <div class="lovpen-meta-basic">
+          <div class="zepress-meta-basic">
             {{#if author}}
-            <span class="lovpen-meta-item">
+            <span class="zepress-meta-item">
               {{#if personalInfo.avatar}}
-              <img src="{{personalInfo.avatar}}" alt="" class="lovpen-author-avatar">
+              <img src="{{personalInfo.avatar}}" alt="" class="zepress-author-avatar">
               {{else}}👤{{/if}} {{author}}
             </span>
             {{/if}}
             
             {{#if publishDate}}
-            <span class="lovpen-meta-item">📅 {{publishDate}}</span>
+            <span class="zepress-meta-item">📅 {{publishDate}}</span>
             {{/if}}
             
             {{#if seriesName}}
-            <span class="lovpen-meta-item">📚 {{seriesName}}{{#if episodeNum}} · 第{{episodeNum}}期{{/if}}</span>
+            <span class="zepress-meta-item">📚 {{seriesName}}{{#if episodeNum}} · 第{{episodeNum}}期{{/if}}</span>
             {{/if}}
           </div>
           
           <!-- 推荐语 -->
           {{#if recommendation}}
-          <div class="lovpen-meta-recommendation">
-            <div class="lovpen-meta-text">💡 {{recommendation}}</div>
+          <div class="zepress-meta-recommendation">
+            <div class="zepress-meta-text">💡 {{recommendation}}</div>
           </div>
           {{/if}}
           
           <!-- 封面图 -->
           {{#if coverImage}}
-          <div class="lovpen-meta-cover">
-            <img src="{{coverImage}}" alt="文章封面" class="lovpen-meta-cover-image">
+          <div class="zepress-meta-cover">
+            <img src="{{coverImage}}" alt="文章封面" class="zepress-meta-cover-image">
           </div>
           {{/if}}
           
           <!-- 标签 -->
           {{#if tags}}
-          <div class="lovpen-meta-tags">
+          <div class="zepress-meta-tags">
             {{#each tags}}
-            <span class="lovpen-meta-tag">{{this}}</span>
+            <span class="zepress-meta-tag">{{this}}</span>
             {{/each}}
           </div>
           {{/if}}
@@ -83,35 +83,35 @@
   </header>
   
   <!-- 主要内容（保持兼容性） -->
-  <main class="lovpen-article-content">
+  <main class="zepress-article-content">
     <!-- 为了向后兼容，同时提供新旧类名 -->
-    <div class="lovpen">
+    <div class="zepress">
       {{{content}}}
     </div>
   </main>
   
   <!-- 文章底部 -->
-  <footer class="lovpen-article-footer">
+  <footer class="zepress-article-footer">
     
     <!-- 个人信息区域（兼容Anthropic风格） -->
     {{#if personalInfo.name}}
-    <div class="lovpen-personal-info">
-      <hr class="lovpen-personal-divider">
-      <div class="lovpen-personal-card">
-        <div class="lovpen-personal-content{{#unless personalInfo.avatar}} lovpen-personal-content-no-avatar{{/unless}}">
+    <div class="zepress-personal-info">
+      <hr class="zepress-personal-divider">
+      <div class="zepress-personal-card">
+        <div class="zepress-personal-content{{#unless personalInfo.avatar}} zepress-personal-content-no-avatar{{/unless}}">
           {{#if personalInfo.avatar}}
-          <div class="lovpen-personal-avatar">
-            <img alt="" src="{{personalInfo.avatar}}" class="lovpen-personal-avatar-img">
+          <div class="zepress-personal-avatar">
+            <img alt="" src="{{personalInfo.avatar}}" class="zepress-personal-avatar-img">
           </div>
           {{/if}}
-          <div class="lovpen-personal-details">
-            <h3 class="lovpen-personal-name">{{personalInfo.name}}</h3>
+          <div class="zepress-personal-details">
+            <h3 class="zepress-personal-name">{{personalInfo.name}}</h3>
             {{#if personalInfo.bio}}
-            <div class="lovpen-personal-bio">{{markdown personalInfo.bio}}</div>
+            <div class="zepress-personal-bio">{{markdown personalInfo.bio}}</div>
             {{/if}}
             {{#if personalInfo.website}}
-            <p class="lovpen-personal-website">
-              <a href="{{personalInfo.website}}" target="_blank" class="lovpen-personal-link">{{personalInfo.website}}</a>
+            <p class="zepress-personal-website">
+              <a href="{{personalInfo.website}}" target="_blank" class="zepress-personal-link">{{personalInfo.website}}</a>
             </p>
             {{/if}}
           </div>
@@ -120,10 +120,10 @@
     </div>
     {{else if signature}}
     <!-- Wabi-Sabi风格的简单签名 -->
-    <div class="lovpen-signature-section">
-      <div class="lovpen-article-signature">{{signature}}</div>
+    <div class="zepress-signature-section">
+      <div class="zepress-article-signature">{{signature}}</div>
       {{#if publishDate}}
-      <div class="lovpen-article-date">{{publishDate}}</div>
+      <div class="zepress-article-date">{{publishDate}}</div>
       {{/if}}
     </div>
     {{/if}}
@@ -134,10 +134,10 @@
 
 <!-- 基础样式 - 提供默认布局和兼容性支持 -->
 <style>
-/* === LovPen 统一模板基础样式 === */
+/* === ZePress 统一模板基础样式 === */
 
 /* 重置和基础设置 */
-.lovpen-unified-container {
+.zepress-unified-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: #333;
@@ -146,26 +146,26 @@
   box-sizing: border-box;
 }
 
-.lovpen-unified-container *,
-.lovpen-unified-container *::before,
-.lovpen-unified-container *::after {
+.zepress-unified-container *,
+.zepress-unified-container *::before,
+.zepress-unified-container *::after {
   box-sizing: border-box;
 }
 
 /* 顶部装饰区域 - 默认隐藏，由主题控制显示 */
-.lovpen-top-accent {
+.zepress-top-accent {
   height: 0;
   transition: height 0.3s ease;
 }
 
 /* 文章头部区域 */
-.lovpen-article-header {
+.zepress-article-header {
   padding: 2rem 1rem;
   text-align: center;
 }
 
 /* 引言区域 */
-.lovpen-epigraph {
+.zepress-epigraph {
   background: rgba(0, 0, 0, 0.05);
   border-left: 4px solid #666;
   padding: 1rem;
@@ -173,25 +173,25 @@
   border-radius: 4px;
 }
 
-.lovpen-epigraph p {
+.zepress-epigraph p {
   margin: 0.5em 0;
   color: #666;
   font-size: 1.1em;
 }
 
 /* 标题区域 */
-.lovpen-title-section {
+.zepress-title-section {
   margin: 2rem 0;
 }
 
-.lovpen-article-title {
+.zepress-article-title {
   font-size: 2rem;
   font-weight: bold;
   margin: 0 0 1rem 0;
   color: #222;
 }
 
-.lovpen-article-subtitle {
+.zepress-article-subtitle {
   font-size: 1.2rem;
   color: #666;
   margin: 0 0 1rem 0;
@@ -199,11 +199,11 @@
 }
 
 /* 元信息区域 */
-.lovpen-meta-section {
+.zepress-meta-section {
   margin: 2rem 0;
 }
 
-.lovpen-meta-card {
+.zepress-meta-card {
   background: rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -211,7 +211,7 @@
   position: relative;
 }
 
-.lovpen-meta-basic {
+.zepress-meta-basic {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -219,7 +219,7 @@
   margin-bottom: 1rem;
 }
 
-.lovpen-meta-item {
+.zepress-meta-item {
   color: #666;
   font-size: 0.9rem;
   padding: 0.3rem 0.8rem;
@@ -230,7 +230,7 @@
   gap: 0.3rem;
 }
 
-.lovpen-author-avatar {
+.zepress-author-avatar {
   width: 16px !important;
   height: 16px !important;
   border-radius: 50% !important;
@@ -240,14 +240,14 @@
   vertical-align: middle !important;
 }
 
-.lovpen-meta-recommendation {
+.zepress-meta-recommendation {
   margin-bottom: 1rem;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.03);
   border-radius: 4px;
 }
 
-.lovpen-meta-text {
+.zepress-meta-text {
   color: #555;
   font-size: 0.95rem;
   font-style: italic;
@@ -255,26 +255,26 @@
   margin: 0;
 }
 
-.lovpen-meta-cover {
+.zepress-meta-cover {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.lovpen-meta-cover-image {
+.zepress-meta-cover-image {
   max-width: 200px;
   height: auto;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.lovpen-meta-tags {
+.zepress-meta-tags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.lovpen-meta-tag {
+.zepress-meta-tag {
   display: inline-block;
   background: rgba(0, 0, 0, 0.1);
   color: #666;
@@ -284,55 +284,55 @@
   font-weight: 500;
 }
 
-.lovpen-meta-tag::before {
+.zepress-meta-tag::before {
   content: '#';
   margin-right: 0.2rem;
   opacity: 0.7;
 }
 
 /* 移除最后一个子元素的 margin-bottom，保持 padding-y 对称 */
-.lovpen-meta-content > *:last-child {
+.zepress-meta-content > *:last-child {
   margin-bottom: 0 !important;
 }
 
 /* 主要内容区域 */
-.lovpen-article-content {
+.zepress-article-content {
   padding: 1rem;
   margin: 2rem 0;
 }
 
-/* 保持向后兼容的lovpen类 */
-.lovpen {
+/* 保持向后兼容的zepress类 */
+.zepress {
   width: 100%;
 }
 
-.lovpen-article-content h1,
-.lovpen-article-content h2,
-.lovpen-article-content h3,
-.lovpen-article-content h4,
-.lovpen-article-content h5,
-.lovpen-article-content h6 {
+.zepress-article-content h1,
+.zepress-article-content h2,
+.zepress-article-content h3,
+.zepress-article-content h4,
+.zepress-article-content h5,
+.zepress-article-content h6 {
   margin: 1.5em 0 0.5em 0;
   color: #222;
 }
 
-.lovpen-article-content p {
+.zepress-article-content p {
   margin: 1em 0;
   text-align: justify;
   line-height: 1.7;
 }
 
-.lovpen-article-content ul,
-.lovpen-article-content ol {
+.zepress-article-content ul,
+.zepress-article-content ol {
   margin: 1em 0;
   padding-left: 2em;
 }
 
-.lovpen-article-content li {
+.zepress-article-content li {
   margin: 0.3em 0;
 }
 
-.lovpen-article-content blockquote {
+.zepress-article-content blockquote {
   margin: 1.5em 0;
   padding: 1em;
   background: rgba(0, 0, 0, 0.05);
@@ -342,7 +342,7 @@
   font-style: italic;
 }
 
-.lovpen-article-content code {
+.zepress-article-content code {
   background: rgba(0, 0, 0, 0.08);
   padding: 0.2em 0.4em;
   border-radius: 3px;
@@ -350,7 +350,7 @@
   font-size: 0.9em;
 }
 
-.lovpen-article-content pre {
+.zepress-article-content pre {
   background: rgba(0, 0, 0, 0.08);
   padding: 1em;
   border-radius: 6px;
@@ -358,12 +358,12 @@
   margin: 1.5em 0;
 }
 
-.lovpen-article-content pre code {
+.zepress-article-content pre code {
   background: none;
   padding: 0;
 }
 
-.lovpen-article-content img {
+.zepress-article-content img {
   max-width: 100%;
   height: auto;
   display: block;
@@ -372,75 +372,75 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.lovpen-article-content table {
+.zepress-article-content table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5em 0;
 }
 
-.lovpen-article-content th,
-.lovpen-article-content td {
+.zepress-article-content th,
+.zepress-article-content td {
   padding: 0.5em 1em;
   border: 1px solid #ddd;
   text-align: left;
 }
 
-.lovpen-article-content th {
+.zepress-article-content th {
   background: rgba(0, 0, 0, 0.05);
   font-weight: bold;
 }
 
-.lovpen-article-content a {
+.zepress-article-content a {
   color: #0066cc;
   text-decoration: none;
 }
 
-.lovpen-article-content a:hover {
+.zepress-article-content a:hover {
   text-decoration: underline;
 }
 
 /* 文章底部区域 */
-.lovpen-article-footer {
+.zepress-article-footer {
   padding: 2rem 1rem;
   margin-top: 2rem;
 }
 
 /* 个人信息区域（Anthropic风格） */
-.lovpen-personal-info {
+.zepress-personal-info {
   margin: 2rem 0;
 }
 
-.lovpen-personal-divider {
+.zepress-personal-divider {
   border: none;
   height: 1px;
   background: rgba(0, 0, 0, 0.2);
   margin: 2rem 0 1.5rem;
 }
 
-.lovpen-personal-card {
+.zepress-personal-card {
   background: rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 1.5rem;
 }
 
-.lovpen-personal-content {
+.zepress-personal-content {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.lovpen-personal-content-no-avatar {
+.zepress-personal-content-no-avatar {
   flex-direction: column;
   text-align: center;
   gap: 0.5rem;
 }
 
-.lovpen-personal-avatar {
+.zepress-personal-avatar {
   flex-shrink: 0;
 }
 
-.lovpen-personal-avatar-img {
+.zepress-personal-avatar-img {
   width: 48px !important;
   height: 48px !important;
   border-radius: 50% !important;
@@ -449,108 +449,108 @@
   display: block !important;
 }
 
-.lovpen-personal-details {
+.zepress-personal-details {
   flex: 1;
   min-width: 0;
 }
 
-.lovpen-personal-name {
+.zepress-personal-name {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0 0 0.3rem 0;
 }
 
-.lovpen-personal-bio {
+.zepress-personal-bio {
   font-size: 0.9rem;
   color: #666;
   margin: 0 0 0.5rem 0;
 }
 
-.lovpen-personal-website {
+.zepress-personal-website {
   margin: 0;
 }
 
-.lovpen-personal-link {
+.zepress-personal-link {
   font-size: 0.8rem;
   color: #666;
   text-decoration: none;
 }
 
-.lovpen-personal-link:hover {
+.zepress-personal-link:hover {
   text-decoration: underline;
 }
 
 /* 签名区域（Wabi-Sabi风格） */
-.lovpen-signature-section {
+.zepress-signature-section {
   text-align: center;
   padding: 2rem 0;
 }
 
-.lovpen-article-signature {
+.zepress-article-signature {
   font-size: 0.95rem;
   color: #666;
   font-style: italic;
   margin-bottom: 1rem;
 }
 
-.lovpen-article-date {
+.zepress-article-date {
   font-size: 0.85rem;
   color: #999;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .lovpen-unified-container {
+  .zepress-unified-container {
     padding: 0.5rem;
   }
   
-  .lovpen-article-header {
+  .zepress-article-header {
     padding: 1rem 0.5rem;
   }
   
-  .lovpen-article-title {
+  .zepress-article-title {
     font-size: 1.6rem;
   }
   
-  .lovpen-article-subtitle {
+  .zepress-article-subtitle {
     font-size: 1rem;
   }
   
-  .lovpen-meta-card {
+  .zepress-meta-card {
     padding: 1rem;
   }
   
-  .lovpen-meta-basic {
+  .zepress-meta-basic {
     flex-direction: column;
     gap: 0.5rem;
   }
   
-  .lovpen-article-content {
+  .zepress-article-content {
     padding: 0.5rem;
   }
   
-  .lovpen-personal-content {
+  .zepress-personal-content {
     flex-direction: column;
     text-align: center;
     gap: 0.8rem;
   }
   
-  .lovpen-personal-avatar-img {
+  .zepress-personal-avatar-img {
     width: 40px !important;
     height: 40px !important;
   }
 }
 
 /* 主题支持基础 - 可以通过data-theme属性来应用不同主题 */
-.lovpen-unified-container[data-theme="anthropic"] {
+.zepress-unified-container[data-theme="anthropic"] {
   /* Anthropic主题的特定样式可以在这里定义 */
 }
 
-.lovpen-unified-container[data-theme="wabi-sabi"] {
+.zepress-unified-container[data-theme="wabi-sabi"] {
   /* Wabi-Sabi主题的特定样式可以在这里定义 */
 }
 
-.lovpen-unified-container[data-theme="minimal"] {
+.zepress-unified-container[data-theme="minimal"] {
   /* 极简主题样式 */
 }
 </style>

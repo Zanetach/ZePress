@@ -101,6 +101,7 @@
     --color-amber-50: oklch(98.7% .022 95.277);
     --color-amber-100: oklch(96.2% .059 95.617);
     --color-amber-200: oklch(92.4% .12 95.746);
+    --color-amber-300: oklch(87.9% .169 91.605);
     --color-amber-600: oklch(66.6% .179 58.318);
     --color-amber-700: oklch(55.5% .163 48.998);
     --color-amber-800: oklch(47.3% .137 46.201);
@@ -2222,6 +2223,16 @@
     border-color: var(--color-amber-200);
   }
 
+  .border-amber-300\/70 {
+    border-color: #ffd236b3;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-amber-300\/70 {
+      border-color: color-mix(in oklab, var(--color-amber-300) 70%, transparent);
+    }
+  }
+
   .border-blue-200 {
     border-color: var(--color-blue-200);
   }
@@ -2260,7 +2271,17 @@
     border-color: var(--input);
   }
 
-  .border-primary, .border-primary\/30 {
+  .border-primary, .border-primary\/25 {
+    border-color: var(--primary);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-primary\/25 {
+      border-color: color-mix(in oklab, var(--primary) 25%, transparent);
+    }
+  }
+
+  .border-primary\/30 {
     border-color: var(--primary);
   }
 
@@ -2378,10 +2399,6 @@
     background-color: #cbd5e1;
   }
 
-  .bg-\[\#CC785C\] {
-    background-color: #cc785c;
-  }
-
   .bg-\[\#D1FAE5\] {
     background-color: #d1fae5;
   }
@@ -2432,6 +2449,16 @@
 
   .bg-amber-100 {
     background-color: var(--color-amber-100);
+  }
+
+  .bg-amber-100\/40 {
+    background-color: #fef3c666;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-amber-100\/40 {
+      background-color: color-mix(in oklab, var(--color-amber-100) 40%, transparent);
+    }
   }
 
   .bg-background {
@@ -2546,10 +2573,6 @@
     background-color: var(--color-gray-200);
   }
 
-  .bg-gray-400 {
-    background-color: var(--color-gray-400);
-  }
-
   .bg-gray-600 {
     background-color: var(--color-gray-600);
   }
@@ -2582,7 +2605,7 @@
     background-color: var(--muted);
   }
 
-  .bg-muted-foreground\/40 {
+  .bg-muted-foreground, .bg-muted-foreground\/40 {
     background-color: var(--muted-foreground);
   }
 
@@ -4759,7 +4782,7 @@
     background-color: var(--color-gray-400);
   }
 
-  .disabled\:bg-muted-foreground\/50:disabled {
+  .disabled\:bg-muted-foreground:disabled, .disabled\:bg-muted-foreground\/50:disabled {
     background-color: var(--muted-foreground);
   }
 

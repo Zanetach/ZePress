@@ -725,9 +725,49 @@ export default class TemplateKitManager
 	}
 
 	private getDefaultKitsCollection(): TemplateKitCollection {
+		const now = new Date().toISOString();
+		const defaultThemes = [
+			{ id: "mpp-academic", name: "学术主题" },
+			{ id: "mpp-brown", name: "悦灵雅棕" },
+			{ id: "mpp-dark", name: "深色主题" },
+			{ id: "mpp-darkgreen", name: "墨绿主题" },
+			{ id: "mpp-default", name: "默认模板" },
+			{ id: "mpp-elegant", name: "优雅主题" },
+			{ id: "mpp-minimal", name: "极简主题" },
+			{ id: "mpp-orange", name: "橙心主题" },
+			{ id: "mpp-scarlet", name: "红绯主题" },
+			{ id: "mpp-soft", name: "柔和主题" },
+		];
+
 		return {
 			version: "1.0.0",
-			kits: [],
+			kits: defaultThemes.map((theme) => ({
+				basicInfo: {
+					id: `kit-${theme.id}`,
+					name: theme.name,
+					description: "主题风格套装",
+					author: "ZePress",
+					version: "1.0.0",
+					createdAt: now,
+					updatedAt: now,
+					tags: ["theme-kit", theme.id],
+				},
+				styleConfig: {
+					theme: theme.id,
+					codeHighlight: "默认",
+					cssVariables: {},
+					enableCustomThemeColor: false,
+				},
+				templateConfig: {
+					templateFileName: "",
+					useTemplate: false,
+				},
+				pluginConfig: {
+					enabledMarkdownPlugins: [],
+					enabledHtmlPlugins: [],
+					pluginSettings: {},
+				},
+			})),
 		};
 	}
 

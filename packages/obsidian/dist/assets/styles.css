@@ -10,7 +10,7 @@
 	flex-direction: column;
 }
 
-.lovpen-renderer {
+.zepress-renderer {
 	flex: 1;
 	overflow-y: auto;
 }

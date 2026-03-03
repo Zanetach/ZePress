@@ -294,8 +294,24 @@ const QINIU_UPLOAD_HOSTS: Record<CloudStorageSettings['qiniu']['region'], string
 	'as0': 'https://up-as0.qiniup.com',
 };
 
+const getStorageScope = (): string => {
+	try {
+		const app = (window as any)?.app || (window as any)?.parent?.app || (window as any)?.top?.app;
+		const vaultName = app?.vault?.getName?.() || app?.vault?.name || 'default-vault';
+		const vaultPath = app?.vault?.adapter?.basePath || app?.vault?.adapter?.path || '';
+		const raw = `${vaultName}|${vaultPath}`.toLowerCase();
+		return raw.replace(/[^a-z0-9|_-]/g, '_');
+	} catch {
+		return 'default-vault';
+	}
+};
+
+const getScopedStorageKey = (key: string): string => `${key}::${getStorageScope()}`;
+
 // 本地存储键名
-const UPLOADED_IMAGES_STORAGE_KEY = 'zepress-uploaded-images';
+const UPLOADED_IMAGES_STORAGE_KEY = getScopedStorageKey('zepress-uploaded-images');
+const TOOLBAR_SECTION_STORAGE_KEY = getScopedStorageKey('zepress-toolbar-section');
+const TOOLBAR_PLUGIN_TAB_STORAGE_KEY = getScopedStorageKey('zepress-toolbar-plugin-tab');
 
 // 获取已上传图片列表
 const getUploadedImages = (): UploadedImage[] => {
@@ -718,7 +734,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 	type NavSection = 'article' | 'cover' | 'kits' | 'plugins' | 'playground' | 'logs' | 'cloud' | 'personal' | 'ai' | 'general';
 	const [activeSection, setActiveSection] = useState<NavSection>(() => {
 		try {
-			const saved = localStorage.getItem('zepress-toolbar-section') as NavSection;
+			const saved = localStorage.getItem(TOOLBAR_SECTION_STORAGE_KEY) as NavSection;
 			return saved || 'article';
 		} catch {
 			return 'article';
@@ -731,7 +747,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 		}
 		setActiveSection(section);
 		try {
-			localStorage.setItem('zepress-toolbar-section', section);
+			localStorage.setItem(TOOLBAR_SECTION_STORAGE_KEY, section);
 		} catch {}
 	};
 	const showStyleUI = atomSettings.showStyleUI !== false;
@@ -745,7 +761,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 	// 插件管理中的子tab状态
 	const [pluginTab, setPluginTab] = useState<string>(() => {
 		try {
-			const saved = localStorage.getItem('zepress-toolbar-plugin-tab');
+			const saved = localStorage.getItem(TOOLBAR_PLUGIN_TAB_STORAGE_KEY);
 			if (saved) return saved;
 		} catch {}
 		return plugins.some(p => p.type === 'rehype') ? 'rehype' : 'remark';
@@ -1163,7 +1179,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 									<Tabs value={pluginTab} onValueChange={(value) => {
 										setPluginTab(value);
 										try {
-											localStorage.setItem('zepress-toolbar-plugin-tab', value);
+											localStorage.setItem(TOOLBAR_PLUGIN_TAB_STORAGE_KEY, value);
 										} catch {}
 									}}>
 										<TabsList className="bg-muted rounded-xl p-0.5 mb-4 w-full sm:w-auto">

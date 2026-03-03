@@ -21,13 +21,31 @@ const STORAGE_KEYS = {
 	STYLE_SETTINGS: 'zepress-persistent-style-settings'
 } as const;
 
+const getStorageScope = (): string => {
+	try {
+		const app = (window as any)?.app;
+		const vaultName = app?.vault?.getName?.() || app?.vault?.name || 'default-vault';
+		const vaultPath = app?.vault?.adapter?.basePath || app?.vault?.adapter?.path || '';
+		const raw = `${vaultName}|${vaultPath}`.toLowerCase();
+		return raw.replace(/[^a-z0-9|_-]/g, '_');
+	} catch {
+		return 'default-vault';
+	}
+};
+
 export class PersistentStorageService {
 	private static instance: PersistentStorageService;
 	private obsidianVault: any;
 	private urlCache: Map<string, string> = new Map(); // 文件路径 -> blob URL 的缓存
+	private storageScope: string;
 
 	private constructor() {
 		this.obsidianVault = (window as any).app?.vault;
+		this.storageScope = getStorageScope();
+	}
+
+	private storageKey(key: string): string {
+		return `${key}::${this.storageScope}`;
 	}
 
 	static getInstance(): PersistentStorageService {
@@ -124,7 +142,7 @@ export class PersistentStorageService {
 
 	async getFiles(): Promise<PersistentFile[]> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.FILES);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.FILES));
 			return stored ? JSON.parse(stored) : [];
 		} catch (error) {
 			console.error('获取文件列表失败:', error);
@@ -151,7 +169,7 @@ export class PersistentStorageService {
 			}
 
 			const updatedFiles = files.filter(f => f.id !== id);
-			localStorage.setItem(STORAGE_KEYS.FILES, JSON.stringify(updatedFiles));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.FILES), JSON.stringify(updatedFiles));
 		} catch (error) {
 			console.error('删除文件失败:', error);
 			throw error;
@@ -310,7 +328,7 @@ export class PersistentStorageService {
 
 		if (fileIndex !== -1) {
 			files[fileIndex].lastUsed = new Date().toISOString();
-			localStorage.setItem(STORAGE_KEYS.FILES, JSON.stringify(files));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.FILES), JSON.stringify(files));
 		}
 	}
 
@@ -330,7 +348,7 @@ export class PersistentStorageService {
 
 		files[fileIndex].isPinned = true;
 		files[fileIndex].pinnedAt = new Date().toISOString();
-		localStorage.setItem(STORAGE_KEYS.FILES, JSON.stringify(files));
+		localStorage.setItem(this.storageKey(STORAGE_KEYS.FILES), JSON.stringify(files));
 	}
 
 	async unpinFile(id: string): Promise<void> {
@@ -340,7 +358,7 @@ export class PersistentStorageService {
 		if (fileIndex !== -1) {
 			files[fileIndex].isPinned = false;
 			delete files[fileIndex].pinnedAt;
-			localStorage.setItem(STORAGE_KEYS.FILES, JSON.stringify(files));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.FILES), JSON.stringify(files));
 		}
 	}
 
@@ -372,7 +390,7 @@ export class PersistentStorageService {
 
 	async getTemplateKits(): Promise<PersistentTemplateKit[]> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.TEMPLATE_KITS);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.TEMPLATE_KITS));
 			return stored ? JSON.parse(stored) : [];
 		} catch (error) {
 			console.error('获取模板套装列表失败:', error);
@@ -384,7 +402,7 @@ export class PersistentStorageService {
 		try {
 			const kits = await this.getTemplateKits();
 			const updatedKits = kits.filter(k => k.id !== id);
-			localStorage.setItem(STORAGE_KEYS.TEMPLATE_KITS, JSON.stringify(updatedKits));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.TEMPLATE_KITS), JSON.stringify(updatedKits));
 		} catch (error) {
 			console.error('删除模板套装失败:', error);
 			throw error;
@@ -411,7 +429,7 @@ export class PersistentStorageService {
 				configs.push(persistentConfig);
 			}
 
-			localStorage.setItem(STORAGE_KEYS.PLUGIN_CONFIGS, JSON.stringify(configs));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.PLUGIN_CONFIGS), JSON.stringify(configs));
 			return persistentConfig;
 		} catch (error) {
 			console.error('保存插件配置失败:', error);
@@ -421,7 +439,7 @@ export class PersistentStorageService {
 
 	async getPluginConfigs(): Promise<PersistentPluginConfig[]> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.PLUGIN_CONFIGS);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.PLUGIN_CONFIGS));
 			return stored ? JSON.parse(stored) : [];
 		} catch (error) {
 			console.error('获取插件配置失败:', error);
@@ -443,7 +461,7 @@ export class PersistentStorageService {
 				updatedAt: new Date().toISOString()
 			};
 
-			localStorage.setItem(STORAGE_KEYS.PERSONAL_INFO, JSON.stringify(persistentInfo));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.PERSONAL_INFO), JSON.stringify(persistentInfo));
 			return persistentInfo;
 		} catch (error) {
 			console.error('保存个人信息失败:', error);
@@ -453,7 +471,7 @@ export class PersistentStorageService {
 
 	async getPersonalInfo(): Promise<PersistentPersonalInfo | null> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.PERSONAL_INFO);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.PERSONAL_INFO));
 			return stored ? JSON.parse(stored) : null;
 		} catch (error) {
 			console.error('获取个人信息失败:', error);
@@ -470,7 +488,7 @@ export class PersistentStorageService {
 				updatedAt: new Date().toISOString()
 			};
 
-			localStorage.setItem(STORAGE_KEYS.ARTICLE_INFO, JSON.stringify(persistentInfo));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.ARTICLE_INFO), JSON.stringify(persistentInfo));
 			return persistentInfo;
 		} catch (error) {
 			console.error('保存文章信息失败:', error);
@@ -480,7 +498,7 @@ export class PersistentStorageService {
 
 	async getArticleInfo(): Promise<PersistentArticleInfo | null> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.ARTICLE_INFO);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.ARTICLE_INFO));
 			return stored ? JSON.parse(stored) : null;
 		} catch (error) {
 			console.error('获取文章信息失败:', error);
@@ -504,7 +522,7 @@ export class PersistentStorageService {
 				updatedAt: new Date().toISOString()
 			};
 
-			localStorage.setItem(STORAGE_KEYS.STYLE_SETTINGS, JSON.stringify(persistentSettings));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.STYLE_SETTINGS), JSON.stringify(persistentSettings));
 			return persistentSettings;
 		} catch (error) {
 			console.error('保存样式设置失败:', error);
@@ -514,7 +532,7 @@ export class PersistentStorageService {
 
 	async getStyleSettings(): Promise<PersistentStyleSettings | null> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.STYLE_SETTINGS);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.STYLE_SETTINGS));
 			return stored ? JSON.parse(stored) : null;
 		} catch (error) {
 			console.error('获取样式设置失败:', error);
@@ -544,7 +562,7 @@ export class PersistentStorageService {
 
 	async getCovers(): Promise<PersistentCover[]> {
 		try {
-			const stored = localStorage.getItem(STORAGE_KEYS.COVERS);
+			const stored = localStorage.getItem(this.storageKey(STORAGE_KEYS.COVERS));
 			return stored ? JSON.parse(stored) : [];
 		} catch (error) {
 			console.error('获取封面列表失败:', error);
@@ -556,7 +574,7 @@ export class PersistentStorageService {
 		try {
 			const covers = await this.getCovers();
 			const updatedCovers = covers.filter(cover => cover.id !== id);
-			localStorage.setItem(STORAGE_KEYS.COVERS, JSON.stringify(updatedCovers));
+			localStorage.setItem(this.storageKey(STORAGE_KEYS.COVERS), JSON.stringify(updatedCovers));
 		} catch (error) {
 			console.error('删除封面失败:', error);
 			throw error;
@@ -567,7 +585,7 @@ export class PersistentStorageService {
 	async clearAllPersistentData(): Promise<void> {
 		try {
 			Object.values(STORAGE_KEYS).forEach(key => {
-				localStorage.removeItem(key);
+				localStorage.removeItem(this.storageKey(key));
 			});
 			console.log('清空所有持久化数据完成');
 		} catch (error) {
@@ -612,19 +630,19 @@ export class PersistentStorageService {
 	private async addFileToIndex(file: PersistentFile): Promise<void> {
 		const files = await this.getFiles();
 		files.push(file);
-		localStorage.setItem(STORAGE_KEYS.FILES, JSON.stringify(files));
+		localStorage.setItem(this.storageKey(STORAGE_KEYS.FILES), JSON.stringify(files));
 	}
 
 	private async addCoverToIndex(cover: PersistentCover): Promise<void> {
 		const covers = await this.getCovers();
 		covers.push(cover);
-		localStorage.setItem(STORAGE_KEYS.COVERS, JSON.stringify(covers));
+		localStorage.setItem(this.storageKey(STORAGE_KEYS.COVERS), JSON.stringify(covers));
 	}
 
 	private async addTemplateKitToIndex(kit: PersistentTemplateKit): Promise<void> {
 		const kits = await this.getTemplateKits();
 		kits.push(kit);
-		localStorage.setItem(STORAGE_KEYS.TEMPLATE_KITS, JSON.stringify(kits));
+		localStorage.setItem(this.storageKey(STORAGE_KEYS.TEMPLATE_KITS), JSON.stringify(kits));
 	}
 
 	private generateId(): string {

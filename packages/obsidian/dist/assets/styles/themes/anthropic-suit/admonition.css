@@ -113,9 +113,9 @@
 }
 
 /* 更高优先级的选择器，强制覆盖内联样式 */
-/* 必须包含 .lovpen-renderer 以匹配实际的 HTML 结构 */
-.lovpen-renderer [data-theme="anthropic-suit"] [data-component="admonition"] [data-element="admonition-content"] p,
-.lovpen-renderer [data-component="admonition"] [data-element="admonition-content"] p {
+/* 必须包含 .zepress-renderer 以匹配实际的 HTML 结构 */
+.zepress-renderer [data-theme="anthropic-suit"] [data-component="admonition"] [data-element="admonition-content"] p,
+.zepress-renderer [data-component="admonition"] [data-element="admonition-content"] p {
   font-size: 0.75em !important;
   line-height: 1.5 !important;
   color: #666666 !important;
@@ -297,8 +297,8 @@
    最终覆盖规则 - 确保在所有规则之后
    用于覆盖全局主题的 p 标签样式
    ======================================== */
-.lovpen-renderer [data-component="admonition"] [data-element="admonition-content"] p,
-.lovpen-renderer [data-theme="anthropic-suit"] [data-component="admonition"] [data-element="admonition-content"] p {
+.zepress-renderer [data-component="admonition"] [data-element="admonition-content"] p,
+.zepress-renderer [data-theme="anthropic-suit"] [data-component="admonition"] [data-element="admonition-content"] p {
   font-size: 0.75em !important;
   line-height: 1.5 !important;
   color: #666666 !important;

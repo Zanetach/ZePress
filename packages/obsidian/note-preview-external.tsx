@@ -2015,8 +2015,17 @@ ${customCSS}`;
 			const uploadResult = await uploadResponse.json();
 			const imageUrl = `${qiniu.domain.replace(/\/$/, "")}/${uploadResult.key}`;
 
-			// 保存到云存储列表（localStorage）
-			const UPLOADED_IMAGES_KEY = "zepress-uploaded-images";
+			// 保存到云存储列表（localStorage，按 vault 作用域隔离）
+			const vaultName =
+				this.app.vault.getName?.() || (this.app.vault as any).name || "default-vault";
+			const vaultPath =
+				(this.app.vault.adapter as any)?.basePath ||
+				(this.app.vault.adapter as any)?.path ||
+				"";
+			const scope = `${vaultName}|${vaultPath}`
+				.toLowerCase()
+				.replace(/[^a-z0-9|_-]/g, "_");
+			const UPLOADED_IMAGES_KEY = `zepress-uploaded-images::${scope}`;
 			const existingImages = JSON.parse(
 				localStorage.getItem(UPLOADED_IMAGES_KEY) || "[]",
 			);
@@ -2195,8 +2204,17 @@ ${customCSS}`;
 			const uploadResult = await uploadResponse.json();
 			const imageUrl = `${qiniu.domain.replace(/\/$/, "")}/${uploadResult.key}`;
 
-			// 保存到云存储列表（localStorage）
-			const UPLOADED_IMAGES_KEY = "zepress-uploaded-images";
+			// 保存到云存储列表（localStorage，按 vault 作用域隔离）
+			const vaultName =
+				this.app.vault.getName?.() || (this.app.vault as any).name || "default-vault";
+			const vaultPath =
+				(this.app.vault.adapter as any)?.basePath ||
+				(this.app.vault.adapter as any)?.path ||
+				"";
+			const scope = `${vaultName}|${vaultPath}`
+				.toLowerCase()
+				.replace(/[^a-z0-9|_-]/g, "_");
+			const UPLOADED_IMAGES_KEY = `zepress-uploaded-images::${scope}`;
 			const existingImages = JSON.parse(
 				localStorage.getItem(UPLOADED_IMAGES_KEY) || "[]",
 			);

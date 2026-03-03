@@ -669,6 +669,19 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 				.replace(/</g, "&lt;")
 				.replace(/>/g, "&gt;");
 
+		const getScopedStorageKey = (key: string): string => {
+			try {
+				const app = (window as any)?.app || (window as any)?.parent?.app || (window as any)?.top?.app;
+				const vaultName = app?.vault?.getName?.() || app?.vault?.name || "default-vault";
+				const vaultPath = app?.vault?.adapter?.basePath || app?.vault?.adapter?.path || "";
+				const raw = `${vaultName}|${vaultPath}`.toLowerCase();
+				const scope = raw.replace(/[^a-z0-9|_-]/g, "_");
+				return `${key}::${scope}`;
+			} catch {
+				return `${key}::default-vault`;
+			}
+		};
+
 		// 根据设置决定是否隐藏首个 H1、是否在文章开头显示封面
 		const finalHtml = useMemo(() => {
 			let processedHtml = html;
@@ -684,7 +697,7 @@ export const ArticleRenderer: React.FC<ArticleRendererProps> = memo(
 			if (settings.showCoverInArticle !== false) {
 				try {
 					const coverData = localStorage.getItem(
-						"cover-designer-preview-1",
+						getScopedStorageKey("cover-designer-preview-1"),
 					);
 					if (coverData) {
 						const parsed = JSON.parse(coverData);

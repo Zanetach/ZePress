@@ -1,5 +1,5 @@
 /*
- * 手工川主题文章样式 - 自适应版本
+ * ZePress主题文章样式 - 自适应版本
  * 根据手机亮暗模式自动切换主题
  * 白天：亮色阅读模式，保持品牌红色强调
  * 晚上：深色极致模式，舒适护眼
@@ -298,7 +298,7 @@
 	background-position: 0 1em;
 }
 
-/* 特定于手工川主题的扩展样式 */
+/* 特定于ZePress主题的扩展样式 */
 .lovpen-renderer  .highlight {
 	color: var(--primary-color);
 	transition: color 0.3s ease;

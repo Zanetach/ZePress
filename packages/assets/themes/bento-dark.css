@@ -1,5 +1,5 @@
 /*
- * 手工川主题文章样式
+ * ZePress主题文章样式
  * 基于黑色背景，特斯拉红色高亮的设计风格
  * 适用于微信公众号文章正文部分
  */
@@ -310,7 +310,7 @@
 	margin-bottom: 0.5em;
 }
 
-/* 特定于手工川主题的扩展样式 */
+/* 特定于ZePress主题的扩展样式 */
 .lovpen-renderer  .highlight {
 	color: var(--primary-color);
 }

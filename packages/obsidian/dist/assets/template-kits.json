@@ -23,8 +23,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -53,8 +53,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -83,8 +83,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -113,8 +113,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -143,8 +143,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -173,8 +173,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -203,8 +203,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -233,8 +233,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -263,8 +263,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -293,8 +293,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],
@@ -323,8 +323,8 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "",
-        "useTemplate": false
+        "templateFileName": "default.html",
+        "useTemplate": true
       },
       "pluginConfig": {
         "enabledMarkdownPlugins": [],

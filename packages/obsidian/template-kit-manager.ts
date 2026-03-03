@@ -660,20 +660,25 @@ export default class TemplateKitManager
 		templateManager: any,
 	): Promise<void> {
 		const templateConfig = kit.templateConfig;
+		const rawTemplateName = String(
+			templateConfig.templateFileName || "",
+		).trim();
+		const hasTemplateName = rawTemplateName.length > 0;
+		const normalizedTemplateName = hasTemplateName
+			? rawTemplateName.replace(".html", "")
+			: "";
+		const currentTemplateName = String(
+			settingsManager.defaultTemplate || "",
+		).trim();
+		const effectiveTemplateName =
+			normalizedTemplateName || currentTemplateName || "default";
 
-		// 应用模板设置
-		settingsManager.useTemplate = templateConfig.useTemplate;
-		if (templateConfig.templateFileName) {
-			// 去掉.html扩展名，因为TemplateManager中存储的key不包含扩展名
-			const templateName = templateConfig.templateFileName.replace(
-				".html",
-				"",
-			);
-			settingsManager.defaultTemplate = templateName;
-			logger.info(
-				`[TemplateKitManager] Set template to: ${templateName}`,
-			);
-		}
+		// 套装应用统一开启模板渲染，防止 legacy 主题套装把模板渲染关闭。
+		settingsManager.useTemplate = true;
+		settingsManager.defaultTemplate = effectiveTemplateName;
+		logger.info(
+			`[TemplateKitManager] Set template to: ${effectiveTemplateName}`,
+		);
 
 		logger.info("[TemplateKitManager] Applied template configuration");
 	}
@@ -753,8 +758,8 @@ export default class TemplateKitManager
 					enableCustomThemeColor: false,
 				},
 				templateConfig: {
-					templateFileName: "",
-					useTemplate: false,
+					templateFileName: "default.html",
+					useTemplate: true,
 				},
 				pluginConfig: {
 					enabledMarkdownPlugins: [],

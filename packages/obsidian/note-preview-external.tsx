@@ -3136,6 +3136,25 @@ ${customCSS}`;
 		if (plugin?.settings) {
 			this.settings = plugin.settings;
 		}
+		if (result.data) {
+			// 双保险：将套装关键配置直接同步到当前视图设置，确保本次渲染必定使用新模板
+			const appliedKit = result.data as any;
+			const rawTemplateName = String(
+				appliedKit?.templateConfig?.templateFileName || "",
+			).trim();
+			const normalizedTemplateName = rawTemplateName.replace(
+				/\.html$/i,
+				"",
+			);
+			if (appliedKit?.styleConfig?.theme) {
+				this.settings.defaultStyle = String(appliedKit.styleConfig.theme);
+			}
+			this.settings.useTemplate = true;
+			if (normalizedTemplateName) {
+				this.settings.defaultTemplate = normalizedTemplateName;
+				this.settings.lastSelectedTemplate = normalizedTemplateName;
+			}
+		}
 
 		// 套装切换后强制清理缓存，确保内容区和样式区都立即刷新。
 		this.pluginCache.clear();
@@ -3144,6 +3163,7 @@ ${customCSS}`;
 		this.cachedProps = null;
 		this.lastArticleHTML = "";
 		this.lastCSSContent = "";
+		this.lastUpdateTime = 0;
 		await this.renderMarkdown();
 	}
 

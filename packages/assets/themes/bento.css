@@ -6,7 +6,7 @@
  */
 
 /* 亮色模式变量 */
-.lovpen-renderer {
+.zepress-renderer {
 	--primary-color: #E31937;
 	--text-primary: #333333;
 	--text-secondary: #666666;
@@ -23,7 +23,7 @@
 
 /* 深色模式变量 */
 @media (prefers-color-scheme: dark) {
-	.lovpen-renderer {
+	.zepress-renderer {
 		--primary-color: #E31937;
 		--text-primary: #ffffff;
 		--text-secondary: #d1d5db;
@@ -40,7 +40,7 @@
 }
 
 /* 基础容器样式 */
-.lovpen-renderer  {
+.zepress-renderer  {
 	font-family: AvenirNext-Regular, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
 	font-size: 16px;
 	color: var(--text-secondary);
@@ -53,7 +53,7 @@
 }
 
 /* 基础元素样式 */
-.lovpen-renderer  * {
+.zepress-renderer  * {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -61,30 +61,30 @@
 	text-rendering: optimizeLegibility;
 }
 
-.lovpen-renderer  > *:first-child {
+.zepress-renderer  > *:first-child {
 	margin-top: 0 !important;
 }
 
-.lovpen-renderer  > *:last-child {
+.zepress-renderer  > *:last-child {
 	margin-top: 0 !important;
 }
 
 /* 段落和块元素间距 */
-.lovpen-renderer  p,
-.lovpen-renderer  pre,
-.lovpen-renderer  dl,
-.lovpen-renderer  form,
-.lovpen-renderer  details,
-.lovpen-renderer  blockquote,
-.lovpen-renderer  table,
-.lovpen-renderer  xmp,
-.lovpen-renderer  plaintext,
-.lovpen-renderer  listing,
-.lovpen-renderer  figure {
+.zepress-renderer  p,
+.zepress-renderer  pre,
+.zepress-renderer  dl,
+.zepress-renderer  form,
+.zepress-renderer  details,
+.zepress-renderer  blockquote,
+.zepress-renderer  table,
+.zepress-renderer  xmp,
+.zepress-renderer  plaintext,
+.zepress-renderer  listing,
+.zepress-renderer  figure {
 	margin: 0.75em 0 0.45em;
 }
 
-.lovpen-renderer  hr {
+.zepress-renderer  hr {
 	margin: 0.75em auto;
 	height: 1px;
 	border: 0;
@@ -95,12 +95,12 @@
 }
 
 /* 标题样式 */
-.lovpen-renderer  h1,
-.lovpen-renderer  h2,
-.lovpen-renderer  h3,
-.lovpen-renderer  h4,
-.lovpen-renderer  h5,
-.lovpen-renderer  h6 {
+.zepress-renderer  h1,
+.zepress-renderer  h2,
+.zepress-renderer  h3,
+.zepress-renderer  h4,
+.zepress-renderer  h5,
+.zepress-renderer  h6 {
 	margin-top: 1.5em;
 	margin-bottom: 0.75em;
 	margin-left: 0;
@@ -112,32 +112,32 @@
 	transition: color 0.3s ease;
 }
 
-.lovpen-renderer  h1 {
+.zepress-renderer  h1 {
 	font-size: 1.5em;
 }
 
-.lovpen-renderer  h2 {
+.zepress-renderer  h2 {
 	font-size: 1.3em;
 }
 
-.lovpen-renderer  h3 {
+.zepress-renderer  h3 {
 	font-size: 1.1em;
 }
 
-.lovpen-renderer  h4,
-.lovpen-renderer  h5,
-.lovpen-renderer  h6 {
+.zepress-renderer  h4,
+.zepress-renderer  h5,
+.zepress-renderer  h6 {
 	font-size: 1em;
 }
 
 /* 段落样式 */
-.lovpen-renderer  p {
+.zepress-renderer  p {
 	margin-left: 0;
 	margin-right: 0;
 }
 
 /* 引用块样式 */
-.lovpen-renderer  blockquote {
+.zepress-renderer  blockquote {
 	display: block;
 	padding-left: 0.8em;
 	border-left: 0.2em solid var(--blockquote-border);
@@ -145,82 +145,82 @@
 	transition: border-color 0.3s ease, color 0.3s ease;
 }
 
-.lovpen-renderer  blockquote > :first-child {
+.zepress-renderer  blockquote > :first-child {
 	margin-top: 0;
 }
 
-.lovpen-renderer  blockquote > :last-child {
+.zepress-renderer  blockquote > :last-child {
 	margin-bottom: 0;
 }
 
 /* 列表样式 */
-.lovpen-renderer  ul {
+.zepress-renderer  ul {
 	padding-left: 1.0em;
 }
 
-.lovpen-renderer  li::marker {
+.zepress-renderer  li::marker {
 	color: var(--primary-color);
 	transition: color 0.3s ease;
 }
 
-.lovpen-renderer  li > p {
+.zepress-renderer  li > p {
 	margin: 0;
 }
 
-.lovpen-renderer  ol {
+.zepress-renderer  ol {
 	padding-left: 1.0em;
 	list-style-type: decimal;
 }
 
 /* 链接样式 */
-.lovpen-renderer  a {
+.zepress-renderer  a {
 	color: var(--link-color);
 	text-decoration: none;
 	transition: color 0.3s ease;
 }
 
-.lovpen-renderer  a:hover,
-.lovpen-renderer  a:focus,
-.lovpen-renderer  a:active {
+.zepress-renderer  a:hover,
+.zepress-renderer  a:focus,
+.zepress-renderer  a:active {
 	text-decoration: underline;
 }
 
 /* 文本样式 */
-.lovpen-renderer  b,
-.lovpen-renderer  strong {
+.zepress-renderer  b,
+.zepress-renderer  strong {
 	font-weight: bold;
 	color: var(--strong-color);
 	transition: color 0.3s ease;
 }
 
-.lovpen-renderer  i,
-.lovpen-renderer  cite,
-.lovpen-renderer  em,
-.lovpen-renderer  var,
-.lovpen-renderer  address,
-.lovpen-renderer  dfn {
+.zepress-renderer  i,
+.zepress-renderer  cite,
+.zepress-renderer  em,
+.zepress-renderer  var,
+.zepress-renderer  address,
+.zepress-renderer  dfn {
 	font-style: italic;
 }
 
-.lovpen-renderer  del,
-.lovpen-renderer  s {
+.zepress-renderer  del,
+.zepress-renderer  s {
 	color: var(--text-tertiary);
 	transition: color 0.3s ease;
 }
 
 /* 代码样式 */
-.lovpen-renderer  pre,
-.lovpen-renderer  xmp,
-.lovpen-renderer  plaintext,
-.lovpen-renderer  listing,
-.lovpen-renderer  code,
-.lovpen-renderer  kbd,
-.lovpen-renderer  tt,
-.lovpen-renderer  samp {
+.zepress-renderer  pre,
+.zepress-renderer  xmp,
+.zepress-renderer  plaintext,
+.zepress-renderer  listing,
+.zepress-renderer  code,
+.zepress-renderer  kbd,
+.zepress-renderer  tt,
+.zepress-renderer  samp {
 	font-family: Menlo-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.lovpen-renderer  code {
+.zepress-renderer  code {
 	display: inline;
 	color: var(--text-primary);
 	background-color: var(--code-bg);
@@ -229,7 +229,7 @@
 	transition: all 0.3s ease;
 }
 
-.lovpen-renderer  .code-section {
+.zepress-renderer  .code-section {
 	display: flex;
 	border: solid 1px var(--border-color);
 	background-color: var(--code-bg);
@@ -238,12 +238,12 @@
 	transition: all 0.3s ease;
 }
 
-.lovpen-renderer  .code-section pre {
+.zepress-renderer  .code-section pre {
 	margin: 0;
 	overflow-x: auto;
 }
 
-.lovpen-renderer  .code-section code {
+.zepress-renderer  .code-section code {
 	display: block;
 	padding: 0.9em;
 	font-size: 0.9em;
@@ -253,7 +253,7 @@
 }
 
 /* 高亮样式 */
-.lovpen-renderer  mark {
+.zepress-renderer  mark {
 	color: var(--text-primary);
 	display: inline;
 	padding: 0.2em 0.5em;
@@ -263,7 +263,7 @@
 }
 
 /* 表格样式 */
-.lovpen-renderer  table {
+.zepress-renderer  table {
 	color: var(--text-secondary);
 	border-collapse: collapse;
 	background-color: var(--background-secondary);
@@ -275,22 +275,22 @@
 	transition: all 0.3s ease;
 }
 
-.lovpen-renderer  th,
-.lovpen-renderer  td {
+.zepress-renderer  th,
+.zepress-renderer  td {
 	padding: 0.7em 1em;
 	font-size: 0.9em;
 	border: 1px solid var(--border-color);
 	transition: border-color 0.3s ease;
 }
 
-.lovpen-renderer  th {
+.zepress-renderer  th {
 	background-color: var(--mark-bg);
 	color: var(--text-primary);
 	font-weight: bold;
 }
 
 /* 下划线样式 */
-.lovpen-renderer  u {
+.zepress-renderer  u {
 	text-decoration: none;
 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, var(--primary-color) 50%);
 	background-repeat: repeat-x;
@@ -299,19 +299,19 @@
 }
 
 /* 特定于ZePress主题的扩展样式 */
-.lovpen-renderer  .highlight {
+.zepress-renderer  .highlight {
 	color: var(--primary-color);
 	transition: color 0.3s ease;
 }
 
-.lovpen-renderer  .important {
+.zepress-renderer  .important {
 	border-left: 3px solid var(--primary-color);
 	padding-left: 1em;
 	margin: 1em 0;
 	transition: border-color 0.3s ease;
 }
 
-.lovpen-renderer  .note {
+.zepress-renderer  .note {
 	background-color: var(--mark-bg);
 	border: 1px solid var(--primary-color);
 	border-radius: 8px;
@@ -320,7 +320,7 @@
 	transition: all 0.3s ease;
 }
 
-.lovpen-renderer  .tip {
+.zepress-renderer  .tip {
 	border-left: 4px solid var(--primary-color);
 	padding-left: 16px;
 	margin: 1em 0;

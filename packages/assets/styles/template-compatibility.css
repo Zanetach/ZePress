@@ -1,12 +1,12 @@
 /* ========================================
-   LovPen 模板兼容性样式
+   ZePress 模板兼容性样式
    将旧的CSS选择器映射到新的统一结构
    ======================================== */
 
 /* === Anthropic Style 兼容性映射 === */
 
 /* 主容器映射：原有的 .rich_media_content 映射到统一容器 */
-.lovpen-unified-container[data-theme="anthropic"] {
+.zepress-unified-container[data-theme="anthropic"] {
   /* 继承所有针对 .rich_media_content 的样式 */
   background: rgb(250, 249, 245) !important;
   border-radius: 12px;
@@ -16,41 +16,41 @@
 }
 
 /* 为了完全兼容，创建别名类 */
-.lovpen-unified-container.rich_media_content,
-.lovpen-unified-container.js_underline_content,
-.lovpen-unified-container.autoTypeSetting24psection,
-.lovpen-unified-container.fix_apple_default_style {
+.zepress-unified-container.rich_media_content,
+.zepress-unified-container.js_underline_content,
+.zepress-unified-container.autoTypeSetting24psection,
+.zepress-unified-container.fix_apple_default_style {
   /* 这些类名的样式会自动应用 */
 }
 
 /* 主内容区域映射 */
-.lovpen-unified-container .lovpen-article-content {
+.zepress-unified-container .zepress-article-content {
   /* 映射原有的 .claude-main-content 样式 */
 }
 
 /* 为向后兼容，创建样式别名 */
-.lovpen-unified-container .claude-main-content {
+.zepress-unified-container .claude-main-content {
   /* 直接映射到新的内容区域 */
   all: inherit;
 }
 
 /* 元信息区域映射 */
-.lovpen-unified-container .lovpen-meta-section {
+.zepress-unified-container .zepress-meta-section {
   /* 对应原有的 .claude-meta-section */
 }
 
-.lovpen-unified-container .lovpen-meta-card {
+.zepress-unified-container .zepress-meta-card {
   /* 对应原有的 .claude-meta-card */
 }
 
 /* 个人信息区域映射 */
-.lovpen-unified-container .lovpen-personal-info {
+.zepress-unified-container .zepress-personal-info {
   /* 对应原有的 .claude-personal-info */
 }
 
 /* === Wabi-Sabi Style 兼容性映射 === */
 
-.lovpen-unified-container[data-theme="wabi-sabi"] {
+.zepress-unified-container[data-theme="wabi-sabi"] {
   /* 应用 Wabi-Sabi 的容器样式 */
   font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif CJK JP", serif;
   background: linear-gradient(145deg, #fefcf8 0%, #f7f5f1 100%);
@@ -68,7 +68,7 @@
 }
 
 /* 为向后兼容Wabi-Sabi的类名创建映射 */
-.lovpen-unified-container[data-theme="wabi-sabi"] .wabi-sabi-container {
+.zepress-unified-container[data-theme="wabi-sabi"] .wabi-sabi-container {
   /* 直接继承容器样式 */
   all: inherit;
 }
@@ -76,44 +76,44 @@
 /* === 通用兼容性规则 === */
 
 /* 确保所有文本样式能正确继承 */
-.lovpen-unified-container h1,
-.lovpen-unified-container h2,
-.lovpen-unified-container h3,
-.lovpen-unified-container h4,
-.lovpen-unified-container h5,
-.lovpen-unified-container h6 {
+.zepress-unified-container h1,
+.zepress-unified-container h2,
+.zepress-unified-container h3,
+.zepress-unified-container h4,
+.zepress-unified-container h5,
+.zepress-unified-container h6 {
   /* 继承用户自定义的标题样式 */
 }
 
-.lovpen-unified-container p {
+.zepress-unified-container p {
   /* 继承用户自定义的段落样式 */
 }
 
-.lovpen-unified-container ul,
-.lovpen-unified-container ol {
+.zepress-unified-container ul,
+.zepress-unified-container ol {
   /* 继承用户自定义的列表样式 */
 }
 
-.lovpen-unified-container blockquote {
+.zepress-unified-container blockquote {
   /* 继承用户自定义的引用样式 */
 }
 
-.lovpen-unified-container code,
-.lovpen-unified-container pre {
+.zepress-unified-container code,
+.zepress-unified-container pre {
   /* 继承用户自定义的代码样式 */
 }
 
-.lovpen-unified-container img {
+.zepress-unified-container img {
   /* 继承用户自定义的图片样式 */
 }
 
-.lovpen-unified-container table,
-.lovpen-unified-container th,
-.lovpen-unified-container td {
+.zepress-unified-container table,
+.zepress-unified-container th,
+.zepress-unified-container td {
   /* 继承用户自定义的表格样式 */
 }
 
-.lovpen-unified-container a {
+.zepress-unified-container a {
   /* 继承用户自定义的链接样式 */
 }
 
@@ -122,8 +122,8 @@
 /* 如果用户的CSS中使用了这些选择器，现在也能正常工作 */
 
 /* Anthropic 样式的具体兼容性映射 */
-.lovpen-unified-container .claude-main-content h1,
-.lovpen-unified-container[data-theme="anthropic"] h1 {
+.zepress-unified-container .claude-main-content h1,
+.zepress-unified-container[data-theme="anthropic"] h1 {
   font-size: 1.6em;
   font-weight: bold;
   margin: 4em auto 2em;
@@ -137,8 +137,8 @@
   color: white !important;
 }
 
-.lovpen-unified-container .claude-main-content h2,
-.lovpen-unified-container[data-theme="anthropic"] h2 {
+.zepress-unified-container .claude-main-content h2,
+.zepress-unified-container[data-theme="anthropic"] h2 {
   font-size: 1.3em;
   font-weight: bold;
   margin: 4em auto 2em;
@@ -152,8 +152,8 @@
   color: white !important;
 }
 
-.lovpen-unified-container .claude-main-content h3,
-.lovpen-unified-container[data-theme="anthropic"] h3 {
+.zepress-unified-container .claude-main-content h3,
+.zepress-unified-container[data-theme="anthropic"] h3 {
   border-left: 4px solid rgb(200, 100, 66);
   border-bottom: 1px dashed rgb(200, 100, 66);
   font-size: 1.2em;
@@ -165,8 +165,8 @@
   color: rgb(63, 63, 63);
 }
 
-.lovpen-unified-container .claude-main-content p,
-.lovpen-unified-container[data-theme="anthropic"] p {
+.zepress-unified-container .claude-main-content p,
+.zepress-unified-container[data-theme="anthropic"] p {
   margin: 1.5em 8px;
   text-align: justify;
   line-height: 1.75;
@@ -179,7 +179,7 @@
 }
 
 /* Wabi-Sabi 样式的具体兼容性映射 */
-.lovpen-unified-container[data-theme="wabi-sabi"] h1 {
+.zepress-unified-container[data-theme="wabi-sabi"] h1 {
   font-size: 1.8em;
   font-weight: 300;
   color: #2a2a2a;
@@ -189,7 +189,7 @@
   letter-spacing: 0.05em;
 }
 
-.lovpen-unified-container[data-theme="wabi-sabi"] h2 {
+.zepress-unified-container[data-theme="wabi-sabi"] h2 {
   font-size: 1.5em;
   font-weight: 300;
   color: #333;
@@ -199,7 +199,7 @@
   padding-left: 1em;
 }
 
-.lovpen-unified-container[data-theme="wabi-sabi"] h2::before {
+.zepress-unified-container[data-theme="wabi-sabi"] h2::before {
   content: '';
   position: absolute;
   left: 0;
@@ -213,7 +213,7 @@
   border-radius: 2px;
 }
 
-.lovpen-unified-container[data-theme="wabi-sabi"] p {
+.zepress-unified-container[data-theme="wabi-sabi"] p {
   margin-bottom: 1.8em;
   text-align: justify;
   color: #3a3a3a;
@@ -225,24 +225,24 @@
 /* === 深度兼容性支持 === */
 
 /* 支持用户可能使用的深层选择器 */
-.lovpen-unified-container .claude-main-content strong,
-.lovpen-unified-container .claude-main-content b,
-.lovpen-unified-container[data-theme="anthropic"] strong,
-.lovpen-unified-container[data-theme="anthropic"] b {
+.zepress-unified-container .claude-main-content strong,
+.zepress-unified-container .claude-main-content b,
+.zepress-unified-container[data-theme="anthropic"] strong,
+.zepress-unified-container[data-theme="anthropic"] b {
   font-weight: bold;
   color: rgb(200, 100, 66);
 }
 
-.lovpen-unified-container .claude-main-content em,
-.lovpen-unified-container .claude-main-content i,
-.lovpen-unified-container[data-theme="anthropic"] em,
-.lovpen-unified-container[data-theme="anthropic"] i {
+.zepress-unified-container .claude-main-content em,
+.zepress-unified-container .claude-main-content i,
+.zepress-unified-container[data-theme="anthropic"] em,
+.zepress-unified-container[data-theme="anthropic"] i {
   font-style: italic;
   color: rgb(200, 100, 66);
 }
 
-.lovpen-unified-container .claude-main-content blockquote,
-.lovpen-unified-container[data-theme="anthropic"] blockquote {
+.zepress-unified-container .claude-main-content blockquote,
+.zepress-unified-container[data-theme="anthropic"] blockquote {
   margin: 1.5em 8px;
   padding: 1em;
   background: rgba(200, 100, 66, 0.1);
@@ -255,7 +255,7 @@
 /* === CSS变量支持 === */
 
 /* 为主题系统提供CSS变量，便于用户自定义 */
-.lovpen-unified-container[data-theme="anthropic"] {
+.zepress-unified-container[data-theme="anthropic"] {
   --primary-color: rgb(200, 100, 66);
   --background-color: rgb(250, 249, 245);
   --text-color: rgb(34, 34, 34);
@@ -264,7 +264,7 @@
   --spacing-unit: 8px;
 }
 
-.lovpen-unified-container[data-theme="wabi-sabi"] {
+.zepress-unified-container[data-theme="wabi-sabi"] {
   --primary-color: rgba(139, 115, 85, 0.8);
   --secondary-color: rgba(90, 108, 87, 0.6);
   --background-color: linear-gradient(145deg, #fefcf8 0%, #f7f5f1 100%);
@@ -275,7 +275,7 @@
 }
 
 /* 用户可以在自己的CSS中使用这些变量 */
-.lovpen-unified-container {
+.zepress-unified-container {
   /* 示例：用户可以这样使用变量 */
   /* color: var(--text-color, #333); */
   /* background: var(--background-color, #fff); */
@@ -285,11 +285,11 @@
 
 /* 在开发模式下可以启用这些样式来调试布局 */
 /*
-.lovpen-unified-container[data-debug="true"] * {
+.zepress-unified-container[data-debug="true"] * {
   outline: 1px solid rgba(255, 0, 0, 0.2);
 }
 
-.lovpen-unified-container[data-debug="true"] *:hover {
+.zepress-unified-container[data-debug="true"] *:hover {
   background: rgba(255, 0, 0, 0.1) !important;
 }
 */
@@ -298,23 +298,23 @@
 
 @media (max-width: 768px) {
   /* 确保移动端的样式兼容性 */
-  .lovpen-unified-container {
+  .zepress-unified-container {
     padding: 0.5rem;
   }
   
-  .lovpen-unified-container .claude-main-content,
-  .lovpen-unified-container[data-theme="anthropic"] {
+  .zepress-unified-container .claude-main-content,
+  .zepress-unified-container[data-theme="anthropic"] {
     padding: 4px;
   }
   
-  .lovpen-unified-container .claude-main-content p,
-  .lovpen-unified-container .claude-main-content ul,
-  .lovpen-unified-container .claude-main-content ol,
-  .lovpen-unified-container .claude-main-content blockquote,
-  .lovpen-unified-container[data-theme="anthropic"] p,
-  .lovpen-unified-container[data-theme="anthropic"] ul,
-  .lovpen-unified-container[data-theme="anthropic"] ol,
-  .lovpen-unified-container[data-theme="anthropic"] blockquote {
+  .zepress-unified-container .claude-main-content p,
+  .zepress-unified-container .claude-main-content ul,
+  .zepress-unified-container .claude-main-content ol,
+  .zepress-unified-container .claude-main-content blockquote,
+  .zepress-unified-container[data-theme="anthropic"] p,
+  .zepress-unified-container[data-theme="anthropic"] ul,
+  .zepress-unified-container[data-theme="anthropic"] ol,
+  .zepress-unified-container[data-theme="anthropic"] blockquote {
     margin-left: 4px;
     margin-right: 4px;
   }
@@ -323,18 +323,18 @@
 /* === 打印样式兼容性 === */
 
 @media print {
-  .lovpen-unified-container {
+  .zepress-unified-container {
     background: white !important;
     color: black !important;
     font-size: 12pt;
     line-height: 1.4;
   }
   
-  .lovpen-unified-container .lovpen-top-accent {
+  .zepress-unified-container .zepress-top-accent {
     display: none;
   }
   
-  .lovpen-unified-container .lovpen-meta-card {
+  .zepress-unified-container .zepress-meta-card {
     border: 1pt solid #ccc;
     background: none;
   }

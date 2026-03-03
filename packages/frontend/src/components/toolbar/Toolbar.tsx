@@ -20,8 +20,8 @@ const ZePressLogo: React.FC<{ isUIDark: boolean }> = ({ isUIDark }) => (
 		title={APP_NAME}
 		className={`w-8 h-8 rounded-xl relative overflow-hidden flex items-center justify-center ${
 			isUIDark
-				? "bg-[#2A2B30] border border-[#3A3B40]"
-				: "bg-[#EEF0F3] border border-[#D7DCE2]"
+				? "bg-[#2A2B30] border border-[#3A3B40] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_6px_12px_rgba(0,0,0,0.35)]"
+				: "bg-[#EEF0F3] border border-[#D7DCE2] shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_6px_10px_rgba(15,23,42,0.15)]"
 		}`}
 	>
 		<div
@@ -32,13 +32,30 @@ const ZePressLogo: React.FC<{ isUIDark: boolean }> = ({ isUIDark }) => (
 			}`}
 		/>
 		<div
+			className={`absolute inset-x-1 top-1 h-2 rounded-full ${
+				isUIDark ? "bg-white/10" : "bg-white/80"
+			}`}
+		/>
+		<div
+			className={`absolute inset-x-1 bottom-1 h-2 rounded-full ${
+				isUIDark ? "bg-black/20" : "bg-slate-300/40"
+			}`}
+		/>
+		<div
+			className={`absolute right-1.5 top-1.5 w-2.5 h-2.5 rounded-sm rotate-12 ${
+				isUIDark ? "bg-[#111827]/45" : "bg-[#94A3B8]/35"
+			}`}
+		/>
+		<div
 			className={`absolute inset-y-1 left-1 w-[2px] rounded-full ${
 				isUIDark ? "bg-[#94A3B8]/60" : "bg-[#64748B]/50"
 			}`}
 		/>
 		<span
-			className={`relative z-10 text-[10px] font-semibold tracking-[0.18em] ${
-				isUIDark ? "text-[#E2E8F0]" : "text-[#334155]"
+			className={`relative z-10 text-[10px] font-semibold tracking-[0.14em] ${
+				isUIDark
+					? "text-[#E2E8F0] drop-shadow-[0_1px_0_rgba(0,0,0,0.7)]"
+					: "text-[#334155] drop-shadow-[0_1px_0_rgba(255,255,255,0.9)]"
 			}`}
 		>
 			ZP

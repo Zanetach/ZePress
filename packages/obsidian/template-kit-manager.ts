@@ -726,16 +726,61 @@ export default class TemplateKitManager
 	private getDefaultKitsCollection(): TemplateKitCollection {
 		const now = new Date().toISOString();
 		const defaultThemes = [
-			{ id: "mpp-academic", name: "学术主题" },
-			{ id: "mpp-brown", name: "悦灵雅棕" },
-			{ id: "mpp-dark", name: "深色主题" },
-			{ id: "mpp-darkgreen", name: "墨绿主题" },
-			{ id: "mpp-default", name: "默认模板" },
-			{ id: "mpp-elegant", name: "优雅主题" },
-			{ id: "mpp-minimal", name: "极简主题" },
-			{ id: "mpp-orange", name: "橙心主题" },
-			{ id: "mpp-scarlet", name: "红绯主题" },
-			{ id: "mpp-soft", name: "柔和主题" },
+			{
+				id: "mpp-academic",
+				name: "学术主题",
+				templateFileName: "Anthropic Style.html",
+			},
+			{
+				id: "mpp-brown",
+				name: "悦灵雅棕",
+				templateFileName: "Entrepreneur Journey.html",
+			},
+			{
+				id: "mpp-dark",
+				name: "深色主题",
+				templateFileName: "Entrepreneur Journey Gradient.html",
+			},
+			{
+				id: "mpp-darkgreen",
+				name: "墨绿主题",
+				templateFileName: "Entrepreneur Journey WeChat.html",
+			},
+			{
+				id: "mpp-default",
+				name: "默认模板",
+				templateFileName: "default.html",
+			},
+			{
+				id: "mpp-elegant",
+				name: "优雅主题",
+				templateFileName: "Unified.html",
+			},
+			{
+				id: "mpp-minimal",
+				name: "极简主题",
+				templateFileName: "Wabi-Sabi.html",
+			},
+			{
+				id: "mpp-orange",
+				name: "橙心主题",
+				templateFileName: "Entrepreneur Journey.html",
+			},
+			{
+				id: "mpp-scarlet",
+				name: "红绯主题",
+				templateFileName: "Entrepreneur Journey WeChat.html",
+			},
+			{
+				id: "mpp-yeban-orange",
+				name: "夜半橙橘",
+				templateFileName: "Entrepreneur Journey Gradient.html",
+			},
+			{
+				id: "mpp-yeban",
+				name: "夜半主题",
+				templateFileName: "Wabi-Sabi.html",
+			},
 		];
 
 		return {
@@ -758,7 +803,7 @@ export default class TemplateKitManager
 					enableCustomThemeColor: false,
 				},
 				templateConfig: {
-					templateFileName: "default.html",
+					templateFileName: theme.templateFileName,
 					useTemplate: true,
 				},
 				pluginConfig: {

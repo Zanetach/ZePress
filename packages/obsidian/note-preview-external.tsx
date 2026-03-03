@@ -66,7 +66,7 @@ export class NotePreviewExternal
 	private lastCSSContent: string = ""; // 缓存上次的CSS内容
 	private lastMarkdown: string = ""; // 缓存上次的Markdown内容
 	private isProcessing: boolean = false; // 避免重复处理
-	private lastProcessedMd: string = ""; // 上次完整处理的Markdown
+	private lastProcessedMd: string = ""; // 上次完整处理标识（内容+渲染配置）
 	private cachedFullCSS: string = ""; // 缓存完整的CSS用于快速更新
 	private pluginCache: Map<string, string> = new Map(); // 缓存插件处理结果
 	private debounceTimer: NodeJS.Timeout | null = null; // 防抖定时器
@@ -213,23 +213,25 @@ export class NotePreviewExternal
 	 * 异步处理插件和模板 - 优化版本
 	 */
 	private async processWithPluginsAsync(md: string): Promise<void> {
+		const renderSignature = this.getRenderCacheSignature();
+		const processKey = `${renderSignature}::${md}`;
+
 		// 如果这个Markdown已经完整处理过，跳过
-		if (md === this.lastProcessedMd) {
+		if (processKey === this.lastProcessedMd) {
 			return;
 		}
 
 		try {
 			const startTime = performance.now();
 
-			// 生成缓存键（基于内容的哈希）
-			// 注意：当插件设置改变时，缓存会被清除，所以这里只需要基于内容
-			const cacheKey = md;
+			// 缓存键包含渲染配置，避免模板/主题切换后命中旧内容
+			const cacheKey = processKey;
 
 			// 检查缓存
 			const cached = this.pluginCache.get(cacheKey);
 			if (cached) {
 				this.articleHTML = cached;
-				this.lastProcessedMd = md;
+				this.lastProcessedMd = processKey;
 
 				// 使用缓存结果更新DOM
 				const domUpdater = (window as any).__zepressDOMUpdater;
@@ -268,7 +270,7 @@ export class NotePreviewExternal
 			this.pluginCache.set(cacheKey, articleHTML);
 
 			this.articleHTML = articleHTML;
-			this.lastProcessedMd = md; // 标记已处理
+			this.lastProcessedMd = processKey; // 标记已处理
 
 			const endTime = performance.now();
 			logger.debug(
@@ -283,6 +285,18 @@ export class NotePreviewExternal
 		} catch (error) {
 			logger.error("处理内容时出错:", error);
 		}
+	}
+
+	private getRenderCacheSignature(): string {
+		return JSON.stringify({
+			defaultStyle: this.settings.defaultStyle,
+			defaultHighlight: this.settings.defaultHighlight,
+			useTemplate: this.settings.useTemplate,
+			defaultTemplate: this.settings.defaultTemplate,
+			enableThemeColor: this.settings.enableThemeColor,
+			themeColor: this.settings.themeColor,
+			useCustomCss: this.settings.useCustomCss,
+		});
 	}
 
 	async renderMarkdown() {
@@ -3112,17 +3126,21 @@ ${customCSS}`;
 	 */
 	private async handleKitApply(kitId: string): Promise<void> {
 		logger.debug(`[handleKitApply] 应用模板套装: ${kitId}`);
-		const result = await this.reactAPIService.applyTemplateKit(
-			kitId,
-			() => this.renderMarkdown(),
-			() => this.updateExternalReactComponent(),
-		);
+		const result = await this.reactAPIService.applyTemplateKit(kitId);
 		if (!result.success) {
 			return;
 		}
 
+		// 套装通过 TemplateKitManager 更新主插件设置，这里强制同步当前视图实例。
+		const plugin = (this.app as any).plugins?.plugins?.["zepress"];
+		if (plugin?.settings) {
+			this.settings = plugin.settings;
+		}
+
 		// 套装切换后强制清理缓存，确保内容区和样式区都立即刷新。
 		this.pluginCache.clear();
+		this.lastProcessedMd = "";
+		this.lastMarkdown = "";
 		this.cachedProps = null;
 		this.lastArticleHTML = "";
 		this.lastCSSContent = "";

@@ -59,8 +59,6 @@ export class ReactAPIService {
 	 */
 	async applyTemplateKit(
 		kitId: string,
-		onRenderMarkdown?: () => Promise<void>,
-		onUpdateReactComponent?: () => Promise<void>
 	): Promise<TemplateKitOperationResult> {
 		try {
 			const templateManager = TemplateManager.getInstance();
@@ -74,15 +72,6 @@ export class ReactAPIService {
 
 			if (result.success) {
 				logger.debug(`Template kit ${kitId} applied successfully`);
-
-				// 执行回调函数
-				if (onRenderMarkdown) {
-					await onRenderMarkdown();
-				}
-				if (onUpdateReactComponent) {
-					await onUpdateReactComponent();
-				}
-
 				new Notice(`模板套装应用成功！`);
 			} else {
 				logger.error('Failed to apply template kit:', result.error);

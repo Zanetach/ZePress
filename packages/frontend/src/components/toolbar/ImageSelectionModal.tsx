@@ -287,10 +287,10 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 												emptyMessage="存储库中没有图片"
 											/>
 										) : (
-											<div className="text-center py-8 text-gray-500">
+											<div className="text-center py-8 text-muted-foreground">
 												<Palette className="h-12 w-12 mx-auto mb-3 opacity-50"/>
 												<p className="text-sm">存储库中没有图片</p>
-												<p className="text-xs mt-1 text-gray-400">请先在"存储库"中上传图片</p>
+												<p className="text-xs mt-1 text-muted-foreground/70">请先在"存储库"中上传图片</p>
 											</div>
 										)}
 									</div>
@@ -300,7 +300,7 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 									<div className="space-y-4">
 										{/* 未配置当前 AI 平台时的提示 */}
 										{!isAIGenerationAvailable && (
-											<div className="border border-amber-200 rounded-lg p-4 bg-amber-50">
+											<div className="rounded-lg border border-amber-300/70 bg-amber-100/40 p-4">
 												<div className="flex items-start gap-3">
 													<Sparkles className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0"/>
 													<div className="flex-1">
@@ -326,36 +326,36 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 										)}
 
 										{/* AI 生成控制 */}
-										<div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+										<div className="rounded-lg border border-border bg-card p-4">
 											<div className="space-y-4">
 												{isAIGenerationAvailable && (
-													<div className="flex items-center gap-2 text-xs text-green-600 bg-green-50 px-3 py-2 rounded-lg">
+													<div className="flex items-center gap-2 rounded-lg border border-primary/25 bg-primary/10 px-3 py-2 text-xs text-primary">
 														<Sparkles className="h-3.5 w-3.5"/>
 														<span>{currentProvider === 'zenmux' ? '使用 ZenMux 生成' : `当前平台：${providerDisplayName}`}</span>
 													</div>
 												)}
 
 												<div>
-													<label className="block text-sm font-medium text-gray-700 mb-2">
+													<label className="mb-2 block text-sm font-medium text-foreground">
 														描述你想要的封面
 													</label>
 													<textarea
 														value={aiPrompt}
 														onChange={(e) => setAiPrompt(e.target.value)}
 														placeholder="例如：一个现代简约的技术博客封面，蓝色主色调..."
-														className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24 resize-none text-sm"
+														className="h-24 w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
 													/>
 												</div>
 
 												<div className="grid grid-cols-2 gap-4">
 													<div>
-														<label className="block text-sm font-medium text-gray-700 mb-2">
+														<label className="mb-2 block text-sm font-medium text-foreground">
 															风格选择
 														</label>
 														<select
 															value={aiStyle}
 															onChange={(e) => setAiStyle(e.target.value)}
-															className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+															className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
 														>
 															<option value="realistic">写实风格</option>
 															<option value="illustration">插画风格</option>
@@ -369,10 +369,10 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 														<button
 															onClick={generateAIImage}
 															disabled={generationStatus.isGenerating || !aiPrompt.trim()}
-															className={`w-full px-4 py-2 text-white rounded-lg transition-colors text-sm ${
+															className={`w-full rounded-lg px-4 py-2 text-sm text-primary-foreground transition-colors ${
 																isAIGenerationAvailable
-																	? 'bg-[#CC785C] hover:bg-[#B86A4E] disabled:bg-gray-400'
-																	: 'bg-gray-400'
+																	? 'bg-primary hover:bg-primary/90 disabled:bg-muted-foreground'
+																	: 'bg-muted-foreground'
 															} disabled:cursor-not-allowed`}
 														>
 															{generationStatus.isGenerating ? '生成中...' : 'AI 生成'}
@@ -382,13 +382,13 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 
 												{generationStatus.isGenerating && (
 													<div className="space-y-2">
-														<div className="w-full bg-gray-200 rounded-full h-2">
+														<div className="h-2 w-full rounded-full bg-muted">
 															<div
-																className={`h-2 rounded-full transition-all duration-300 ${isAIGenerationAvailable ? 'bg-[#CC785C]' : 'bg-gray-400'}`}
+																className={`h-2 rounded-full transition-all duration-300 ${isAIGenerationAvailable ? 'bg-primary' : 'bg-muted-foreground'}`}
 																style={{width: `${generationStatus.progress}%`}}
 															/>
 														</div>
-														<p className="text-sm text-gray-600 text-center">{generationStatus.message}</p>
+														<p className="text-center text-sm text-muted-foreground">{generationStatus.message}</p>
 													</div>
 												)}
 
@@ -403,7 +403,7 @@ export const ImageSelectionModal: React.FC<ImageSelectionModalProps> = ({
 										{/* AI 生成的图片 */}
 										{generatedImages.length > 0 && (
 											<div>
-												<h4 className="text-sm font-medium text-gray-700 mb-3">AI生成的图片</h4>
+												<h4 className="mb-3 text-sm font-medium text-foreground">AI生成的图片</h4>
 												<ImageGrid
 													images={generatedImages}
 													selectedImage={selectedImageUrl}

@@ -43,6 +43,8 @@ import {
 } from "./types/react-api-types";
 import { TemplateKitBasicInfo } from "./template-kit-types";
 
+declare const __ZEPRESS_EMBEDDED_REACT_IIFE__: string;
+
 export class NotePreviewExternal
 	extends ItemView
 	implements MDRendererCallback
@@ -1491,7 +1493,21 @@ ${customCSS}`;
 			const pluginDir = resolvePluginDir(this.app);
 			const scriptPath = `${pluginDir}/frontend/zepress-react.iife.js`;
 
-			const scriptContent = await adapter.read(scriptPath);
+			let scriptContent = "";
+			try {
+				scriptContent = await adapter.read(scriptPath);
+			} catch (fileError) {
+				logger.warn(
+					`读取外部 React 脚本失败，尝试使用内嵌回退: ${scriptPath}`,
+					fileError?.message || fileError,
+				);
+				scriptContent = __ZEPRESS_EMBEDDED_REACT_IIFE__ || "";
+			}
+			if (!scriptContent || !scriptContent.trim()) {
+				throw new Error(
+					"未找到可用的 React bundle（frontend 文件缺失且无内嵌回退）",
+				);
+			}
 
 			// 创建script标签并执行
 			const script = document.createElement("script");
@@ -1623,9 +1639,15 @@ ${customCSS}`;
 				return;
 			}
 
-			const cssPath = `${pluginDir}/frontend/style.css`;
 			const adapter = this.app.vault.adapter;
-			const cssContent = await adapter.read(cssPath);
+			let cssPath = `${pluginDir}/frontend/style.css`;
+			let cssContent = "";
+			try {
+				cssContent = await adapter.read(cssPath);
+			} catch {
+				cssPath = `${pluginDir}/styles.css`;
+				cssContent = await adapter.read(cssPath);
+			}
 
 			// 🔑 将 CSS 注入到 Shadow Root 内，而不是 document.head
 			// 检查是否已经有这个CSS
@@ -1659,9 +1681,15 @@ ${customCSS}`;
 				return;
 			}
 
-			const cssPath = `${pluginDir}/frontend/style.css`;
 			const adapter = this.app.vault.adapter;
-			const cssContent = await adapter.read(cssPath);
+			let cssPath = `${pluginDir}/frontend/style.css`;
+			let cssContent = "";
+			try {
+				cssContent = await adapter.read(cssPath);
+			} catch {
+				cssPath = `${pluginDir}/styles.css`;
+				cssContent = await adapter.read(cssPath);
+			}
 
 			// 检查是否已经有这个CSS
 			const existingStyle = document.head.querySelector(

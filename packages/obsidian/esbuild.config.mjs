@@ -2,7 +2,7 @@ import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
 import { copy } from "esbuild-plugin-copy";
-import { existsSync, mkdirSync, watch, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, watch, writeFileSync } from "fs";
 import path from "path";
 import { execSync } from "child_process";
 
@@ -13,6 +13,15 @@ if you want to view the source, please visit the github repository of this plugi
 `;
 
 const prod = process.env.NODE_ENV === "production";
+const frontendIifePath = path.resolve("../frontend/dist/zepress-react.iife.js");
+const embeddedReactIife = existsSync(frontendIifePath)
+	? readFileSync(frontendIifePath, "utf8")
+	: "";
+if (!embeddedReactIife) {
+	console.warn(
+		"[ZePress] frontend bundle not found at ../frontend/dist/zepress-react.iife.js; embedded fallback disabled",
+	);
+}
 const obsidianVaultPath = process.env.OBSIDIAN_VAULT_PATH;
 const obsidianPluginPath = obsidianVaultPath
 	? path.join(obsidianVaultPath, ".obsidian", "plugins", "zepress")
@@ -90,6 +99,9 @@ const context = await esbuild.context({
 	],
 	format: "cjs",
 	target: "es2018",
+	define: {
+		__ZEPRESS_EMBEDDED_REACT_IIFE__: JSON.stringify(embeddedReactIife),
+	},
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,

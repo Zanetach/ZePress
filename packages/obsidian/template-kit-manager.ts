@@ -589,6 +589,16 @@ export default class TemplateKitManager
 			);
 			const content = await this.app.vault.adapter.read(kitsFile);
 			this.kitsCollection = JSON.parse(content);
+			if (!Array.isArray(this.kitsCollection.kits)) {
+				this.kitsCollection.kits = [];
+			}
+			if (this.kitsCollection.kits.length === 0) {
+				logger.warn(
+					"[TemplateKitManager] Loaded kits file is empty, restoring built-in defaults",
+				);
+				this.kitsCollection = this.getDefaultKitsCollection();
+				await this.saveKits();
+			}
 			logger.info(
 				`[TemplateKitManager] Loaded ${this.kitsCollection.kits.length} kits`,
 			);

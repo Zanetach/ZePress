@@ -18,10 +18,17 @@ It helps you format content, run AI-assisted operations, generate images, previe
 
 ### From GitHub Release
 
-1. 从 [Releases](https://github.com/Zanetach/ZePress/releases) 页面下载最新的 `main.js`、`manifest.json`
+> ZePress 运行时不仅需要 `main.js` 和 `manifest.json`，还需要 `assets/` 与 `frontend/` 目录。
+> 请使用完整插件包安装，不要只复制两个文件。
+
+1. 从 [Releases](https://github.com/Zanetach/ZePress/releases) 页面下载最新的 `zepress.zip`
 2. 在你的 Obsidian vault 目录下创建 `.obsidian/plugins/zepress/` 文件夹
-3. 将下载的文件复制到该文件夹
+3. 解压 `zepress.zip`，将其中全部文件复制到 `.obsidian/plugins/zepress/`（目录下应包含 `main.js`、`manifest.json`、`assets/`、`frontend/`）
 4. 重启 Obsidian，在设置 → 社区插件中启用 "ZePress"
+
+#### Migration（旧插件目录迁移）
+
+如果你之前使用的是旧目录 `.obsidian/plugins/ze-publisher/`，请迁移到 `.obsidian/plugins/zepress/`，避免新旧插件 ID 混用导致资源路径异常。
 
 ### From Source（从源码构建）
 
@@ -38,7 +45,7 @@ pnpm install
 # 3. 构建插件
 pnpm build
 
-# 4. 将构建产物复制到 Obsidian 插件目录
+# 4. 将完整构建产物复制到 Obsidian 插件目录
 # macOS/Linux:
 mkdir -p /path/to/your/vault/.obsidian/plugins/zepress
 cp -r packages/obsidian/dist/* /path/to/your/vault/.obsidian/plugins/zepress/

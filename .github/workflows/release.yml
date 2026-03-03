@@ -78,12 +78,12 @@ jobs:
       - name: Prepare release files
         run: |
           # 创建完整插件包，直接复制 dist 目录内容
-          mkdir -p obsidian-zepublish
-          cp -r packages/obsidian/dist/* obsidian-zepublish/
+          mkdir -p zepress
+          cp -r packages/obsidian/dist/* zepress/
 
           # 创建压缩包（固定文件名，便于 curl 安装）
           mkdir -p release-files
-          zip -r release-files/obsidian-zepublish.zip obsidian-zepublish/
+          zip -r release-files/zepress.zip zepress/
 
       - name: Generate changelog
         id: changelog
@@ -114,12 +114,12 @@ jobs:
             ## 安装方法
 
             ### 方法一：一键安装（推荐）
-            1. 下载 `obsidian-zepublish.zip` 完整插件包
-            2. 解压到你的 Obsidian 仓库的 `.obsidian/plugins/` 目录下
+            1. 下载 `zepress.zip` 完整插件包
+            2. 解压到你的 Obsidian 仓库的 `.obsidian/plugins/zepress/` 目录下
             3. 在 Obsidian 设置中启用 Ze Publisher 插件
             
             ### 方法二：BRAT 插件安装
-            在 BRAT 插件中添加仓库地址：`markshawn2020/zepublish`
+            在 BRAT 插件中添加仓库地址：`Zanetach/ZePress`
             
             ## 主要特性
             - 🚀 一键将 Obsidian 笔记发布到微信公众号、知乎、小红书、Twitter
@@ -128,7 +128,7 @@ jobs:
             - 🔗 智能链接处理，针对微信公众号优化
             - 📝 模板系统，自定义内容渲染
           files: |
-            release-files/obsidian-zepublish.zip
+            release-files/zepress.zip
           draft: false
           prerelease: false
         env:

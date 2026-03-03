@@ -23,7 +23,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Anthropic Style.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -53,7 +53,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Entrepreneur Journey.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -83,7 +83,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Entrepreneur Journey Gradient.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -113,7 +113,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Entrepreneur Journey WeChat.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -173,7 +173,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Unified.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -203,7 +203,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Wabi-Sabi.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -233,7 +233,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Entrepreneur Journey.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -263,7 +263,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Entrepreneur Journey WeChat.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -293,7 +293,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Entrepreneur Journey Gradient.html",
         "useTemplate": true
       },
       "pluginConfig": {
@@ -323,7 +323,7 @@
         "enableCustomThemeColor": false
       },
       "templateConfig": {
-        "templateFileName": "default.html",
+        "templateFileName": "Wabi-Sabi.html",
         "useTemplate": true
       },
       "pluginConfig": {

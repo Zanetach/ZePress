@@ -28,8 +28,8 @@ export class ReactAPIService {
 	 */
 	async loadTemplateKits(): Promise<TemplateKit[]> {
 		try {
-			const templateManager = TemplateManager.getInstance();
-			const kits = await templateManager.getAvailableKits();
+			const kitManager = TemplateKitManager.getInstance();
+			const kits = await kitManager.getAllKits();
 			logger.debug(`Loaded ${kits.length} template kits`);
 			return kits;
 		} catch (error) {

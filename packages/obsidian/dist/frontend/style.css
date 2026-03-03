@@ -2191,6 +2191,10 @@
     border-color: #4b5563;
   }
 
+  .border-\[\#34363D\] {
+    border-color: #34363d;
+  }
+
   .border-\[\#334155\] {
     border-color: #334155;
   }
@@ -2375,8 +2379,20 @@
     background-color: oklab(64.8292% -.0586725 .0693795 / .2);
   }
 
+  .bg-\[\#26282D\] {
+    background-color: #26282d;
+  }
+
+  .bg-\[\#34363D\] {
+    background-color: #34363d;
+  }
+
   .bg-\[\#64748B\] {
     background-color: #64748b;
+  }
+
+  .bg-\[\#111827\] {
+    background-color: #111827;
   }
 
   .bg-\[\#222327\] {
@@ -2385,6 +2401,10 @@
 
   .bg-\[\#334155\] {
     background-color: #334155;
+  }
+
+  .bg-\[\#374151\] {
+    background-color: #374151;
   }
 
   .bg-\[\#B85450\] {
@@ -2719,16 +2739,6 @@
     background-color: var(--color-white);
   }
 
-  .bg-white\/20 {
-    background-color: #fff3;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-white\/20 {
-      background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
-    }
-  }
-
   .bg-white\/25 {
     background-color: #ffffff40;
   }
@@ -2804,11 +2814,6 @@
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
-  .from-blue-600 {
-    --tw-gradient-from: var(--color-blue-600);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-
   .to-\[\#4A7A70\] {
     --tw-gradient-to: #4a7a70;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -2851,11 +2856,6 @@
 
   .to-purple-50 {
     --tw-gradient-to: var(--color-purple-50);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-
-  .to-purple-600 {
-    --tw-gradient-to: var(--color-purple-600);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
 
@@ -3350,10 +3350,6 @@
 
   .text-amber-900 {
     color: var(--color-amber-900);
-  }
-
-  .text-blue-100 {
-    color: var(--color-blue-100);
   }
 
   .text-blue-500 {
@@ -4271,8 +4267,20 @@
       background-color: #1e293b;
     }
 
+    .hover\:bg-\[\#1F2937\]:hover {
+      background-color: #1f2937;
+    }
+
     .hover\:bg-\[\#2A2B30\]:hover {
       background-color: #2a2b30;
+    }
+
+    .hover\:bg-\[\#4B5563\]:hover {
+      background-color: #4b5563;
+    }
+
+    .hover\:bg-\[\#34363D\]:hover {
+      background-color: #34363d;
     }
 
     .hover\:bg-\[\#374151\]:hover {
@@ -4411,16 +4419,6 @@
       background-color: var(--sidebar-accent);
     }
 
-    .hover\:bg-white\/20:hover {
-      background-color: #fff3;
-    }
-
-    @supports (color: color-mix(in lab, red, red)) {
-      .hover\:bg-white\/20:hover {
-        background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
-      }
-    }
-
     .hover\:bg-white\/50:hover {
       background-color: #ffffff80;
     }
@@ -4429,16 +4427,6 @@
       .hover\:bg-white\/50:hover {
         background-color: color-mix(in oklab, var(--color-white) 50%, transparent);
       }
-    }
-
-    .hover\:from-blue-700:hover {
-      --tw-gradient-from: var(--color-blue-700);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-
-    .hover\:to-purple-700:hover {
-      --tw-gradient-to: var(--color-purple-700);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
 
     .hover\:text-\[\#0F172A\]:hover {

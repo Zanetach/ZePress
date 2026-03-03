@@ -4,6 +4,21 @@ import {ViteReactSettings} from '../../types';
 import {AI_STYLES, AIStyle} from './ai-analysis-split-button';
 import {Code, Copy, FileText, Sparkles, Wand2, X} from 'lucide-react';
 
+const getStorageScope = (): string => {
+	try {
+		const app = (window as any)?.app || (window as any)?.parent?.app || (window as any)?.top?.app;
+		const vaultName = app?.vault?.getName?.() || app?.vault?.name || 'default-vault';
+		const vaultPath = app?.vault?.adapter?.basePath || app?.vault?.adapter?.path || '';
+		const raw = `${vaultName}|${vaultPath}`.toLowerCase();
+		return raw.replace(/[^a-z0-9|_-]/g, '_');
+	} catch {
+		return 'default-vault';
+	}
+};
+
+const getCustomPromptTabStorageKey = (): string =>
+	`zepress-custom-prompt-active-tab::${getStorageScope()}`;
+
 interface CustomPromptModalProps {
 	isOpen: boolean;
 	onClose: () => void;
@@ -23,9 +38,10 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 																	}) => {
 	const [customPrompt, setCustomPrompt] = useState<string>(settings.aiPromptTemplate || '');
 	const [selectedTemplate, setSelectedTemplate] = useState<string>('');
+	const [isHostDarkMode, setIsHostDarkMode] = useState(false);
 	const [activeTab, setActiveTab] = useState<'templates' | 'editor' | 'variables'>(() => {
 		try {
-			const saved = localStorage.getItem('zepress-custom-prompt-active-tab') as 'templates' | 'editor' | 'variables';
+			const saved = localStorage.getItem(getCustomPromptTabStorageKey()) as 'templates' | 'editor' | 'variables';
 			return saved || 'templates';
 		} catch {
 			return 'templates';
@@ -37,6 +53,21 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 			setCustomPrompt(settings.aiPromptTemplate || '');
 		}
 	}, [isOpen, settings.aiPromptTemplate]);
+
+	useEffect(() => {
+		const detect = () =>
+			document.body.classList.contains('theme-dark') ||
+			document.documentElement.classList.contains('theme-dark');
+		const update = () => setIsHostDarkMode(detect());
+		update();
+		const observer = new MutationObserver(update);
+		observer.observe(document.body, {attributes: true, attributeFilter: ['class']});
+		observer.observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
+		return () => observer.disconnect();
+	}, []);
+
+	const uiThemeMode = settings.uiThemeMode ?? 'auto';
+	const isUIDark = uiThemeMode === 'dark' || (uiThemeMode === 'auto' && isHostDarkMode);
 
 	if (!isOpen) return null;
 
@@ -51,7 +82,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 		setActiveTab('editor');
 		// 持久化保存选中的tab
 		try {
-			localStorage.setItem('zepress-custom-prompt-active-tab', 'editor');
+			localStorage.setItem(getCustomPromptTabStorageKey(), 'editor');
 		} catch (error) {
 			console.warn('Failed to save custom prompt tab to localStorage:', error);
 		}
@@ -113,22 +144,28 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 
 			{/* 模态框内容 */}
 			<div className="relative z-10 w-full max-w-6xl mx-4 max-h-[95vh] overflow-hidden">
-				<div className="bg-white rounded-2xl shadow-2xl">
+				<div className={`rounded-2xl shadow-2xl ${isUIDark ? 'bg-[#1F2023]' : 'bg-white'}`}>
 					{/* 头部 */}
-					<div className="relative bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-6 text-white">
+					<div
+						className={`relative px-6 py-6 border-b ${
+							isUIDark
+								? 'bg-[#26282D] text-slate-100 border-[#34363D]'
+								: 'bg-[#F8FAFC] text-[#111827] border-[#E5E7EB]'
+						}`}
+					>
 						<div className="flex items-center justify-between">
 							<div className="flex items-center gap-3">
-								<div className="p-2 bg-white/20 rounded-lg">
+								<div className={`p-2 rounded-lg ${isUIDark ? 'bg-[#34363D]' : 'bg-[#E5E7EB]'}`}>
 									<Wand2 className="h-6 w-6"/>
 								</div>
 								<div>
 									<h2 className="text-2xl font-bold">AI 分析模板编辑器</h2>
-									<p className="text-blue-100 mt-1">自定义您的智能分析提示词</p>
+									<p className={`mt-1 ${isUIDark ? 'text-slate-400' : 'text-[#6B7280]'}`}>自定义您的智能分析提示词</p>
 								</div>
 							</div>
 							<button
 								onClick={onClose}
-								className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+								className={`p-2 rounded-lg transition-colors ${isUIDark ? 'hover:bg-[#34363D]' : 'hover:bg-[#E5E7EB]'}`}
 							>
 								<X className="h-6 w-6"/>
 							</button>
@@ -148,15 +185,19 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 										setActiveTab(tabKey);
 										// 持久化保存选中的tab
 										try {
-											localStorage.setItem('zepress-custom-prompt-active-tab', tabKey);
+											localStorage.setItem(getCustomPromptTabStorageKey(), tabKey);
 										} catch (error) {
 											console.warn('Failed to save custom prompt tab to localStorage:', error);
 										}
 									}}
 									className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
 										activeTab === key
-											? 'bg-white text-blue-600 shadow-lg'
-											: 'text-blue-100 hover:bg-white/20'
+											? isUIDark
+												? 'bg-[#111827] text-white shadow-lg'
+												: 'bg-white text-[#111827] shadow'
+											: isUIDark
+												? 'text-slate-300 hover:bg-[#34363D]'
+												: 'text-[#6B7280] hover:bg-[#E5E7EB]'
 									}`}
 								>
 									<Icon className="h-4 w-4"/>
@@ -167,7 +208,7 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 					</div>
 
 					{/* 内容区域 */}
-					<div className="p-6 max-h-[60vh] overflow-y-auto">
+					<div className={`p-6 max-h-[60vh] overflow-y-auto ${isUIDark ? 'bg-[#1F2023] text-slate-100' : 'bg-white text-[#111827]'}`}>
 						{/* 模板库标签页 */}
 						{activeTab === 'templates' && (
 							<div className="space-y-6">
@@ -385,7 +426,9 @@ export const CustomPromptModal: React.FC<CustomPromptModalProps> = ({
 								<Button
 									onClick={handlePreviewAndAnalyze}
 									disabled={!customPrompt.trim()}
-									className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg"
+									className={isUIDark
+										? 'bg-[#374151] hover:bg-[#4B5563] text-white shadow-lg'
+										: 'bg-[#111827] hover:bg-[#1F2937] text-white shadow-lg'}
 								>
 									<Wand2 className="h-4 w-4 mr-2"/>
 									保存并分析

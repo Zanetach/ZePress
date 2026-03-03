@@ -14,7 +14,17 @@ import {logger} from "../../../../shared/src/logger";
 import {FileText, Package, Plug, Zap, User, Bot, Globe, Image, Palette, Cloud, Eye, EyeOff, AlertCircle, ChevronDown, CheckCircle2, XCircle, Loader2, Upload, Trash2, Copy, ExternalLink, ImagePlus, Heading1, PanelLeftClose} from "lucide-react";
 
 const APP_NAME = "ZePress";
-const LOGO_TEXT = "ZP";
+
+const ZePressLogo = () => (
+	<div
+		title={APP_NAME}
+		className="w-8 h-8 rounded-xl relative overflow-hidden bg-gradient-to-br from-[#6E5BFF] via-[#7A73FF] to-[#44D8FF]"
+	>
+		<div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_rgba(255,255,255,0))]" />
+		<div className="absolute inset-y-0 right-0 w-4 bg-white/20 transform rotate-6 -translate-x-1" />
+		<span className="relative z-10 text-[11px] font-semibold tracking-[0.4em] text-white">ZP</span>
+	</div>
+);
 
 // 七牛云区域配置
 const QINIU_REGIONS: Array<{
@@ -1037,25 +1047,10 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 					style={{ width: 56 }}
 				>
 					{/* 顶部品牌区域 */}
-					<div
-						className={`h-12 border-b flex items-center justify-center ${
-							isUIDark ? 'border-[#3A3B40]' : 'border-[#E5E7EB]'
-						}`}
-					>
-						<div
-							title={APP_NAME}
-							className={`w-8 h-8 rounded-lg flex items-center justify-center text-[11px] font-semibold tracking-wide ${
-								isUIDark ? 'text-[#E5E7EB]' : 'text-[#374151]'
-							}`}
-						>
-							{LOGO_TEXT}
-						</div>
+					<div className="h-12 flex items-center justify-center">
+						<ZePressLogo />
 					</div>
-					<div
-						className={`h-10 border-b flex items-center justify-center ${
-							isUIDark ? 'border-[#3A3B40]' : 'border-[#E5E7EB]'
-						}`}
-					>
+					<div className="h-10 flex items-center justify-center">
 						<button
 							onClick={() => onToggleToolbar?.()}
 							title={isContentCollapsed ? "展开配置栏" : "收起配置栏"}

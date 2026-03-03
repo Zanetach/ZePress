@@ -81,8 +81,14 @@ jobs:
           mkdir -p zepress
           cp -r packages/obsidian/dist/* zepress/
 
-          # 创建压缩包（固定文件名，便于 curl 安装）
+          # 准备 Obsidian/BRAT 需要的标准发布文件
+          # 说明：BRAT 会从 release 直接读取 manifest.json / main.js / styles.css
           mkdir -p release-files
+          cp packages/obsidian/dist/main.js release-files/main.js
+          cp packages/obsidian/dist/manifest.json release-files/manifest.json
+          cp packages/obsidian/dist/frontend/style.css release-files/styles.css
+
+          # 同时提供完整压缩包，便于手动安装（包含 assets/frontend 等目录）
           zip -r release-files/zepress.zip zepress/
 
       - name: Generate changelog
@@ -128,6 +134,9 @@ jobs:
             - 🔗 智能链接处理，针对微信公众号优化
             - 📝 模板系统，自定义内容渲染
           files: |
+            release-files/main.js
+            release-files/manifest.json
+            release-files/styles.css
             release-files/zepress.zip
           draft: false
           prerelease: false

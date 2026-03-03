@@ -27,6 +27,51 @@ export default class TemplateManager {
 	private app: App;
 	private templates: Map<string, Template> = new Map();
 	private templateDir: string;
+	private readonly builtinTemplates: Record<string, string> = {
+		default: `<div class="zepress">{{{content}}}</div>`,
+		"Unified": `<section style="max-width:760px;margin:0 auto;padding:28px 22px;border:1px solid #e5e7eb;border-radius:16px;background:#ffffff;box-shadow:0 8px 24px rgba(15,23,42,0.08);">
+  <header style="margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #e5e7eb;">
+    <h1 style="margin:0;font-size:30px;line-height:1.35;color:#0f172a;">{{#if articleTitle}}{{articleTitle}}{{else}}{{title}}{{/if}}</h1>
+    {{#if articleSubtitle}}<p style="margin:8px 0 0;color:#475569;font-size:15px;">{{articleSubtitle}}</p>{{/if}}
+    <p style="margin:10px 0 0;color:#64748b;font-size:13px;">{{author}} {{#if publishDate}}· {{publishDate}}{{/if}}</p>
+  </header>
+  <main>{{{content}}}</main>
+</section>`,
+		"Wabi-Sabi": `<section style="max-width:760px;margin:0 auto;padding:30px 24px;background:#f8f5ee;border:1px solid #e6dfd2;border-radius:18px;">
+  <header style="margin-bottom:18px;">
+    <h1 style="margin:0;font-size:28px;color:#3f3a2f;font-weight:600;letter-spacing:0.02em;">{{#if articleTitle}}{{articleTitle}}{{else}}{{title}}{{/if}}</h1>
+    {{#if articleSubtitle}}<p style="margin:10px 0 0;color:#6b6254;">{{articleSubtitle}}</p>{{/if}}
+  </header>
+  <main style="color:#3f3a2f;line-height:1.9;">{{{content}}}</main>
+</section>`,
+		"Entrepreneur Journey": `<section style="max-width:760px;margin:0 auto;padding:26px 20px;background:#ffffff;border:1px solid #fec7aa;border-radius:16px;">
+  <header style="margin-bottom:16px;">
+    <h1 style="margin:0;color:#9a3412;font-size:30px;">{{#if articleTitle}}{{articleTitle}}{{else}}{{title}}{{/if}}</h1>
+    <p style="margin:8px 0 0;color:#c2410c;">{{author}} {{#if publishDate}}· {{publishDate}}{{/if}}</p>
+  </header>
+  <main>{{{content}}}</main>
+</section>`,
+		"Entrepreneur Journey WeChat": `<section style="max-width:760px;margin:0 auto;padding:24px 18px;background:#fff7ed;border-left:4px solid #f97316;">
+  <header style="margin-bottom:14px;">
+    <h1 style="margin:0;color:#9a3412;font-size:28px;">{{#if articleTitle}}{{articleTitle}}{{else}}{{title}}{{/if}}</h1>
+  </header>
+  <main>{{{content}}}</main>
+</section>`,
+		"Entrepreneur Journey Gradient": `<section style="max-width:760px;margin:0 auto;padding:26px 20px;border-radius:18px;background:linear-gradient(160deg,#fff7ed 0%,#ffffff 70%);border:1px solid #fed7aa;">
+  <header style="margin-bottom:16px;">
+    <h1 style="margin:0;color:#7c2d12;font-size:29px;">{{#if articleTitle}}{{articleTitle}}{{else}}{{title}}{{/if}}</h1>
+    {{#if articleSubtitle}}<p style="margin:8px 0 0;color:#9a3412;">{{articleSubtitle}}</p>{{/if}}
+  </header>
+  <main>{{{content}}}</main>
+</section>`,
+		"Anthropic Style": `<section style="max-width:760px;margin:0 auto;padding:28px 24px;background:#fafaf9;border:1px solid #d6d3d1;border-radius:16px;">
+  <header style="margin-bottom:16px;">
+    <h1 style="margin:0;color:#1c1917;font-size:30px;line-height:1.35;">{{#if articleTitle}}{{articleTitle}}{{else}}{{title}}{{/if}}</h1>
+    <p style="margin:10px 0 0;color:#57534e;font-size:14px;">{{author}} {{#if publishDate}}· {{publishDate}}{{/if}}</p>
+  </header>
+  <main style="color:#292524;">{{{content}}}</main>
+</section>`,
+	};
 
 	private constructor() {}
 
@@ -83,6 +128,13 @@ export default class TemplateManager {
 				}
 			}
 
+			if (this.templates.size === 0) {
+				this.loadBuiltinTemplates();
+				logger.warn(
+					"[TemplateManager] No template files found, using built-in templates fallback",
+				);
+			}
+
 			logger.info(
 				"[TemplateManager] 模板加载完成，共加载",
 				this.templates.size,
@@ -94,8 +146,20 @@ export default class TemplateManager {
 			);
 		} catch (error) {
 			logger.error("[TemplateManager] Error loading templates:", error);
+			this.loadBuiltinTemplates();
 			new Notice("加载模板失败！");
 		}
+	}
+
+	private loadBuiltinTemplates(): void {
+		this.templates.clear();
+		Object.entries(this.builtinTemplates).forEach(([name, content]) => {
+			this.templates.set(name, {
+				name,
+				path: `builtin:${name}`,
+				content,
+			});
+		});
 	}
 
 	// 获取模板列表

@@ -105,7 +105,9 @@ export default class TemplateManager {
 
 			const files = await adapter.list(this.templateDir);
 			logger.info("[TemplateManager] 发现文件:", files.files);
-			this.templates.clear();
+			// 先加载内置模板，再由磁盘模板覆盖同名项。
+			// 这样即使安装包里的 templates 不完整，模板套装也能稳定可用。
+			this.loadBuiltinTemplates();
 
 			for (const file of files.files) {
 				if (file.endsWith(".html")) {
@@ -126,13 +128,6 @@ export default class TemplateManager {
 						file,
 					);
 				}
-			}
-
-			if (this.templates.size === 0) {
-				this.loadBuiltinTemplates();
-				logger.warn(
-					"[TemplateManager] No template files found, using built-in templates fallback",
-				);
 			}
 
 			logger.info(
@@ -180,16 +175,19 @@ export default class TemplateManager {
 		);
 		logger.info(`[TemplateManager] 模板数量:`, this.templates.size);
 
-		// 容错处理：尝试去掉可能的扩展名
-		const cleanTemplateName = templateName.replace(".html", "");
+		// 容错处理：支持 .html、大小写和首尾空白差异
+		const requestedName = String(templateName || "").trim();
+		const cleanTemplateName = requestedName.replace(/\.html$/i, "");
 
-		// 先尝试原始名称，再尝试清理后的名称
-		let template = this.templates.get(templateName);
-		if (!template && templateName !== cleanTemplateName) {
-			logger.info(
-				`[TemplateManager] 尝试使用清理后的模板名称: "${cleanTemplateName}"`,
-			);
+		let template = this.templates.get(requestedName);
+		if (!template && requestedName !== cleanTemplateName) {
 			template = this.templates.get(cleanTemplateName);
+		}
+		if (!template) {
+			const lowerCleanName = cleanTemplateName.toLowerCase();
+			template = Array.from(this.templates.values()).find(
+				(item) => item.name.trim().toLowerCase() === lowerCleanName,
+			);
 		}
 
 		if (!template) {

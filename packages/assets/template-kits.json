@@ -1,0 +1,344 @@
+{
+  "version": "1.0.0",
+  "description": "仅保留 mpp 新套装",
+  "kits": [
+    {
+      "basicInfo": {
+        "id": "kit-mpp-academic",
+        "name": "学术主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-academic"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-academic",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-brown",
+        "name": "悦灵雅棕",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-brown"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-brown",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-dark",
+        "name": "深色主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-dark"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-dark",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-darkgreen",
+        "name": "墨绿主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-darkgreen"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-darkgreen",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-default",
+        "name": "默认模板",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-default"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-default",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-elegant",
+        "name": "优雅主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-elegant"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-elegant",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-minimal",
+        "name": "极简主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-minimal"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-minimal",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-orange",
+        "name": "橙心主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-orange"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-orange",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-scarlet",
+        "name": "红绯主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-scarlet"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-scarlet",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-yeban-orange",
+        "name": "夜半橙心",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-yeban-orange"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-yeban-orange",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    },
+    {
+      "basicInfo": {
+        "id": "kit-mpp-yeban",
+        "name": "夜半主题",
+        "description": "主题风格套装",
+        "author": "joeytoday",
+        "version": "1.0.0",
+        "createdAt": "2026-02-27T11:07:34.231Z",
+        "updatedAt": "2026-02-27T11:07:34.231Z",
+        "tags": [
+          "theme-kit",
+          "mpp-yeban"
+        ]
+      },
+      "styleConfig": {
+        "theme": "mpp-yeban",
+        "codeHighlight": "默认",
+        "cssVariables": {},
+        "enableCustomThemeColor": false
+      },
+      "templateConfig": {
+        "templateFileName": "",
+        "useTemplate": false
+      },
+      "pluginConfig": {
+        "enabledMarkdownPlugins": [],
+        "enabledHtmlPlugins": [],
+        "pluginSettings": {}
+      }
+    }
+  ],
+  "metadata": {
+    "totalKits": 11,
+    "categories": [
+      "mpp-only"
+    ],
+    "lastUpdated": "2026-02-27T11:27:52.249Z",
+    "schemaVersion": "1.0"
+  }
+}

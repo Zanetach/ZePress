@@ -1,0 +1,552 @@
+/**
+ * Anthropic Style Theme
+ * 基于微信公众号Claude风格的主题样式
+ * 特点：温暖的橙红色主题，圆角设计，优雅的排版
+ * 注意：所有样式都限制在 .lovpen-renderer  容器内，避免影响工具栏
+ */
+
+.lovpen-renderer  {
+	/* === 主要颜色变量 === */
+	--primary-color: rgb(200, 100, 66); /* 主题色：温暖的橙红色 */
+	--primary-color-hover: rgb(180, 85, 50); /* 主题色悬停态 */
+	--primary-color-light: rgba(200, 100, 66, 0.1); /* 主题色浅色背景 */
+
+	/* === 背景颜色 === */
+	--background-primary: rgb(250, 249, 245); /* 主背景：温暖的米色 */
+	--background-secondary: rgb(255, 255, 255); /* 次背景：纯白 */
+	--background-tertiary: rgb(245, 245, 245); /* 三级背景：浅灰 */
+
+	/* === 文本颜色 === */
+	--text-primary: rgb(34, 34, 34); /* 主要文本：深灰 */
+	--text-secondary: rgb(63, 63, 63); /* 次要文本：中灰 */
+	--text-tertiary: rgb(136, 136, 136); /* 说明文字：浅灰 */
+	--text-on-primary: rgb(255, 255, 255); /* 主题色上的文字：白色 */
+
+	/* === 边框颜色 === */
+	--border-color: rgb(229, 229, 229); /* 标准边框色 */
+	--border-color-light: rgba(229, 229, 229, 0.5); /* 浅边框色 */
+
+	/* === 字体系统 === */
+	--font-family: "PingFang SC", -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+	--font-size-base: 15px;
+	--font-size-small: 0.8em;
+	--font-size-large: 1.3em;
+	--font-size-h1: 1.6em;
+	--font-size-h2: 1.3em;
+	--font-size-h3: 1.2em;
+	--font-size-h4: 1.1em;
+
+	/* === 行高和字间距 === */
+	--line-height-base: 1.75;
+	--line-height-heading: 1.2;
+	--letter-spacing-base: 0.1em;
+	--letter-spacing-tight: 0.05em;
+
+	/* === 间距系统 === */
+	--spacing-xs: 0.25em;
+	--spacing-sm: 0.5em;
+	--spacing-md: 1em;
+	--spacing-lg: 1.5em;
+	--spacing-xl: 2em;
+	--spacing-xxl: 4em;
+
+	/* === 圆角系统 === */
+	--border-radius-sm: 6px;
+	--border-radius-md: 8px;
+	--border-radius-lg: 12px;
+	--border-radius-xl: 16px;
+
+	/* === 阴影系统 === */
+	--shadow-sm: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+	--shadow-md: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+	--shadow-lg: rgba(0, 0, 0, 0.1) 0px 8px 16px;
+
+	/* === 容器样式 === */
+	font-family: var(--font-family);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-base);
+	color: var(--text-primary);
+	background: var(--background-primary) !important;
+	border-radius: var(--border-radius-lg);
+	padding: var(--spacing-md);
+	box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+/* === 段落样式 === */
+.lovpen-renderer  p {
+	margin: var(--spacing-md) var(--spacing-md);
+	text-align: justify;
+	line-height: var(--line-height-base);
+	font-size: var(--font-size-base);
+	letter-spacing: var(--letter-spacing-base);
+	color: var(--text-primary);
+	/* 允许单词在任意位置断开，适合手机端窄屏 */
+	word-break: break-all;
+	overflow-wrap: break-word;
+	box-sizing: border-box;
+	border: none;
+}
+
+/* === 标题样式 === */
+.lovpen-renderer  h1,
+.lovpen-renderer  h2,
+.lovpen-renderer  h3,
+.lovpen-renderer  h4,
+.lovpen-renderer  h5,
+.lovpen-renderer  h6 {
+	font-family: var(--font-family);
+	font-weight: bold;
+	color: var(--text-primary);
+	margin: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+	line-height: var(--line-height-heading);
+	box-sizing: border-box;
+}
+
+/* H1 样式 */
+.lovpen-renderer  h1 {
+	font-size: var(--font-size-h1);
+	text-align: center;
+	margin: var(--spacing-xxl) auto var(--spacing-xl);
+	display: table;
+	padding: var(--spacing-sm) var(--spacing-md);
+	background: var(--primary-color);
+	color: var(--text-on-primary) !important;
+	border-radius: var(--border-radius-md);
+	box-shadow: var(--shadow-md);
+}
+
+/* H2 样式 - 居中带背景 */
+.lovpen-renderer  h2 {
+	font-size: var(--font-size-h2);
+	text-align: center;
+	margin: var(--spacing-xxl) auto var(--spacing-xl);
+	display: table;
+	padding: var(--spacing-sm) var(--spacing-md);
+	background: var(--primary-color);
+	color: var(--text-on-primary) !important;
+	border-radius: var(--border-radius-md);
+	box-shadow: var(--shadow-md);
+}
+
+/* H3 样式 - 左侧竖线边框 */
+.lovpen-renderer  h3 {
+	font-size: var(--font-size-h3);
+	border-left: 4px solid var(--primary-color);
+	border-bottom: 1px dashed var(--primary-color);
+	padding-left: 12px;
+	margin: var(--spacing-xl) var(--spacing-md) var(--spacing-md) 0;
+	color: var(--text-secondary);
+}
+
+/* H4 样式 */
+.lovpen-renderer  h4 {
+	font-size: var(--font-size-h4);
+	color: var(--primary-color);
+	margin: var(--spacing-xl) var(--spacing-md) -var(--spacing-md);
+}
+
+/* H5, H6 样式 */
+.lovpen-renderer  h5,
+.lovpen-renderer  h6 {
+	font-size: var(--font-size-base);
+	color: var(--primary-color);
+}
+
+/* === 强调文本样式 === */
+.lovpen-renderer  strong,
+.lovpen-renderer  b {
+	font-weight: bold;
+	color: var(--primary-color);
+}
+
+.lovpen-renderer  em,
+.lovpen-renderer  i {
+	font-style: italic;
+	color: var(--primary-color);
+}
+
+/* 修复标题内加粗文字颜色冲突 */
+.lovpen-renderer  h1 strong,
+.lovpen-renderer  h1 b,
+.lovpen-renderer  h2 strong,
+.lovpen-renderer  h2 b {
+	color: var(--text-on-primary) !important;
+}
+
+/* === 图片样式 === */
+.lovpen-renderer  img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: var(--spacing-sm) auto var(--spacing-sm);
+	border-radius: var(--border-radius-md);
+	box-shadow: var(--shadow-md);
+	vertical-align: middle;
+}
+
+/* === 图片说明样式 === */
+.lovpen-renderer  figcaption {
+	text-align: center;
+	font-size: var(--font-size-small);
+	color: var(--text-tertiary);
+	margin-top: var(--spacing-xs);
+	line-height: var(--line-height-base);
+}
+
+/* === 列表样式 === */
+.lovpen-renderer  ul,
+.lovpen-renderer  ol {
+	margin: var(--spacing-lg) var(--spacing-md);
+	padding-left: var(--spacing-xl);
+	color: var(--text-primary);
+	/* 确保列表容器正确处理溢出 */
+	max-width: 100%;
+	box-sizing: border-box;
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+.lovpen-renderer  li {
+	margin: var(--spacing-sm) 0;
+	line-height: var(--line-height-base);
+	/* 列表项也允许任意位置断词 */
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+/* === 引用样式 === */
+.lovpen-renderer  blockquote {
+	margin: var(--spacing-lg) var(--spacing-md);
+	padding: var(--spacing-md);
+	background: var(--primary-color-light);
+	border-left: 4px solid var(--primary-color);
+	border-radius: var(--border-radius-sm);
+	color: var(--text-primary);
+	font-style: italic;
+	/* 引用内容也允许任意位置断词 */
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+/* === 代码样式 === */
+.lovpen-renderer  code {
+	background: var(--background-tertiary);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--border-radius-sm);
+	font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+	font-size: 0.9em;
+	color: var(--primary-color);
+	/* 允许行内代码在必要时换行 */
+	white-space: normal;
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+.lovpen-renderer  pre {
+	background: var(--background-tertiary);
+	padding: var(--spacing-md);
+	border-radius: var(--border-radius-md);
+	overflow-x: auto;
+	margin: var(--spacing-md) var(--spacing-md);
+	/* 代码块内保持原始格式 */
+	white-space: pre;
+	word-break: normal;
+	overflow-wrap: normal;
+}
+
+.lovpen-renderer  pre code {
+	background: none;
+	padding: 0;
+	color: var(--text-primary);
+}
+
+/* === 表格样式 === */
+.lovpen-renderer  table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: var(--spacing-lg) var(--spacing-md);
+	border-radius: var(--border-radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-md);
+	background: var(--background-secondary);
+	border: 1px solid var(--border-color-light);
+}
+
+.lovpen-renderer  th,
+.lovpen-renderer  td {
+	padding: var(--spacing-md) var(--spacing-lg);
+	text-align: left;
+	border-bottom: 1px solid var(--border-color-light);
+	transition: all 0.2s ease;
+}
+
+.lovpen-renderer  th {
+	background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-hover) 100%);
+	color: var(--text-on-primary);
+	font-weight: bold;
+	font-size: 0.95em;
+	letter-spacing: var(--letter-spacing-tight);
+	text-transform: uppercase;
+	position: relative;
+}
+
+.lovpen-renderer  th:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 20%;
+	height: 60%;
+	width: 1px;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.lovpen-renderer  tr:nth-child(even) td {
+	background: rgba(200, 100, 66, 0.03);
+}
+
+.lovpen-renderer  tr:nth-child(odd) td {
+	background: var(--background-secondary);
+}
+
+.lovpen-renderer  tbody tr {
+	transition: all 0.2s ease;
+}
+
+.lovpen-renderer  tbody tr:hover td {
+	background: var(--primary-color-light);
+	transform: scale(1.01);
+	box-shadow: 0 2px 8px rgba(200, 100, 66, 0.1);
+}
+
+.lovpen-renderer  tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.lovpen-renderer  td:first-child,
+.lovpen-renderer  th:first-child {
+	padding-left: var(--spacing-xl);
+}
+
+.lovpen-renderer  td:last-child,
+.lovpen-renderer  th:last-child {
+	padding-right: var(--spacing-xl);
+}
+
+/* 表格内的链接样式 */
+.lovpen-renderer  table a {
+	color: var(--primary-color);
+	font-weight: 500;
+}
+
+.lovpen-renderer  table a:hover {
+	color: var(--primary-color-hover);
+}
+
+/* 表格内的代码样式 */
+.lovpen-renderer  table code {
+	padding: 2px 6px;
+	font-size: 0.85em;
+	background: rgba(200, 100, 66, 0.08);
+}
+
+/* === 移动端表格优化（公众号专用） === */
+@media (max-width: 768px) {
+	/* 表格容器优化 */
+	.lovpen-renderer  .table-wrapper {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		margin: var(--spacing-md) 0;
+	}
+	
+	.lovpen-renderer  table {
+		font-size: 12px; /* 最小字号 */
+		margin: 0;
+		min-width: 100%;
+		border-radius: 6px;
+		box-shadow: none;
+		border: 1px solid var(--border-color);
+	}
+	
+	/* 紧凑的单元格 */
+	.lovpen-renderer  th,
+	.lovpen-renderer  td {
+		padding: 6px 8px; /* 大幅减少内边距 */
+		font-size: 12px;
+		line-height: 1.4;
+		white-space: nowrap; /* 防止换行 */
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	/* 简化表头样式 */
+	.lovpen-renderer  th {
+		background: var(--primary-color);
+		font-size: 11px;
+		letter-spacing: 0;
+		text-transform: none; /* 移除大写转换 */
+		font-weight: 600;
+	}
+	
+	/* 移除表头分隔线 */
+	.lovpen-renderer  th:not(:last-child)::after {
+		display: none;
+	}
+	
+	/* 减少首尾列内边距 */
+	.lovpen-renderer  td:first-child,
+	.lovpen-renderer  th:first-child {
+		padding-left: 8px;
+	}
+	
+	.lovpen-renderer  td:last-child,
+	.lovpen-renderer  th:last-child {
+		padding-right: 8px;
+	}
+	
+	/* 移除移动端的悬停效果 */
+	.lovpen-renderer  tbody tr:hover td {
+		background: inherit;
+		transform: none;
+		box-shadow: none;
+	}
+	
+	/* 简化行背景色 */
+	.lovpen-renderer  tr:nth-child(even) td {
+		background: rgba(200, 100, 66, 0.02);
+	}
+	
+	/* 表格内链接优化 */
+	.lovpen-renderer  table a {
+		font-size: 12px;
+		font-weight: normal;
+		text-decoration: underline;
+	}
+	
+	/* 表格内代码优化 */
+	.lovpen-renderer  table code {
+		padding: 1px 3px;
+		font-size: 11px;
+		background: rgba(200, 100, 66, 0.05);
+	}
+	
+	/* 允许特定列换行 */
+	.lovpen-renderer  td:last-child {
+		white-space: normal;
+		word-break: break-word;
+	}
+}
+
+/* === 链接样式 === */
+.lovpen-renderer  a {
+	color: var(--primary-color);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+	transition: all 0.2s ease;
+	/* 允许链接在任意位置断开，避免手机端出现横向滚动 */
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+.lovpen-renderer  a:hover {
+	color: var(--primary-color-hover);
+	border-bottom-color: var(--primary-color-hover);
+}
+
+/* === 分隔线样式 === */
+.lovpen-renderer  hr {
+	border: none;
+	height: 1px;
+	background: var(--border-color);
+	margin: var(--spacing-xl) var(--spacing-md);
+}
+
+/* === 特殊容器样式 === */
+.lovpen-renderer  .highlight-box {
+	background: var(--primary-color-light);
+	border: 1px solid var(--primary-color);
+	border-radius: var(--border-radius-md);
+	padding: var(--spacing-md);
+	margin: var(--spacing-lg) var(--spacing-md);
+	/* 允许内容在任意位置断词 */
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+.lovpen-renderer  .info-box {
+	background: var(--background-secondary);
+	border-left: 4px solid var(--primary-color);
+	padding: var(--spacing-md);
+	margin: var(--spacing-lg) var(--spacing-md);
+	border-radius: var(--border-radius-sm);
+	/* 允许内容在任意位置断词 */
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
+
+/* === 响应式设计 === */
+@media (max-width: 768px) {
+	.lovpen-renderer  {
+		padding: var(--spacing-sm);
+	}
+
+	.lovpen-renderer  p,
+	.lovpen-renderer  ul,
+	.lovpen-renderer  ol,
+	.lovpen-renderer  blockquote {
+		margin-left: var(--spacing-sm);
+		margin-right: var(--spacing-sm);
+	}
+
+	.lovpen-renderer  h1,
+	.lovpen-renderer  h2 {
+		font-size: var(--font-size-large);
+		padding: var(--spacing-xs) var(--spacing-sm);
+	}
+
+	.lovpen-renderer  h3 {
+		margin-right: var(--spacing-sm);
+	}
+
+	.lovpen-renderer  img {
+		margin-left: var(--spacing-sm);
+		margin-right: var(--spacing-sm);
+	}
+}
+
+/* === 打印样式 === */
+@media print {
+	.lovpen-renderer  {
+		background: white !important;
+		box-shadow: none;
+	}
+
+	.lovpen-renderer  h1,
+	.lovpen-renderer  h2 {
+		background: none !important;
+		color: var(--text-primary) !important;
+		box-shadow: none;
+		border: 2px solid var(--primary-color);
+	}
+
+	.lovpen-renderer  img {
+		box-shadow: none;
+		border: 1px solid var(--border-color);
+	}
+}
+
+/* === Admonition 组件内部元素样式覆盖 === */
+/* 确保 admonition 内部的段落使用小字体，不受全局 p 样式影响 */
+.lovpen-renderer [data-component="admonition"] [data-element="admonition-content"] p {
+	font-size: 0.75em !important;
+	line-height: 1.5 !important;
+	color: #666666 !important;
+	letter-spacing: 0 !important;
+	text-align: left !important;
+	margin: 0.4em 0 !important;
+	word-break: break-all !important;
+	overflow-wrap: break-word !important;
+	box-sizing: border-box !important;
+}

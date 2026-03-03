@@ -1,0 +1,24 @@
+/* Auto migrated from joeytoday/obsidian-mp-publisher template: brown */
+.zepublish {  }
+.zepublish h1 { margin: 32px 0 0; font-size: 2em; letter-spacing: -0.02em; line-height: 1.5; font-weight: bold; color: #4a4a4a; }
+.zepublish h2 { margin: 28px 0 24px 0; font-size: 1.5em; letter-spacing: -0.01em; line-height: 1.5; font-weight: bold; color: #4a4a4a; }
+.zepublish h3 { margin: 24px 0 20px 0; font-size: 1.25em; letter-spacing: -0.01em; border-left: 4px solid #4a4a4a; padding-left: 12px; line-height: 1.5; font-weight: bold; color: #4a4a4a; }
+.zepublish h4, .zepublish h5, .zepublish h6 { margin: 20px 0 0; font-size: 1em; line-height: 1.5; font-weight: bold; color: #4a4a4a; }
+.zepublish p { line-height: 1.8; margin-top: 1em; font-size: 1em; color: #4a4a4a; }
+.zepublish ul, .zepublish ol { padding-left: 32px; color: #4a4a4a; }
+.zepublish li { font-size: 1em; color: #4a4a4a; line-height: 1.8; }
+.zepublish .task-list-item { list-style: none; font-size: 1em; color: #4a4a4a; line-height: 1.8; }
+.zepublish blockquote { border-left: 4px solid #c57512; border-radius: 6px; padding: 10px 10px; background: #fef7ed; margin: 0.8em 0; color: #8b6d4d; font-style: italic; word-wrap: break-word; }
+.zepublish pre { color: #333; background: #fef7ed; border-radius: 8px; border: 1px solid #f5e2c7; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin: 1.2em 0; padding: 1em 1em 1em;  font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.zepublish code:not(pre code) { background: #fef7ed; padding: 2px 6px; border-radius: 4px; color: #333; font-size: 14px; border: 1px solid #f5e2c7; }
+.zepublish a { color: #c57512; text-decoration: none; border-bottom: 1px solid #c57512; }
+.zepublish strong { font-weight: bold; color: #c57512; }
+.zepublish em { font-style: italic; color: #c57512; }
+.zepublish del { text-decoration: line-through; color: #c57512; }
+.zepublish table { width: 100%; margin: 1em 0; border-collapse: collapse; border: 1px solid #f5e2c7; }
+.zepublish th { background: #fef7ed; font-weight: bold; color: #c57512; border-bottom: 2px solid #f5e2c7; font-size: 1em; }
+.zepublish td { border: 1px solid #f5e2c7; padding: 8px; color: #4a4a4a; font-size: 1em; }
+.zepublish hr { border: none; border-top: 1px solid #f5e2c7; margin: 20px 0; }
+.zepublish img { max-width: 100%; height: auto; margin: 1em auto; display: block; }
+.zepublish .footnote-ref { color: #c57512; text-decoration: none; font-size: 0.9em; }
+.zepublish .footnote-backref { color: #c57512; text-decoration: none; font-size: 0.9em; }

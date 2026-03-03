@@ -1,0 +1,343 @@
+/*
+ * 手工川主题文章样式 - 自适应版本
+ * 根据手机亮暗模式自动切换主题
+ * 白天：亮色阅读模式，保持品牌红色强调
+ * 晚上：深色极致模式，舒适护眼
+ */
+
+/* 亮色模式变量 */
+.lovpen-renderer {
+	--primary-color: #E31937;
+	--text-primary: #333333;
+	--text-secondary: #666666;
+	--text-tertiary: #999999;
+	--background-primary: #ffffff;
+	--background-secondary: #f8f9fa;
+	--border-color: #e5e7eb;
+	--code-bg: #f3f4f6;
+	--mark-bg: rgba(227, 25, 55, 0.1);
+	--blockquote-border: #E31937;
+	--link-color: #E31937;
+	--strong-color: rgba(227, 25, 55, 0.8);
+}
+
+/* 深色模式变量 */
+@media (prefers-color-scheme: dark) {
+	.lovpen-renderer {
+		--primary-color: #E31937;
+		--text-primary: #ffffff;
+		--text-secondary: #d1d5db;
+		--text-tertiary: #a0a0a0;
+		--background-primary: #000000;
+		--background-secondary: #1a1a1a;
+		--border-color: #404040;
+		--code-bg: rgba(255, 255, 255, 0.05);
+		--mark-bg: rgba(227, 25, 55, 0.2);
+		--blockquote-border: #E31937;
+		--link-color: #E31937;
+		--strong-color: rgba(227, 25, 55, 0.9);
+	}
+}
+
+/* 基础容器样式 */
+.lovpen-renderer  {
+	font-family: AvenirNext-Regular, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+	font-size: 16px;
+	color: var(--text-secondary);
+	background-color: var(--background-primary);
+	line-height: 1.6em;
+	-webkit-text-size-adjust: 100%;
+	margin: 0px 0px;
+	padding: 1em 1em;
+	transition: all 0.3s ease;
+}
+
+/* 基础元素样式 */
+.lovpen-renderer  * {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+.lovpen-renderer  > *:first-child {
+	margin-top: 0 !important;
+}
+
+.lovpen-renderer  > *:last-child {
+	margin-top: 0 !important;
+}
+
+/* 段落和块元素间距 */
+.lovpen-renderer  p,
+.lovpen-renderer  pre,
+.lovpen-renderer  dl,
+.lovpen-renderer  form,
+.lovpen-renderer  details,
+.lovpen-renderer  blockquote,
+.lovpen-renderer  table,
+.lovpen-renderer  xmp,
+.lovpen-renderer  plaintext,
+.lovpen-renderer  listing,
+.lovpen-renderer  figure {
+	margin: 0.75em 0 0.45em;
+}
+
+.lovpen-renderer  hr {
+	margin: 0.75em auto;
+	height: 1px;
+	border: 0;
+	background-color: var(--border-color);
+	border-style: inset;
+	border-width: 1px;
+	transition: background-color 0.3s ease;
+}
+
+/* 标题样式 */
+.lovpen-renderer  h1,
+.lovpen-renderer  h2,
+.lovpen-renderer  h3,
+.lovpen-renderer  h4,
+.lovpen-renderer  h5,
+.lovpen-renderer  h6 {
+	margin-top: 1.5em;
+	margin-bottom: 0.75em;
+	margin-left: 0;
+	margin-right: 0;
+	font-family: AvenirNext-Medium;
+	font-weight: 600;
+	line-height: 1.5em;
+	color: var(--primary-color);
+	transition: color 0.3s ease;
+}
+
+.lovpen-renderer  h1 {
+	font-size: 1.5em;
+}
+
+.lovpen-renderer  h2 {
+	font-size: 1.3em;
+}
+
+.lovpen-renderer  h3 {
+	font-size: 1.1em;
+}
+
+.lovpen-renderer  h4,
+.lovpen-renderer  h5,
+.lovpen-renderer  h6 {
+	font-size: 1em;
+}
+
+/* 段落样式 */
+.lovpen-renderer  p {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* 引用块样式 */
+.lovpen-renderer  blockquote {
+	display: block;
+	padding-left: 0.8em;
+	border-left: 0.2em solid var(--blockquote-border);
+	color: var(--text-secondary);
+	transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.lovpen-renderer  blockquote > :first-child {
+	margin-top: 0;
+}
+
+.lovpen-renderer  blockquote > :last-child {
+	margin-bottom: 0;
+}
+
+/* 列表样式 */
+.lovpen-renderer  ul {
+	padding-left: 1.0em;
+}
+
+.lovpen-renderer  li::marker {
+	color: var(--primary-color);
+	transition: color 0.3s ease;
+}
+
+.lovpen-renderer  li > p {
+	margin: 0;
+}
+
+.lovpen-renderer  ol {
+	padding-left: 1.0em;
+	list-style-type: decimal;
+}
+
+/* 链接样式 */
+.lovpen-renderer  a {
+	color: var(--link-color);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.lovpen-renderer  a:hover,
+.lovpen-renderer  a:focus,
+.lovpen-renderer  a:active {
+	text-decoration: underline;
+}
+
+/* 文本样式 */
+.lovpen-renderer  b,
+.lovpen-renderer  strong {
+	font-weight: bold;
+	color: var(--strong-color);
+	transition: color 0.3s ease;
+}
+
+.lovpen-renderer  i,
+.lovpen-renderer  cite,
+.lovpen-renderer  em,
+.lovpen-renderer  var,
+.lovpen-renderer  address,
+.lovpen-renderer  dfn {
+	font-style: italic;
+}
+
+.lovpen-renderer  del,
+.lovpen-renderer  s {
+	color: var(--text-tertiary);
+	transition: color 0.3s ease;
+}
+
+/* 代码样式 */
+.lovpen-renderer  pre,
+.lovpen-renderer  xmp,
+.lovpen-renderer  plaintext,
+.lovpen-renderer  listing,
+.lovpen-renderer  code,
+.lovpen-renderer  kbd,
+.lovpen-renderer  tt,
+.lovpen-renderer  samp {
+	font-family: Menlo-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.lovpen-renderer  code {
+	display: inline;
+	color: var(--text-primary);
+	background-color: var(--code-bg);
+	padding: 0.2em 0.4em;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+}
+
+.lovpen-renderer  .code-section {
+	display: flex;
+	border: solid 1px var(--border-color);
+	background-color: var(--code-bg);
+	border-radius: 8px;
+	margin: 1em 0;
+	transition: all 0.3s ease;
+}
+
+.lovpen-renderer  .code-section pre {
+	margin: 0;
+	overflow-x: auto;
+}
+
+.lovpen-renderer  .code-section code {
+	display: block;
+	padding: 0.9em;
+	font-size: 0.9em;
+	line-height: 1.6em;
+	text-wrap: nowrap;
+	background-color: transparent;
+}
+
+/* 高亮样式 */
+.lovpen-renderer  mark {
+	color: var(--text-primary);
+	display: inline;
+	padding: 0.2em 0.5em;
+	background-color: var(--mark-bg);
+	border-radius: 4px;
+	transition: all 0.3s ease;
+}
+
+/* 表格样式 */
+.lovpen-renderer  table {
+	color: var(--text-secondary);
+	border-collapse: collapse;
+	background-color: var(--background-secondary);
+	border-spacing: 2px;
+	font-size: 1em;
+	border: 1px solid var(--border-color);
+	border-spacing: 0;
+	margin: 1em 0;
+	transition: all 0.3s ease;
+}
+
+.lovpen-renderer  th,
+.lovpen-renderer  td {
+	padding: 0.7em 1em;
+	font-size: 0.9em;
+	border: 1px solid var(--border-color);
+	transition: border-color 0.3s ease;
+}
+
+.lovpen-renderer  th {
+	background-color: var(--mark-bg);
+	color: var(--text-primary);
+	font-weight: bold;
+}
+
+/* 下划线样式 */
+.lovpen-renderer  u {
+	text-decoration: none;
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, var(--primary-color) 50%);
+	background-repeat: repeat-x;
+	background-size: 2px 2px;
+	background-position: 0 1em;
+}
+
+/* 特定于手工川主题的扩展样式 */
+.lovpen-renderer  .highlight {
+	color: var(--primary-color);
+	transition: color 0.3s ease;
+}
+
+.lovpen-renderer  .important {
+	border-left: 3px solid var(--primary-color);
+	padding-left: 1em;
+	margin: 1em 0;
+	transition: border-color 0.3s ease;
+}
+
+.lovpen-renderer  .note {
+	background-color: var(--mark-bg);
+	border: 1px solid var(--primary-color);
+	border-radius: 8px;
+	padding: 1em;
+	margin: 1em 0;
+	transition: all 0.3s ease;
+}
+
+.lovpen-renderer  .tip {
+	border-left: 4px solid var(--primary-color);
+	padding-left: 16px;
+	margin: 1em 0;
+	background-color: var(--mark-bg);
+	transition: all 0.3s ease;
+}
+
+/* 确保头尾卡片始终保持黑色主题 */
+.header-card,
+.footer-card {
+	background-color: #000000 !important;
+	color: #d1d5db !important;
+}
+
+.header-card h1,
+.header-card h2,
+.footer-card p,
+.footer-card strong {
+	color: #E31937 !important;
+}

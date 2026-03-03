@@ -1,0 +1,24 @@
+/* Auto migrated from joeytoday/obsidian-mp-publisher template: orange */
+.zepublish {  }
+.zepublish h1 { margin: 32px 0 0; font-size: 2em; letter-spacing: -0.03em; line-height: 1.5; font-weight: bold; color: #d64b3b; }
+.zepublish h2 { margin: 28px 0 0; font-size: 1.5em; letter-spacing: -0.02em; border-bottom: 2px solid #ef7060; line-height: 1.2; display: inline-block; font-weight: bold; background: #ef7060; color: #ffffff; padding: 1px 4px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px; }
+.zepublish h3 { margin: 24px 0 0; font-size: 1.25em; letter-spacing: -0.01em; line-height: 1.5; font-weight: bold; color: #f18070; }
+.zepublish h4, .zepublish h5, .zepublish h6 { margin: 20px 0 14px; font-size: 1em; line-height: 1.5; font-weight: bold; color: #f39080; }
+.zepublish p { line-height: 1.8; margin-top: 1em; font-size: 1em; color: #4a4a4a; }
+.zepublish ul, .zepublish ol { padding-left: 32px; color: #4a4a4a; }
+.zepublish li { font-size: 1em; color: #4a4a4a; line-height: 1.8; }
+.zepublish .task-list-item { list-style: none; font-size: 1em; color: #4a4a4a; line-height: 1.8; }
+.zepublish blockquote { border-left: 4px solid #ef7060; border-radius: 6px; padding: 10px 10px; background: #fff5f4; margin: 0.8em 0; color: #d64b3b; font-style: italic; word-wrap: break-word; }
+.zepublish pre { color: #333; background: #fff8f7; border-radius: 8px; border: 1px solid #ffe8e6; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin: 1.2em 0; padding: 1em 1em 1em;  font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.zepublish code:not(pre code) { background: #fff8f7; padding: 2px 6px; border-radius: 4px; color: #333; font-size: 14px; border: 1px solid #ffe8e6; }
+.zepublish a { color: #ef7060; text-decoration: none; border-bottom: 1px solid #ef7060; transition: all 0.2s ease; }
+.zepublish strong { font-weight: bold; color: #4a4a4a; }
+.zepublish em { font-style: italic; color: #4a4a4a; }
+.zepublish del { text-decoration: line-through; color: #4a4a4a; }
+.zepublish table { width: 100%; margin: 1em 0; border-collapse: collapse; border: 1px solid #ffe8e6; }
+.zepublish th { background: #fff8f7; font-weight: bold; color: #4a4a4a; border-bottom: 2px solid #ffe8e6; font-size: 1em; }
+.zepublish td { border: 1px solid #f0f0f0; padding: 8px; color: #4a4a4a; font-size: 1em; }
+.zepublish hr { border: none; border-top: 1px solid #ffe8e6; margin: 20px 0; }
+.zepublish img { max-width: 100%; height: auto; margin: 1em auto; display: block; }
+.zepublish .footnote-ref { color: #e0e0e0; text-decoration: none; font-size: 0.9em; }
+.zepublish .footnote-backref { color: #e0e0e0; text-decoration: none; font-size: 0.9em; }
